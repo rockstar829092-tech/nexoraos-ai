@@ -1,0 +1,8 @@
+{
+  "name": "Remix: NexoraOS AI",
+  "description": "NexoraOS AI — The premium, AI-first ERP \u0026 Operating System SaaS for modern schools. Empowering administrations, teachers, parents, and students with cutting-edge academic intelligence and seamless workflow automation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

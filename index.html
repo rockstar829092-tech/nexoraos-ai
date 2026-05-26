@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Google AI Studio App</title>
+    <script>
+      // Fix for JSON.parse("undefined")
+      try {
+        const originalParse = JSON.parse;
+        JSON.parse = function(text, reviver) {
+          if (text === 'undefined') return null;
+          if (text === undefined) return null;
+          return originalParse(text, reviver);
+        };
+      } catch (e) {}
+
+      // Fix for "Cannot set property fetch"
+      try {
+        const originalFetch = window.fetch;
+        if (originalFetch) {
+          Object.defineProperty(window, 'fetch', {
+            get: function() { return originalFetch; },
+            set: function(v) { console.warn('Blocked attempt to overwrite fetch:', v); },
+            configurable: true
+          });
+        }
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
