@@ -19,7 +19,7 @@ import {
   Activity
 } from 'lucide-react';
 
-import youngProfImage from '@/src/assets/images/young_professional_laptop_1779785953007.png';
+import youngProfImage from '../assets/images/young_professional_laptop_1779785953007.png';
 
 interface HeroProps {
   onScrollToSection?: (sectionId: string) => void;

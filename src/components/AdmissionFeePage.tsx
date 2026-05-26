@@ -79,10 +79,10 @@ import {
   Legend
 } from 'recharts';
 
-const modernCampusImg = '/src/assets/images/modern_campus_1779782861501.png';
-const roboticsLabImg = '/src/assets/images/robotics_lab_1779782885932.png';
-const biologyLabImg = '/src/assets/images/biology_lab_1779782920985.png';
-const avionicsHangarImg = '/src/assets/images/avionics_hangar_1779782942054.png';
+import modernCampusImg from '../assets/images/modern_campus_1779782861501.png';
+import roboticsLabImg from '../assets/images/robotics_lab_1779782885932.png';
+import biologyLabImg from '../assets/images/biology_lab_1779782920985.png';
+import avionicsHangarImg from '../assets/images/avionics_hangar_1779782942054.png';
 
 // --- MOCK DATA ---
 const ADMISSION_FUNNEL = [

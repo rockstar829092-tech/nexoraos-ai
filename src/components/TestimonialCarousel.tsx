@@ -7,11 +7,11 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronLeft, ChevronRight, Smile } from 'lucide-react';
 
-import delhiPrincipalImg from '@/src/assets/images/delhi_principal_1779789558781.png';
-import mumbaiTrusteeImg from '@/src/assets/images/mumbai_trustee_1779789577430.png';
-import chennaiDeanImg from '@/src/assets/images/chennai_dean_1779789595228.png';
-import bengaluruMdImg from '@/src/assets/images/bengaluru_md_1779789614172.png';
-import jaipurPrincipalImg from '@/src/assets/images/jaipur_principal_1779789629553.png';
+import delhiPrincipalImg from '../assets/images/delhi_principal_1779789558781.png';
+import mumbaiTrusteeImg from '../assets/images/mumbai_trustee_1779789577430.png';
+import chennaiDeanImg from '../assets/images/chennai_dean_1779789595228.png';
+import bengaluruMdImg from '../assets/images/bengaluru_md_1779789614172.png';
+import jaipurPrincipalImg from '../assets/images/jaipur_principal_1779789629553.png';
 
 interface Testimonial {
   id: string;
