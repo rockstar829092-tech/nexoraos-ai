@@ -7,6 +7,12 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronLeft, ChevronRight, Smile } from 'lucide-react';
 
+import delhiPrincipalImg from '@/src/assets/images/delhi_principal_1779789558781.png';
+import mumbaiTrusteeImg from '@/src/assets/images/mumbai_trustee_1779789577430.png';
+import chennaiDeanImg from '@/src/assets/images/chennai_dean_1779789595228.png';
+import bengaluruMdImg from '@/src/assets/images/bengaluru_md_1779789614172.png';
+import jaipurPrincipalImg from '@/src/assets/images/jaipur_principal_1779789629553.png';
+
 interface Testimonial {
   id: string;
   quote: string;
@@ -25,7 +31,7 @@ const CAROUSEL_TESTIMONIALS: Testimonial[] = [
     role: "Principal & Director",
     institution: "Venkateshwara International School",
     address: "Sector 10, Dwarka, New Delhi, India",
-    image: "/src/assets/images/delhi_principal_1779789558781.png",
+    image: delhiPrincipalImg,
   },
   {
     id: 't-mumbai',
@@ -34,7 +40,7 @@ const CAROUSEL_TESTIMONIALS: Testimonial[] = [
     role: "Trustee & Administrator",
     institution: "Sahyadri Education Trust",
     address: "Nariman Point, Mumbai, Maharashtra, India",
-    image: "/src/assets/images/mumbai_trustee_1779789577430.png",
+    image: mumbaiTrusteeImg,
   },
   {
     id: 't-chennai',
@@ -43,7 +49,7 @@ const CAROUSEL_TESTIMONIALS: Testimonial[] = [
     role: "Dean of Academics",
     institution: "Padma Seshadri Bala Bhavan Group",
     address: "Nungambakkam, Chennai, Tamil Nadu, India",
-    image: "/src/assets/images/chennai_dean_1779789595228.png",
+    image: chennaiDeanImg,
   },
   {
     id: 't-bengaluru',
@@ -52,7 +58,7 @@ const CAROUSEL_TESTIMONIALS: Testimonial[] = [
     role: "Managing Director",
     institution: "Neon Woods International School",
     address: "Whitefield, Bengaluru, Karnataka, India",
-    image: "/src/assets/images/bengaluru_md_1779789614172.png",
+    image: bengaluruMdImg,
   },
   {
     id: 't-jaipur',
@@ -61,7 +67,7 @@ const CAROUSEL_TESTIMONIALS: Testimonial[] = [
     role: "Senior Principal",
     institution: "Maharani Gayatri Devi Academy",
     address: "Sawai Ram Singh Road, Jaipur, Rajasthan, India",
-    image: "/src/assets/images/jaipur_principal_1779789629553.png",
+    image: jaipurPrincipalImg,
   }
 ];
 
