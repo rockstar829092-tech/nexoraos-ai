@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Sparkles, Menu, X, ChevronDown } from 'lucide-react';
+import { Sparkles, Menu, X, ChevronDown, UserCircle } from 'lucide-react';
 import { NexoraNavTray } from './NexoraNavTray';
 import { motion, AnimatePresence } from 'motion/react';
+import { useRole } from '../context/RoleContext';
+import { UserRole } from '../types';
 
 interface NexoraNavbarProps {
   theme?: 'light' | 'dark';
@@ -12,11 +14,18 @@ interface NexoraNavbarProps {
 export const NexoraNavbar: React.FC<NexoraNavbarProps> = ({ theme, setTheme }) => {
   const [activeItem, setActiveItem] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [roleMenuOpen, setRoleMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const { role, setRole } = useRole();
   
   const handleFeatureClick = (path: string) => {
     setActiveItem(null);
     navigate(path);
+  };
+
+  const handleRoleChange = (newRole: UserRole) => {
+    setRole(newRole);
+    setRoleMenuOpen(false);
   };
 
   return (
@@ -43,6 +52,48 @@ export const NexoraNavbar: React.FC<NexoraNavbarProps> = ({ theme, setTheme }) =
         </div>
 
         <div className="flex items-center gap-4">
+          {/* Role Switcher */}
+          <div className="relative">
+            <button 
+              onClick={() => setRoleMenuOpen(!roleMenuOpen)}
+              className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-white/10 transition-all hover:border-blue-400 group"
+            >
+              <UserCircle className="w-4 h-4 text-blue-500" />
+              <span className="text-[10px] font-black uppercase tracking-wider text-slate-600 dark:text-slate-400">{role}</span>
+              <ChevronDown className={`w-3 h-3 text-slate-400 transition-transform ${roleMenuOpen ? 'rotate-180' : ''}`} />
+            </button>
+
+            <AnimatePresence>
+              {roleMenuOpen && (
+                <motion.div 
+                  initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                  className="absolute right-0 mt-2 w-48 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-white/10 rounded-2xl shadow-xl z-[70] overflow-hidden"
+                >
+                  <div className="p-3 border-b border-slate-100 dark:border-white/5 bg-slate-50 dark:bg-white/2">
+                    <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Switch Access Level</span>
+                  </div>
+                  <div className="p-1">
+                    {(['Admin', 'Teacher', 'Accountant', 'Parent'] as UserRole[]).map((r) => (
+                      <button
+                        key={r}
+                        onClick={() => handleRoleChange(r)}
+                        className={`w-full text-left px-3 py-2 rounded-xl text-[11px] font-bold transition-all ${
+                          role === r 
+                            ? 'bg-blue-50 dark:bg-blue-500/10 text-blue-600' 
+                            : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-white/5'
+                        }`}
+                      >
+                        {r} Clearance
+                      </button>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
           {setTheme && (
             <button 
               onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}

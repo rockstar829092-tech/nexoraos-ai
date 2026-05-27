@@ -23,6 +23,7 @@ import {
   Check,
   Printer
 } from 'lucide-react';
+import { useRole } from '../context/RoleContext';
 
 interface StaffSalaryRecord {
   id: string;
@@ -153,11 +154,15 @@ function safeParse(value: string | null, fallback: any = {}) {
 }
 
 export const StaffPayrollPage: React.FC<StaffPayrollPageProps> = ({ onBack }) => {
+  const { role, permissions } = useRole();
   const [staffList, setStaffList] = useState<StaffSalaryRecord[]>(() => {
     const cached = localStorage.getItem('nexora_staff_payroll');
     const parsed = safeParse(cached, INITIAL_STAFF_PAYROLL_DATA);
     return Array.isArray(parsed) && parsed.length > 0 ? parsed : INITIAL_STAFF_PAYROLL_DATA;
   });
+
+  const canRunPayroll = role === 'Admin' || role === 'Accountant';
+  const canEditConfig = role === 'Admin' || role === 'Accountant';
 
   // Batch states
   const [payrollMonth, setPayrollMonth] = useState("May 2026");
@@ -405,29 +410,32 @@ export const StaffPayrollPage: React.FC<StaffPayrollPageProps> = ({ onBack }) =>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <button
                     onClick={handleRunPayrollBatch}
-                    disabled={isProcessing}
-                    className="flex-1 py-2.5 px-4 bg-[#2563EB] hover:bg-blue-700 disabled:bg-slate-400 text-white text-[10.5px] font-black uppercase tracking-wider transition-all rounded-xl cursor-pointer flex items-center justify-center gap-2 shadow-3xs"
+                    disabled={isProcessing || !canRunPayroll}
+                    className={`flex-1 py-2.5 px-4 bg-[#2563EB] hover:bg-blue-700 disabled:bg-slate-400 text-white text-[10.5px] font-black uppercase tracking-wider transition-all rounded-xl cursor-pointer flex items-center justify-center gap-2 shadow-3xs ${!canRunPayroll ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    title={!canRunPayroll ? "Requires Accountant/Admin permissions" : ""}
                   >
                     <RefreshCw className="w-3.5 h-3.5" />
                     <span>{isProcessing ? "Executing Bank Disbursal Ledger..." : "Run Payroll for May 2026"}</span>
                   </button>
 
-                  <button
-                    onClick={() => {
-                      setProcessProgress(80);
-                      // Restore pending sync employee
-                      setStaffList(prev => prev.map(emp => {
-                        if (emp.id === "EMP-2026-08") {
-                          return { ...emp, status: "Pending Sync", attendanceSync: "24 of 24 Working Days" };
-                        }
-                        return emp;
-                      }));
-                      triggerToast("Current interval state reset to unverified logs.", "alert");
-                    }}
-                    className="py-2.5 px-3 bg-slate-100 hover:bg-slate-200 text-slate-650 text-[10.5px] font-bold uppercase transition-all rounded-xl cursor-pointer"
-                  >
-                    Reset Frame
-                  </button>
+                  {role === 'Admin' && (
+                    <button
+                      onClick={() => {
+                        setProcessProgress(80);
+                        // Restore pending sync employee
+                        setStaffList(prev => prev.map(emp => {
+                          if (emp.id === "EMP-2026-08") {
+                            return { ...emp, status: "Pending Sync", attendanceSync: "24 of 24 Working Days" };
+                          }
+                          return emp;
+                        }));
+                        triggerToast("Current interval state reset to unverified logs.", "alert");
+                      }}
+                      className="py-2.5 px-3 bg-slate-100 hover:bg-slate-200 text-slate-650 text-[10.5px] font-bold uppercase transition-all rounded-xl cursor-pointer"
+                    >
+                      Reset Frame
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
@@ -460,8 +468,9 @@ export const StaffPayrollPage: React.FC<StaffPayrollPageProps> = ({ onBack }) =>
                     max="45"
                     step="5"
                     value={hraPercentage}
+                    disabled={!canEditConfig}
                     onChange={(e) => handleAllowanceChange(parseInt(e.target.value))}
-                    className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
+                    className={`w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600 ${!canEditConfig ? 'opacity-50 cursor-not-allowed' : ''}`}
                   />
                   <span className="text-[8px] text-slate-405 block font-semibold">Applies index correction to metro and suburban campus staff</span>
                 </div>
@@ -478,8 +487,9 @@ export const StaffPayrollPage: React.FC<StaffPayrollPageProps> = ({ onBack }) =>
                     max="15"
                     step="1"
                     value={pfPercentage}
+                    disabled={!canEditConfig}
                     onChange={(e) => handlePfChange(parseInt(e.target.value))}
-                    className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600"
+                    className={`w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600 ${!canEditConfig ? 'opacity-50 cursor-not-allowed' : ''}`}
                   />
                   <span className="text-[8px] text-slate-405 block font-semibold">Statutory default employee reserve account allocation multiplier</span>
                 </div>

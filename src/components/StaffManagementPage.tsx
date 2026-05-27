@@ -43,6 +43,7 @@ import {
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { PageLayout } from './PageLayout';
+import { useRole } from '../context/RoleContext';
 
 interface Staff {
   id: string;
@@ -279,8 +280,15 @@ const SAMPLE_STAFF: Staff[] = [
 
 export const StaffManagementPage: React.FC = () => {
   const navigate = useNavigate();
+  const { role, permissions } = useRole();
   const defaultToMusic = false; // Simplified for now or can be handled via location state
   const [selectedStaffId, setSelectedStaffId] = useState<string>("FAC-2026-64");
+
+  const canEditStaff = role === 'Admin' || role === 'Accountant'; // Accountants might need to edit for payroll details
+  const isAdmin = role === 'Admin';
+  
+  const canDeleteLabs = isAdmin;
+  const canDeleteStudents = isAdmin || role === 'Teacher'; // Allowing teacher to manage their trainees
 
   useEffect(() => {
     if (defaultToMusic) {
@@ -300,7 +308,7 @@ export const StaffManagementPage: React.FC = () => {
   const [exportSuccessAlert, setExportSuccessAlert] = useState<boolean>(false);
 
   // Role permissions allocation state
-  const [permissions, setPermissions] = useState([
+  const [rbacMatrix, setRbacMatrix] = useState([
     { role: "Administrator", read: true, write: true, delete: true, color: "border-blue-500 bg-blue-50 text-blue-700" },
     { role: "Faculty Members", read: true, write: true, delete: false, color: "border-indigo-500 bg-indigo-50 text-indigo-700" },
     { role: "Academic Coordinator", read: true, write: true, delete: true, color: "border-purple-500 bg-purple-50 text-purple-700" },
@@ -428,7 +436,7 @@ export const StaffManagementPage: React.FC = () => {
 
   // Handle toggling permission levels
   const togglePermission = (roleIndex: number, level: 'read' | 'write' | 'delete') => {
-    setPermissions(prev => prev.map((item, idx) => {
+    setRbacMatrix(prev => prev.map((item, idx) => {
       if (idx === roleIndex) {
         return {
           ...item,
@@ -640,13 +648,14 @@ export const StaffManagementPage: React.FC = () => {
               <div className="bg-slate-50 p-4.5 rounded-2xl border border-slate-150 space-y-3">
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Access Control Matrix:</span>
+                  {!isAdmin && <span className="text-[9px] font-black text-rose-600 uppercase tracking-widest">Read-Only Access</span>}
                   <span className="text-[9px] font-black text-emerald-600 flex items-center gap-1">
                     <LockIcon className="h-3 w-3" /> SECURE HANDSHAKE ENABLED
                   </span>
                 </div>
 
                 <div className="space-y-2.5">
-                  {permissions.map((p, rIdx) => (
+                  {rbacMatrix.map((p, rIdx) => (
                     <div key={p.role} className="bg-white border border-slate-200 p-3 rounded-xl shadow-3xs flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                       <div className="flex items-center gap-2">
                         <span className={`w-2.5 h-2.5 rounded-full border border-current shrink-0`} style={{ borderColor: 'transparent' }} />
@@ -656,22 +665,25 @@ export const StaffManagementPage: React.FC = () => {
                       <div className="flex gap-2.5 self-end sm:self-auto">
                         {/* Read Toggle */}
                         <button 
-                          onClick={() => togglePermission(rIdx, 'read')}
-                          className={`px-2 py-1 rounded text-[9.5px] font-black transition-all border ${p.read ? 'bg-emerald-50 text-emerald-800 border-emerald-200' : 'bg-slate-100 text-slate-400 border-slate-200'}`}
+                          onClick={() => isAdmin && togglePermission(rIdx, 'read')}
+                          disabled={!isAdmin}
+                          className={`px-2 py-1 rounded text-[9.5px] font-black transition-all border ${p.read ? 'bg-emerald-50 text-emerald-800 border-emerald-200' : 'bg-slate-100 text-slate-400 border-slate-200'} ${!isAdmin ? 'cursor-not-allowed opacity-80' : ''}`}
                         >
                           READ
                         </button>
                         {/* Write Toggle */}
                         <button 
-                          onClick={() => togglePermission(rIdx, 'write')}
-                          className={`px-2 py-1 rounded text-[9.5px] font-black transition-all border ${p.write ? 'bg-blue-50 text-blue-800 border-blue-200' : 'bg-slate-100 text-slate-400 border-slate-200'}`}
+                          onClick={() => isAdmin && togglePermission(rIdx, 'write')}
+                          disabled={!isAdmin}
+                          className={`px-2 py-1 rounded text-[9.5px] font-black transition-all border ${p.write ? 'bg-blue-50 text-blue-800 border-blue-200' : 'bg-slate-100 text-slate-400 border-slate-200'} ${!isAdmin ? 'cursor-not-allowed opacity-80' : ''}`}
                         >
                           WRITE
                         </button>
                         {/* Delete Toggle */}
                         <button 
-                          onClick={() => togglePermission(rIdx, 'delete')}
-                          className={`px-2 py-1 rounded text-[9.5px] font-black transition-all border ${p.delete ? 'bg-rose-50 text-rose-800 border-rose-200' : 'bg-slate-100 text-slate-400 border-slate-200'}`}
+                          onClick={() => isAdmin && togglePermission(rIdx, 'delete')}
+                          disabled={!isAdmin}
+                          className={`px-2 py-1 rounded text-[9.5px] font-black transition-all border ${p.delete ? 'bg-rose-50 text-rose-800 border-rose-200' : 'bg-slate-100 text-slate-400 border-slate-200'} ${!isAdmin ? 'cursor-not-allowed opacity-80' : ''}`}
                         >
                           DELETE
                         </button>
@@ -860,14 +872,16 @@ export const StaffManagementPage: React.FC = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                       {labAllocations.map((lab) => (
                         <div key={lab.id} className="bg-slate-50 border border-slate-150 p-4 rounded-2xl relative group hover:border-[#2563EB]/40 hover:bg-slate-50/60 transition-all">
-                          <button 
-                            type="button"
-                            onClick={() => handleDeleteLabAllocation(lab.id)}
-                            className="absolute top-3.5 right-3.5 p-1 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-md transition-all opacity-0 group-hover:opacity-100"
-                            title="Remove Allocation"
-                          >
-                            <Trash2 className="h-4 w-4" />
-                          </button>
+                          {canDeleteLabs && (
+                            <button 
+                              type="button"
+                              onClick={() => handleDeleteLabAllocation(lab.id)}
+                              className="absolute top-3.5 right-3.5 p-1 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-md transition-all opacity-0 group-hover:opacity-100"
+                              title="Remove Allocation"
+                            >
+                              <Trash2 className="h-4 w-4" />
+                            </button>
+                          )}
                           
                           <div className="space-y-2">
                             <span className="text-[8.5px] font-mono tracking-widest text-slate-400 uppercase font-black">{lab.id}</span>
@@ -1093,14 +1107,16 @@ export const StaffManagementPage: React.FC = () => {
                             </div>
                           </div>
 
-                          <button 
-                            type="button"
-                            onClick={() => handleDeleteMusicStudent(stud.id)}
-                            className="p-1 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-md transition-all opacity-0 group-hover:opacity-100 shrink-0 cursor-pointer"
-                            title="Unenroll Trainee"
-                          >
-                            <Trash2 className="h-4 w-4" />
-                          </button>
+                          {canDeleteStudents && (
+                            <button 
+                              type="button"
+                              onClick={() => handleDeleteMusicStudent(stud.id)}
+                              className="p-1 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-md transition-all opacity-0 group-hover:opacity-100 shrink-0 cursor-pointer"
+                              title="Unenroll Trainee"
+                            >
+                              <Trash2 className="h-4 w-4" />
+                            </button>
+                          )}
                         </div>
                       ))}
                     </div>

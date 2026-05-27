@@ -28,6 +28,7 @@ import {
   ExternalLink
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useRole } from '../context/RoleContext';
 
 // Define Interface for selected student representation
 interface Student {
@@ -124,6 +125,7 @@ const SAMPLE_STUDENTS: Student[] = [
 
 export const StudentManagementPage: React.FC = () => {
   const navigate = useNavigate();
+  const { role, permissions } = useRole();
   const [selectedStudentId, setSelectedStudentId] = useState<string>("NEX-2026-98");
   const [activeTab, setActiveTab] = useState<'front' | 'back'>('front');
   const [isHovered, setIsHovered] = useState(false);
@@ -147,10 +149,16 @@ export const StudentManagementPage: React.FC = () => {
   const [smsText, setSmsText] = useState("Alert: Aarav Sharma has reached the main computer lab at 11:30 AM.");
   const [sentAlerts, setSentAlerts] = useState<string[]>([]);
 
-  const activeStudent = SAMPLE_STUDENTS.find(s => s.id === selectedStudentId) || SAMPLE_STUDENTS[0];
+  // Parent view restriction: Only Aarav
+  const activeStudentId = role === 'Parent' ? "NEX-2026-98" : selectedStudentId;
+  const activeStudent = SAMPLE_STUDENTS.find(s => s.id === activeStudentId) || SAMPLE_STUDENTS[0];
+
+  const canEnroll = role === 'Admin' || role === 'Accountant';
+  const canTriggerLogs = role === 'Admin' || role === 'Teacher' || (permissions.actions.specialActions?.includes('mark-attendance'));
 
   const handleAddNewLead = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!canEnroll) return;
     if (!newLeadName.trim()) return;
     setLeads(prev => [
       ...prev,
@@ -224,20 +232,22 @@ export const StudentManagementPage: React.FC = () => {
 
               {/* Live Interactive Profile Browser Box */}
               <div className="space-y-4 pt-1">
-                <div className="flex flex-wrap items-center justify-between gap-2.5 bg-slate-50 dark:bg-white/2 p-3 rounded-2xl border border-slate-100 dark:border-white/5">
-                  <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Select Student Reference:</span>
-                  <div className="flex gap-1.5 scrollbar-none overflow-x-auto">
-                    {SAMPLE_STUDENTS.map(st => (
-                      <button 
-                        key={st.id}
-                        onClick={() => setSelectedStudentId(st.id)}
-                        className={`py-1.5 px-3 rounded-lg text-xs font-extrabold transition-all shrink-0 ${selectedStudentId === st.id ? 'bg-[#0071E3] text-white shadow-xs' : 'bg-white dark:bg-zinc-800 border border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-zinc-700'}`}
-                      >
-                        {st.name}
-                      </button>
-                    ))}
+                {role !== 'Parent' && (
+                  <div className="flex flex-wrap items-center justify-between gap-2.5 bg-slate-50 dark:bg-white/2 p-3 rounded-2xl border border-slate-100 dark:border-white/5">
+                    <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Select Student Reference:</span>
+                    <div className="flex gap-1.5 scrollbar-none overflow-x-auto">
+                      {SAMPLE_STUDENTS.map(st => (
+                        <button 
+                          key={st.id}
+                          onClick={() => setSelectedStudentId(st.id)}
+                          className={`py-1.5 px-3 rounded-lg text-xs font-extrabold transition-all shrink-0 ${selectedStudentId === st.id ? 'bg-[#0071E3] text-white shadow-xs' : 'bg-white dark:bg-zinc-800 border border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-zinc-700'}`}
+                        >
+                          {st.name}
+                        </button>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )}
 
                 {/* Quick details dashboard visual rendering */}
                 <div className="p-4 bg-slate-50/50 dark:bg-white/2 rounded-2xl border border-slate-200/50 dark:border-white/5 grid grid-cols-2 sm:grid-cols-3 gap-4">
@@ -279,13 +289,16 @@ export const StudentManagementPage: React.FC = () => {
                   <input 
                     type="text"
                     value={newLeadName}
+                    disabled={!canEnroll}
                     onChange={(e) => setNewLeadName(e.target.value)}
-                    placeholder="Enter Student Lead Name..."
-                    className="flex-1 bg-white dark:bg-zinc-800 border border-slate-250 dark:border-white/10 p-2 text-xs rounded-xl focus:outline-none focus:ring-1 focus:ring-blue-500 font-semibold dark:text-white"
+                    placeholder={canEnroll ? "Enter Student Lead Name..." : "Insufficient Permissions"}
+                    className={`flex-1 bg-white dark:bg-zinc-800 border border-slate-250 dark:border-white/10 p-2 text-xs rounded-xl focus:outline-none focus:ring-1 focus:ring-blue-500 font-semibold dark:text-white ${!canEnroll ? 'opacity-50 cursor-not-allowed' : ''}`}
                   />
                   <button 
                     type="submit"
-                    className="bg-[#0071E3] hover:bg-blue-700 text-white px-4 py-2 text-xs font-black rounded-xl transition-all active:scale-95"
+                    disabled={!canEnroll}
+                    className={`bg-[#0071E3] hover:bg-blue-700 text-white px-4 py-2 text-xs font-black rounded-xl transition-all active:scale-95 ${!canEnroll ? 'opacity-50 cursor-not-allowed grayscale' : ''}`}
+                    title={!canEnroll ? "Requires Accountant/Admin permissions" : ""}
                   >
                     Enroll Lead
                   </button>
@@ -331,9 +344,11 @@ export const StudentManagementPage: React.FC = () => {
                   <button 
                     type="button"
                     onClick={triggerSimulatedCheckIn}
-                    className="w-full bg-[#0071E3] hover:bg-blue-700 text-white font-black text-[10px] uppercase tracking-widest py-3 rounded-xl transition-all shadow-md shadow-blue-500/20 active:scale-95 cursor-pointer"
+                    disabled={!canTriggerLogs}
+                    className={`w-full bg-[#0071E3] hover:bg-blue-700 text-white font-black text-[10px] uppercase tracking-widest py-3 rounded-xl transition-all shadow-md shadow-blue-500/20 active:scale-95 cursor-pointer ${!canTriggerLogs ? 'opacity-50 cursor-not-allowed grayscale' : ''}`}
+                    title={!canTriggerLogs ? "Requires Teacher/Admin permissions" : ""}
                   >
-                    📡 Trigger Live Check-In Tap for {activeStudent.name}
+                    📡 {canTriggerLogs ? `Trigger Live Check-In Tap for ${activeStudent.name}` : 'Check-In Access Restricted'}
                   </button>
                 </div>
               </div>

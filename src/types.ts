@@ -3,6 +3,19 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+export type UserRole = "Admin" | "Teacher" | "Parent" | "Accountant";
+
+export interface RolePermissions {
+  modules: string[]; // List of module IDs or categories they can access
+  actions: {
+    canCreate: boolean;
+    canEdit: boolean;
+    canDelete: boolean;
+    canExport: boolean;
+    specialActions?: string[]; // e.g. ["mark-attendance", "input-grades"]
+  };
+}
+
 export interface ErpModule {
   id: string;
   title: string;

@@ -43,6 +43,7 @@ import {
   Area,
   ReferenceLine
 } from 'recharts';
+import { useRole } from '../context/RoleContext';
 
 const ACADEMIC_TRENDS = [
   { semester: 'Sem 1', avg: 72, high: 94 },
@@ -70,8 +71,14 @@ interface ExamManagementPageProps {
 }
 
 export const ExamManagementPage: React.FC<ExamManagementPageProps> = ({ onBack }) => {
+  const { role, permissions } = useRole();
   const [examProgress, setExamProgress] = useState(88);
   const [passingCriteria, setPassingCriteria] = useState(true);
+
+  const isAdmin = role === 'Admin';
+  const canInputGrades = isAdmin || role === 'Teacher' || permissions.actions.specialActions?.includes('input-grades');
+  const canConfigGrades = isAdmin;
+  const canGenerateResults = isAdmin;
 
   // Auto-increment progress for visual effect
   useEffect(() => {
@@ -199,7 +206,8 @@ export const ExamManagementPage: React.FC<ExamManagementPageProps> = ({ onBack }
             </motion.section>
 
             {/* 2. MARKS ENTRY SYSTEM */}
-            <section className="bg-white border border-slate-200 rounded-[32px] p-8 shadow-sm">
+            {canInputGrades && (
+              <section className="bg-white border border-slate-200 rounded-[32px] p-8 shadow-sm">
               <div className="flex items-center justify-between mb-8">
                 <div className="flex items-center gap-3">
                   <div className="p-3 bg-purple-50 text-purple-600 rounded-2xl">
@@ -274,9 +282,11 @@ export const ExamManagementPage: React.FC<ExamManagementPageProps> = ({ onBack }
                 </button>
               </div>
             </section>
+            )}
 
             {/* 3. GRADING SYSTEM CONFIGURATION */}
-            <section className="bg-white border border-slate-200 rounded-[32px] p-8 shadow-sm">
+            {canConfigGrades && (
+              <section className="bg-white border border-slate-200 rounded-[32px] p-8 shadow-sm">
                <div className="flex items-center justify-between mb-8">
                 <div className="flex items-center gap-3">
                   <div className="p-3 bg-amber-50 text-amber-600 rounded-2xl">
@@ -365,9 +375,11 @@ export const ExamManagementPage: React.FC<ExamManagementPageProps> = ({ onBack }
                 </div>
               </div>
             </section>
+            )}
 
             {/* 4. RESULT GENERATION ENGINE */}
-            <section className="bg-white border border-slate-200 rounded-[32px] p-8 shadow-sm overflow-hidden relative">
+            {canGenerateResults && (
+              <section className="bg-white border border-slate-200 rounded-[32px] p-8 shadow-sm overflow-hidden relative">
               <div className="flex items-center gap-3 mb-8">
                 <div className="p-3 bg-emerald-50 text-emerald-600 rounded-2xl">
                   <Activity className="w-6 h-6" />
@@ -418,6 +430,7 @@ export const ExamManagementPage: React.FC<ExamManagementPageProps> = ({ onBack }
                 </div>
               </div>
             </section>
+            )}
 
             {/* 5. REPORT CARD GENERATOR */}
             <section className="bg-white border border-slate-200 rounded-[32px] p-8 shadow-sm">

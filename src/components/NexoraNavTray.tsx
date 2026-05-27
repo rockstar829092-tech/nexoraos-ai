@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { useRole } from '../context/RoleContext';
 
 interface NavTrayProps {
   isOpen: boolean;
@@ -9,6 +10,7 @@ interface NavTrayProps {
 }
 
 export const NexoraNavTray: React.FC<NavTrayProps> = ({ isOpen, activeItem, onClose, onNavigate }) => {
+  const { isAllowed } = useRole();
   const navMap: Record<string, string> = {
     'Student Management': '/student-management',
     'Attendance & Leave': '/attendance-management',
@@ -60,7 +62,7 @@ export const NexoraNavTray: React.FC<NavTrayProps> = ({ isOpen, activeItem, onCl
               <div key={group.title} className="space-y-4">
                 <h4 className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.15em] border-b border-slate-100 dark:border-white/5 pb-2">{group.title}</h4>
                 <div className="flex flex-col gap-2">
-                  {group.items.map(item => (
+                  {group.items.filter(item => isAllowed(navMap[item])).map(item => (
                     <button 
                       key={item}
                       onClick={() => { onNavigate(navMap[item]); onClose(); }}

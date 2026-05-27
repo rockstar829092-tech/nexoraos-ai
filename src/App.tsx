@@ -23,6 +23,9 @@ import { FinancePage } from './components/FinancePage';
 import { MobileAppsPage } from './components/MobileAppsPage';
 import { PricingPage } from './components/PricingPage';
 
+import { RoleProvider } from './context/RoleContext';
+import { ProtectedRoute } from './components/ProtectedRoute';
+
 // Page Scroll Restorer
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -50,39 +53,41 @@ export default function App() {
   }, [theme]);
 
   return (
-    <Router>
-      <ScrollToTop />
-      <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
-        <Routes>
-          {/* Main Pages */}
-          <Route path="/" element={<NexoraLandingPage theme={theme} setTheme={setTheme} />} />
-          <Route path="/academic" element={<AcademicPage theme={theme} setTheme={setTheme} />} />
-          <Route path="/operations" element={<OperationsPage theme={theme} setTheme={setTheme} />} />
-          <Route path="/finance" element={<FinancePage theme={theme} setTheme={setTheme} />} />
-          <Route path="/pricing" element={<PricingPage theme={theme} setTheme={setTheme} />} />
-          <Route path="/mobile-apps" element={<MobileAppsPage theme={theme} setTheme={setTheme} />} />
-          <Route path="/resources" element={<ResourcesPage />} />
+    <RoleProvider>
+      <Router>
+        <ScrollToTop />
+        <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
+          <Routes>
+            {/* Main Pages */}
+            <Route path="/" element={<NexoraLandingPage theme={theme} setTheme={setTheme} />} />
+            <Route path="/academic" element={<AcademicPage theme={theme} setTheme={setTheme} />} />
+            <Route path="/operations" element={<OperationsPage theme={theme} setTheme={setTheme} />} />
+            <Route path="/finance" element={<FinancePage theme={theme} setTheme={setTheme} />} />
+            <Route path="/pricing" element={<PricingPage theme={theme} setTheme={setTheme} />} />
+            <Route path="/mobile-apps" element={<MobileAppsPage theme={theme} setTheme={setTheme} />} />
+            <Route path="/resources" element={<ResourcesPage />} />
 
-          {/* Module Direct Routes */}
-          <Route path="/student-management" element={<StudentManagementPage />} />
-          <Route path="/staff-management" element={<StaffManagementPage />} />
-          <Route path="/library-management" element={<LibraryManagementPage />} />
-          <Route path="/payroll" element={<StaffPayrollPage onBack={() => window.history.back()} />} />
-          <Route path="/fee-management" element={<FeeManagementPage onBack={() => window.history.back()} />} />
-          <Route path="/exam-management" element={<ExamManagementPage onBack={() => window.history.back()} />} />
-          <Route path="/attendance-management" element={<AttendanceLeavePage onBack={() => window.history.back()} />} />
-          <Route path="/admission-fee" element={<AdmissionFeePage onBack={() => window.history.back()} />} />
-          <Route path="/lms" element={<LMSPage onBack={() => window.history.back()} />} />
-          <Route path="/hostel-management" element={<HostelManagementPage onBack={() => window.history.back()} />} />
-          <Route path="/transport-management" element={<TransportManagementPage onBack={() => window.history.back()} />} />
-          <Route path="/communication" element={<AlertsManagementPage onBack={() => window.history.back()} />} />
-          <Route path="/security" element={<RoleBasedAccessPage onBack={() => window.history.back()} />} />
-          <Route path="/calendar-events" element={<CalendarEventsPage onBack={() => window.history.back()} />} />
-          <Route path="/staff-app" element={<AppsManagementPage onBack={() => window.history.back()} />} />
-          <Route path="/student-app" element={<AppsManagementPage onBack={() => window.history.back()} />} />
-          <Route path="/management-app" element={<AppsManagementPage onBack={() => window.history.back()} />} />
-        </Routes>
-      </div>
-    </Router>
+            {/* Module Direct Routes */}
+            <Route path="/student-management" element={<ProtectedRoute><StudentManagementPage /></ProtectedRoute>} />
+            <Route path="/staff-management" element={<ProtectedRoute><StaffManagementPage /></ProtectedRoute>} />
+            <Route path="/library-management" element={<ProtectedRoute><LibraryManagementPage /></ProtectedRoute>} />
+            <Route path="/payroll" element={<ProtectedRoute><StaffPayrollPage onBack={() => window.history.back()} /></ProtectedRoute>} />
+            <Route path="/fee-management" element={<ProtectedRoute><FeeManagementPage onBack={() => window.history.back()} /></ProtectedRoute>} />
+            <Route path="/exam-management" element={<ProtectedRoute><ExamManagementPage onBack={() => window.history.back()} /></ProtectedRoute>} />
+            <Route path="/attendance-management" element={<ProtectedRoute><AttendanceLeavePage onBack={() => window.history.back()} /></ProtectedRoute>} />
+            <Route path="/admission-fee" element={<ProtectedRoute><AdmissionFeePage onBack={() => window.history.back()} /></ProtectedRoute>} />
+            <Route path="/lms" element={<ProtectedRoute><LMSPage onBack={() => window.history.back()} /></ProtectedRoute>} />
+            <Route path="/hostel-management" element={<ProtectedRoute><HostelManagementPage onBack={() => window.history.back()} /></ProtectedRoute>} />
+            <Route path="/transport-management" element={<ProtectedRoute><TransportManagementPage onBack={() => window.history.back()} /></ProtectedRoute>} />
+            <Route path="/communication" element={<ProtectedRoute><AlertsManagementPage onBack={() => window.history.back()} /></ProtectedRoute>} />
+            <Route path="/security" element={<ProtectedRoute><RoleBasedAccessPage onBack={() => window.history.back()} /></ProtectedRoute>} />
+            <Route path="/calendar-events" element={<ProtectedRoute><CalendarEventsPage onBack={() => window.history.back()} /></ProtectedRoute>} />
+            <Route path="/staff-app" element={<ProtectedRoute><AppsManagementPage onBack={() => window.history.back()} /></ProtectedRoute>} />
+            <Route path="/student-app" element={<ProtectedRoute><AppsManagementPage onBack={() => window.history.back()} /></ProtectedRoute>} />
+            <Route path="/management-app" element={<ProtectedRoute><AppsManagementPage onBack={() => window.history.back()} /></ProtectedRoute>} />
+          </Routes>
+        </div>
+      </Router>
+    </RoleProvider>
   );
 }
