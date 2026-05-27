@@ -139,20 +139,20 @@ Draft:
   const renderTextContent = (text: string) => {
     return text.split('\n').map((line, i) => {
       if (line.startsWith('### ')) {
-        return <h4 key={i} className="text-sm font-black text-white uppercase tracking-wider mb-2 mt-4">{line.replace('### ', '')}</h4>;
+        return <h4 key={i} className="text-sm font-black text-slate-900 uppercase tracking-wider mb-2 mt-4">{line.replace('### ', '')}</h4>;
       }
       if (line.startsWith('## ') || line.startsWith('#### ')) {
-        return <h5 key={i} className="text-xs font-bold text-blue-400 uppercase tracking-widest mb-1.5 mt-3">{line.replace(/^##+\s/, '')}</h5>;
+        return <h5 key={i} className="text-xs font-bold text-blue-600 uppercase tracking-widest mb-1.5 mt-3">{line.replace(/^##+\s/, '')}</h5>;
       }
       if (line.startsWith('* ') || line.startsWith('- ')) {
         return (
-          <li key={i} className="ml-4 list-disc text-slate-300 text-xs mb-1.5 leading-relaxed font-medium">
+          <li key={i} className="ml-4 list-disc text-slate-600 text-xs mb-1.5 leading-relaxed font-medium">
             {formatBold(line.replace(/^[\*\-]\s+/, ''))}
           </li>
         );
       }
       return (
-        <p key={i} className="text-slate-300 text-xs mb-2 leading-relaxed font-medium">
+        <p key={i} className="text-slate-600 text-xs mb-2 leading-relaxed font-medium">
           {formatBold(line)}
         </p>
       );
@@ -163,7 +163,7 @@ Draft:
     const parts = text.split(/\*\*([\s\S]*?)\*\*/g);
     if (parts.length > 1) {
       return parts.map((part, index) => 
-        index % 2 === 1 ? <strong key={index} className="font-extrabold text-[#0074E4]">{part}</strong> : part
+        index % 2 === 1 ? <strong key={index} className="font-extrabold text-blue-600">{part}</strong> : part
       );
     }
     return text;
@@ -172,14 +172,14 @@ Draft:
   return (
     <section 
       id="ai-assistant-playground"
-      className="relative bg-[#050B14] text-white py-24 border-t border-[#002D62]/30 w-full overflow-hidden"
+      className="relative bg-white text-slate-900 py-24 border-t border-slate-200 w-full overflow-hidden"
     >
-      {/* Premium ambient light fields */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-[#0074E4]/5 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-10 right-20 w-[400px] h-[400px] bg-indigo-500/5 rounded-full blur-[130px] pointer-events-none" />
+      {/* Premium background accents */}
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-blue-50 rounded-full pointer-events-none opacity-40 blur-[100px]" />
+      <div className="absolute bottom-10 right-20 w-[400px] h-[400px] bg-indigo-50 rounded-full pointer-events-none opacity-40 blur-[100px]" />
       
       {/* Decorative tech grid lines */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#002D6204_1px,transparent_1px),linear-gradient(to_bottom,#002D6204_1px,transparent_1px)] bg-[size:25px_25px] pointer-events-none opacity-40" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:25px_25px] pointer-events-none opacity-30" />
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10 w-full">
         
@@ -191,32 +191,32 @@ Draft:
           <div className="lg:col-span-5 space-y-6 text-center lg:text-left">
             
             {/* Luxury Badge */}
-            <div className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#001E3D] to-[#002D62] px-4 py-1.5 text-xs font-semibold text-blue-300 border border-[#0074E4]/30 shadow-md">
-              <Cpu className="h-4 w-4 text-blue-400 animate-pulse" />
+            <div className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-1.5 text-xs font-semibold text-blue-700 border border-blue-200 shadow-sm">
+              <Cpu className="h-4 w-4 text-blue-600" />
               <span className="tracking-wider uppercase font-mono text-[9px] font-black">Powered by Gemini 1.5 Pro Backend</span>
             </div>
 
             <div className="space-y-3">
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
+              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 leading-tight">
                 Try Our Live AI <br />
-                <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
                   Assistant Instantly
                 </span>
               </h2>
               
-              <h3 className="text-sm sm:text-base font-semibold text-cyan-400 font-sans tracking-wide">
-                (Abhi khud chala kar dekhein: Ghanton ka Syllabus aur Report Card ka kaam sirf ek click me!)
+              <h3 className="text-sm sm:text-base font-semibold text-blue-600 font-sans tracking-wide">
+                (Experience real-time syllabus and report card automation with one click)
               </h3>
             </div>
 
-            <p className="text-slate-400 text-xs sm:text-sm font-semibold leading-relaxed max-w-md mx-auto lg:mx-0">
+            <p className="text-slate-600 text-xs sm:text-sm font-semibold leading-relaxed max-w-md mx-auto lg:mx-0">
               Instantly draft authentic curricula, customized academic structures, or compile complex student report card narratives without any sign-up requirements. Experience real-world automation on the spot.
             </p>
 
             {/* Quick trust metrics */}
-            <div className="pt-4 flex flex-wrap justify-center lg:justify-start gap-4 text-[10px] text-slate-500 font-mono font-bold uppercase tracking-wider">
+            <div className="pt-4 flex flex-wrap justify-center lg:justify-start gap-4 text-[10px] text-slate-400 font-mono font-bold uppercase tracking-wider">
               <div className="flex items-center gap-1.5">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#0074E4]" />
+                <div className="w-1.5 h-1.5 rounded-full bg-blue-600" />
                 <span>No CC Required</span>
               </div>
               <div className="flex items-center gap-1.5">
@@ -228,14 +228,14 @@ Draft:
           </div>
 
           {/* ========================================================= */}
-          {/* RIGHT COL: Interactive Glassmorphic Form Card             */}
+          {/* RIGHT COL: Interactive Card Form                          */}
           {/* ========================================================= */}
           <div className="lg:col-span-7">
-            <div className="bg-white/[0.03] backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-white/10 shadow-[0_24px_50px_-12px_rgba(0,116,228,0.15)] relative overflow-hidden text-left">
+            <div className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-xl relative overflow-hidden text-left">
               
               {/* Corner tech line decoration */}
-              <div className="absolute top-0 right-0 w-24 h-[1px] bg-gradient-to-l from-[#0074E4] to-transparent" />
-              <div className="absolute top-0 right-0 h-24 w-[1px] bg-gradient-to-b from-[#0074E4] to-transparent" />
+              <div className="absolute top-0 right-0 w-24 h-[1px] bg-gradient-to-l from-blue-500 to-transparent" />
+              <div className="absolute top-0 right-0 h-24 w-[1px] bg-gradient-to-b from-blue-500 to-transparent" />
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 
@@ -248,7 +248,7 @@ Draft:
                     <button
                       type="button"
                       onClick={() => setTaskType('syllabus')}
-                      className={`py-3 px-4 rounded-xl border font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all cursor-pointer ${taskType === 'syllabus' ? 'bg-[#0074E4] border-[#0074E4] text-white shadow-md shadow-blue-600/10' : 'bg-[#001530]/40 border-white/10 text-slate-400 hover:text-white hover:bg-white/[0.05]'}`}
+                      className={`py-3 px-4 rounded-xl border font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all cursor-pointer ${taskType === 'syllabus' ? 'bg-blue-600 border-blue-600 text-white shadow-md shadow-blue-600/20' : 'bg-slate-50 border-slate-200 text-slate-500 hover:text-slate-900 hover:bg-slate-100'}`}
                     >
                       <BookOpen className="w-4 h-4" />
                       <span>Academic Syllabus</span>
@@ -256,7 +256,7 @@ Draft:
                     <button
                       type="button"
                       onClick={() => setTaskType('report')}
-                      className={`py-3 px-4 rounded-xl border font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all cursor-pointer ${taskType === 'report' ? 'bg-[#0074E4] border-[#0074E4] text-white shadow-md shadow-blue-600/10' : 'bg-[#001530]/40 border-white/10 text-slate-400 hover:text-white hover:bg-white/[0.05]'}`}
+                      className={`py-3 px-4 rounded-xl border font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all cursor-pointer ${taskType === 'report' ? 'bg-blue-600 border-blue-600 text-white shadow-md shadow-blue-600/20' : 'bg-slate-50 border-slate-200 text-slate-500 hover:text-slate-900 hover:bg-slate-100'}`}
                     >
                       <GraduationCap className="w-4 h-4" />
                       <span>Report Card Narrative</span>
@@ -275,7 +275,7 @@ Draft:
                     value={field2}
                     onChange={(e) => setField2(e.target.value)}
                     placeholder={taskType === 'syllabus' ? 'e.g., Mathematics, Computer Science' : 'e.g., Sarah Jenkins'}
-                    className="w-full bg-[#001530]/55 border border-white/15 px-4 py-3 rounded-xl text-xs font-medium text-white placeholder:text-slate-500 focus:outline-hidden focus:ring-1 focus:ring-[#0074E4] focus:border-[#0074E4] transition-all"
+                    className="w-full bg-slate-50 border border-slate-200 px-4 py-3 rounded-xl text-xs font-medium text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-1 focus:ring-blue-600 focus:border-blue-600 transition-all"
                   />
                 </div>
 
@@ -290,7 +290,7 @@ Draft:
                     onChange={(e) => setField3(e.target.value)}
                     rows={2}
                     placeholder={taskType === 'syllabus' ? 'e.g., Grade 10 / Algebra equations, graphing, functions' : 'e.g., Grade 6 / Participative but distracted'}
-                    className="w-full bg-[#001530]/55 border border-white/15 px-4 py-3 rounded-xl text-xs font-medium text-white placeholder:text-slate-500 focus:outline-hidden focus:ring-1 focus:ring-[#0074E4] focus:border-[#0074E4] transition-all resize-none"
+                    className="w-full bg-slate-50 border border-slate-200 px-4 py-3 rounded-xl text-xs font-medium text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-1 focus:ring-blue-600 focus:border-blue-600 transition-all resize-none"
                   />
                 </div>
 
@@ -298,11 +298,11 @@ Draft:
                 <button
                   type="submit"
                   disabled={isLoading || !field2.trim() || !field3.trim()}
-                  className="w-full py-3 px-5 rounded-xl bg-gradient-to-r from-blue-600 to-[#0074E4] hover:from-[#0074E4] hover:to-indigo-600 text-white font-extrabold text-xs uppercase tracking-wider shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.45)] transition-all flex items-center justify-center gap-2.5 disabled:opacity-50 disabled:hover:scale-100 cursor-pointer select-none"
+                  className="w-full py-3 px-5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-indigo-600 hover:to-blue-600 text-white font-extrabold text-xs uppercase tracking-wider shadow-lg shadow-blue-500/20 transition-all flex items-center justify-center gap-2.5 disabled:opacity-50 disabled:hover:scale-100 cursor-pointer select-none"
                 >
                   {isLoading ? (
                     <>
-                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <Loader2 className="w-4 h-4" />
                       <span>Initiating AI Generation Pipelines...</span>
                     </>
                   ) : (
@@ -315,19 +315,19 @@ Draft:
 
               </form>
 
-              {/* Dynamic Presentation Telemetry & Results Display Block */}
-              <div className="mt-6 pt-6 border-t border-white/10 space-y-4">
+              {/* Dynamic Results Display Block */}
+              <div className="mt-6 pt-6 border-t border-slate-100 space-y-4">
                 
-                {/* 1. Live Generation Trace Progress (Only visible during loading state) */}
+                {/* 1. Live Generation Trace Progress */}
                 <AnimatePresence>
                   {isLoading && (
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0 }}
-                      className="bg-[#001530]/80 rounded-xl p-4 border border-blue-500/15 font-mono text-[10px] space-y-2 text-slate-400"
+                      className="bg-slate-50 rounded-xl p-4 border border-slate-200 font-mono text-[10px] space-y-2 text-slate-500"
                     >
-                      <div className="flex items-center gap-1.5 text-blue-400 font-extrabold">
+                      <div className="flex items-center gap-1.5 text-blue-600 font-extrabold">
                         <Terminal className="w-3.5 h-3.5" />
                         <span>AI CORE REAL-TIME TELEMETRY TRACE</span>
                       </div>
@@ -335,10 +335,10 @@ Draft:
                         {traceSteps.slice(0, traceStep + 1).map((step, idx) => (
                           <div 
                             key={idx} 
-                            className={`flex items-center gap-2 transition-opacity ${idx === traceStep ? 'text-white font-black animate-pulse' : 'text-slate-500'}`}
+                            className={`flex items-center gap-2 transition-opacity ${idx === traceStep ? 'text-slate-900 font-black' : 'text-slate-400'}`}
                           >
                             <span>{step}</span>
-                            {idx < traceStep && <Check className="w-3 h-3 text-emerald-400" />}
+                            {idx < traceStep && <Check className="w-3 h-3 text-emerald-600" />}
                           </div>
                         ))}
                       </div>
@@ -355,20 +355,20 @@ Draft:
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-1.5">
-                        <Sparkles className="h-4.5 w-4.5 text-blue-400 animate-pulse" />
+                        <Sparkles className="h-4.5 w-4.5 text-blue-600" />
                         <span className="text-[10px] font-mono font-black text-slate-400 tracking-wider uppercase">Generated Sandbox Outcome</span>
                       </div>
                       
                       {/* Copy Action button */}
                       <button
                         onClick={handleCopy}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-slate-300 hover:text-white transition-all text-[10px] font-bold cursor-pointer select-none"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 hover:bg-slate-100 text-slate-500 hover:text-slate-900 transition-all text-[10px] font-bold cursor-pointer select-none"
                         title="Copy text outcome"
                       >
                         {copied ? (
                           <>
-                            <Check className="h-3 w-3 text-emerald-400" />
-                            <span className="text-emerald-400">Copied!</span>
+                            <Check className="h-3 w-3 text-emerald-600" />
+                            <span className="text-emerald-600">Copied!</span>
                           </>
                         ) : (
                           <>
@@ -379,19 +379,19 @@ Draft:
                       </button>
                     </div>
 
-                    {/* Result Card styled quote box */}
-                    <div className="bg-[#00152F]/75 border border-white/10 rounded-2xl p-5 overflow-y-auto max-h-[250px] font-sans scrollbar-thin scrollbar-thumb-white/10">
+                    {/* Result Card styled box */}
+                    <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 overflow-y-auto max-h-[250px] font-sans scrollbar-thin scrollbar-thumb-slate-200">
                       {renderTextContent(aiResult)}
                     </div>
                     {errorText && (
-                      <span className="text-[9.5px] font-semibold text-slate-500 italic block mt-1">{errorText}</span>
+                      <span className="text-[9.5px] font-semibold text-slate-400 italic block mt-1">{errorText}</span>
                     )}
                   </motion.div>
                 ) : (
                   !isLoading && (
-                    <div className="bg-[#00152F]/30 border border-white/5 rounded-xl p-6 text-center text-slate-500 space-y-1">
-                      <HelpCircle className="h-6 w-6 text-slate-600 mx-auto" />
-                      <span className="text-[11px] font-semibold block text-slate-400">Output Result Preview Terminal</span>
+                    <div className="bg-slate-50 border border-slate-100 border-dashed rounded-xl p-6 text-center text-slate-400 space-y-1">
+                      <HelpCircle className="h-6 w-6 text-slate-300 mx-auto" />
+                      <span className="text-[11px] font-semibold block text-slate-500">Output Result Preview Terminal</span>
                       <p className="text-[10.5px] max-w-sm mx-auto">
                         Setup parameters, select task type and execute the button to trigger live AI generation processes on screen.
                       </p>

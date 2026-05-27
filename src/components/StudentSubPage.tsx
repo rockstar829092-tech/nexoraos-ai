@@ -193,7 +193,7 @@ export const StudentSubPage: React.FC<StudentSubPageProps> = ({ onBack }) => {
     <div className="min-h-screen bg-[#F8FAFC] font-sans text-slate-800 pb-20 select-text">
       
       {/* Subpage Header Dashboard Utility Navigation */}
-      <div className="sticky top-0 z-50 w-full bg-white/85 backdrop-blur-md border-b border-slate-200/60 shadow-xs">
+      <div className="sticky top-0 z-50 w-full bg-white border-b border-slate-200 shadow-sm">
         <div className="mx-auto max-w-7xl px-6 sm:px-8 py-4 flex items-center justify-between">
           <button 
             onClick={onBack}
@@ -223,7 +223,7 @@ export const StudentSubPage: React.FC<StudentSubPageProps> = ({ onBack }) => {
             {/* Left Content */}
             <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
               <span className="text-[11px] font-black text-blue-700 bg-blue-100/80 py-1.5 px-4.5 rounded-full inline-flex items-center gap-1.5 tracking-wider border border-blue-200">
-                <Sparkles className="h-3.5 w-3.5 animate-spin" />
+                <Sparkles className="h-3.5 w-3.5" />
                 ENTERPRISE MANAGEMENT
               </span>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-950 tracking-tight leading-tight font-sans">
@@ -274,7 +274,7 @@ export const StudentSubPage: React.FC<StudentSubPageProps> = ({ onBack }) => {
                   <div className="flex justify-between items-center text-xs border-b border-slate-100 pb-2">
                     <span className="font-extrabold text-slate-800">Telemetry Server Logs</span>
                     <span className="text-emerald-500 font-extrabold flex items-center gap-1">
-                      <span className="w-2 h-2 rounded-full bg-emerald-500 block animate-ping" />
+                      <span className="w-2 h-2 rounded-full bg-emerald-500 block" />
                       SECURE CONNECTED
                     </span>
                   </div>
@@ -508,24 +508,24 @@ export const StudentSubPage: React.FC<StudentSubPageProps> = ({ onBack }) => {
           </div>
 
           <div className="lg:col-span-6 flex justify-center">
-            <div className="w-full max-w-[480px] bg-slate-950 text-slate-350 p-6 rounded-[22px] border border-slate-900 shadow-xl font-mono space-y-4">
-              <div className="flex items-center justify-between border-b border-slate-900 pb-3">
+            <div className="w-full max-w-[480px] bg-slate-50 text-slate-700 p-6 rounded-[22px] border border-slate-200 shadow-lg font-mono space-y-4">
+              <div className="flex items-center justify-between border-b border-slate-200 pb-3">
                 <span className="text-[10px] text-slate-500 font-bold tracking-widest uppercase">GATEWAY RAW FEED CONTROLS</span>
-                <span className="text-xs text-emerald-400 font-black flex items-center gap-1.5">
-                  <span className="h-2 w-2 rounded-full bg-emerald-400 block animate-pulse" />
+                <span className="text-xs text-blue-600 font-black flex items-center gap-1.5">
+                  <span className="h-2 w-2 rounded-full bg-blue-600 block" />
                   GATEWAY NODE #08
                 </span>
               </div>
 
               {/* Simulated Feed Terminals */}
-              <div className="space-y-3.5 text-xs text-slate-400 select-all max-h-[180px] overflow-y-auto">
+              <div className="space-y-3.5 text-xs text-slate-500 select-all max-h-[180px] overflow-y-auto">
                 {attendanceLogs.map((log, index) => (
-                  <div key={index} className="flex flex-col gap-0.5 border-l-2 border-slate-800 pl-3">
-                    <span className="text-[10px] text-slate-500">{log.time}</span>
-                    <span className="text-slate-200">
-                      ID Tag: <strong className="text-indigo-400 font-bold">{log.card}</strong> (Presence mapped: <strong className="text-blue-400 font-bold">{log.student}</strong>)
+                  <div key={index} className="flex flex-col gap-0.5 border-l-2 border-slate-200 pl-3">
+                    <span className="text-[10px] text-slate-400">{log.time}</span>
+                    <span className="text-slate-800">
+                      ID Tag: <strong className="text-indigo-600 font-bold">{log.card}</strong> (Presence mapped: <strong className="text-blue-600 font-bold">{log.student}</strong>)
                     </span>
-                    <span className="text-[9px] text-slate-500">Node Signal Level: Mapped at {log.icon}</span>
+                    <span className="text-[9px] text-slate-400">Node Signal Level: Mapped at {log.icon}</span>
                   </div>
                 ))}
               </div>
@@ -544,7 +544,7 @@ export const StudentSubPage: React.FC<StudentSubPageProps> = ({ onBack }) => {
                   ]);
                   setLogCounter(prev => prev + 1);
                 }}
-                className="w-full bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-100 font-bold py-2 text-xs rounded-xl transition-all active:scale-95"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-2.5 text-xs rounded-xl transition-all active:scale-95 uppercase tracking-widest"
               >
                 + Tap Simulated RFID Student Card Reference
               </button>
@@ -782,7 +782,7 @@ export const StudentSubPage: React.FC<StudentSubPageProps> = ({ onBack }) => {
                           </div>
                         </div>
                         <span className="bg-emerald-50 text-emerald-700 text-[9px] font-bold py-0.5 px-2 rounded-full border border-emerald-100 flex items-center gap-1 shrink-0">
-                          <span className="w-1 h-1 rounded-full bg-emerald-500 inline-block animate-pulse" />
+                          <span className="w-1 h-1 rounded-full bg-emerald-500 inline-block" />
                           ACTIVE
                         </span>
                       </div>
@@ -980,7 +980,7 @@ export const StudentSubPage: React.FC<StudentSubPageProps> = ({ onBack }) => {
                       disabled={regStatus === 'generating'}
                       className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-black py-2.5 px-3 rounded-xl transition-all text-[11px] flex items-center justify-center gap-1.5 active:scale-95 disabled:opacity-80 shadow-md shadow-blue-500/10"
                     >
-                      <RefreshCw className={`h-4 w-4 ${regStatus === 'generating' ? 'animate-spin' : ''}`} />
+                      <RefreshCw className={`h-4 w-4 ${regStatus === 'generating' ? '' : ''}`} />
                       <span>
                         {regStatus === 'idle' && 'Sync RF'}
                         {regStatus === 'generating' && 'Provisioning...'}
@@ -1088,7 +1088,7 @@ export const StudentSubPage: React.FC<StudentSubPageProps> = ({ onBack }) => {
                   whileInView={{ width: "100%" }}
                   viewport={{ once: true }}
                   transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-                  className="bg-slate-950 h-full rounded-full flex items-center justify-end px-3"
+                  className="bg-blue-600 h-full rounded-full flex items-center justify-end px-3"
                 >
                   <span className="text-[10px] text-white font-black">Instant Uptime</span>
                 </motion.div>
@@ -1116,10 +1116,10 @@ export const StudentSubPage: React.FC<StudentSubPageProps> = ({ onBack }) => {
           <div className="overflow-x-auto border border-slate-200 rounded-2xl shadow-xs bg-white">
             <table className="w-full text-left border-collapse min-w-[600px]">
               <thead>
-                <tr className="bg-slate-950 text-white text-xs font-bold leading-none font-mono tracking-widest uppercase">
+                <tr className="bg-slate-50 text-slate-900 text-[10px] font-black leading-none tracking-widest uppercase">
                   <th className="p-5">Feature Capability</th>
-                  <th className="p-5 border-l border-slate-800">Legacy Software</th>
-                  <th className="p-5 border-l border-slate-800 text-blue-400">NEXORAOS AI</th>
+                  <th className="p-5 border-l border-slate-200">Legacy Software</th>
+                  <th className="p-5 border-l border-slate-200 text-blue-600">NEXORAOS AI</th>
                 </tr>
               </thead>
               <tbody className="text-xs text-slate-600 font-semibold divide-y divide-slate-200">
@@ -1149,25 +1149,23 @@ export const StudentSubPage: React.FC<StudentSubPageProps> = ({ onBack }) => {
         </div>
 
         {/* PAGE 11: Management On-The-Go */}
-        <div className="bg-gradient-to-tr from-slate-900 to-slate-950 text-slate-400 p-8 sm:p-12 rounded-[28px] border border-slate-950 text-center space-y-8 relative overflow-hidden shadow-xl">
-          <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
-          
+        <div className="bg-blue-600 text-white p-8 sm:p-12 rounded-[32px] border border-blue-500 text-center space-y-8 relative overflow-hidden shadow-xl shadow-blue-200">
           <div className="max-w-2xl mx-auto space-y-4 relative z-10">
-            <h3 className="text-3xl sm:text-4xl font-black text-white font-sans tracking-tight">
+            <h3 className="text-3xl sm:text-4xl font-black text-white font-sans tracking-tight uppercase">
               Management On-The-Go
             </h3>
-            <p className="text-sm text-slate-400 font-medium leading-relaxed">
+            <p className="text-sm text-blue-50 font-bold leading-relaxed">
               Every single detailed feature on the new student management page is mirrored on our high-contrast native mobile applications configured for principals and parents.
             </p>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-4 relative z-10">
-            <button className="bg-slate-800 hover:bg-slate-750 text-white font-bold py-3 px-6 rounded-xl text-xs flex items-center gap-2 transition-all border border-slate-700/60 active:scale-95">
-              <Apple className="w-5 h-5" />
+            <button className="bg-white hover:bg-blue-50 text-blue-600 font-extrabold py-3 px-6 rounded-xl text-xs flex items-center gap-2 transition-all active:scale-95 shadow-lg shadow-blue-800/20">
+              <Apple className="w-5 h-5 fill-current" />
               <span>Download on the App Store</span>
             </button>
-            <button className="bg-slate-800 hover:bg-slate-750 text-white font-bold py-3 px-6 rounded-xl text-xs flex items-center gap-2 transition-all border border-slate-700/60 active:scale-95">
-              <Play className="w-4 h-4 text-emerald-400 fill-emerald-400" />
+            <button className="bg-white hover:bg-blue-50 text-blue-600 font-extrabold py-3 px-6 rounded-xl text-xs flex items-center gap-2 transition-all active:scale-95 shadow-lg shadow-blue-800/20">
+              <Play className="w-4 h-4 fill-current" />
               <span>Download for Play Store</span>
             </button>
           </div>

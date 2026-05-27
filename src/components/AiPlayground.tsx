@@ -323,7 +323,7 @@ Maintain warm, highly professional, supportive language designed for supportive 
                 >
                   {loading ? (
                     <>
-                      <Loader2 className="w-4 h-4 animate-spin text-white" />
+                      <Loader2 className="w-4 h-4 text-white" />
                       <span>Drafting Syllabus Mapping...</span>
                     </>
                   ) : (
@@ -396,7 +396,7 @@ Maintain warm, highly professional, supportive language designed for supportive 
                 >
                   {loading ? (
                     <>
-                      <Loader2 className="w-4 h-4 animate-spin text-white" />
+                      <Loader2 className="w-4 h-4 text-white" />
                       <span>Structuring Dialogue Blocks...</span>
                     </>
                   ) : (
@@ -494,7 +494,7 @@ Maintain warm, highly professional, supportive language designed for supportive 
                 ))}
                 {loading && (
                   <div className="flex items-center gap-2 text-slate-400 text-xs pl-2">
-                    <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                    <Loader2 className="w-3.5 h-3.5" />
                     <span>Dr Evelyn is mapping administrative rules...</span>
                   </div>
                 )}
@@ -504,7 +504,7 @@ Maintain warm, highly professional, supportive language designed for supportive 
               <div className="prose prose-sm h-full flex flex-col justify-between">
                 {loading ? (
                   <div className="flex flex-col items-center justify-center h-full gap-3 text-slate-400">
-                    <Loader2 className="w-6 h-6 animate-spin text-blue-600" />
+                    <Loader2 className="w-6 h-6 text-blue-600" />
                     <span className="text-xs font-semibold">Nexora NLP parsing parameters and querying Gemini model...</span>
                   </div>
                 ) : result ? (
@@ -513,7 +513,7 @@ Maintain warm, highly professional, supportive language designed for supportive 
                   </div>
                 ) : (
                   <div className="flex flex-col items-center justify-center text-center h-full max-w-sm mx-auto text-slate-400 p-6">
-                    <Sparkles className="w-8 h-8 text-blue-500 mb-3 animate-[pulse_2s_infinite]" />
+                    <Sparkles className="w-8 h-8 text-blue-500 mb-3" />
                     <span className="font-bold text-slate-700 text-sm">Awaiting Generation Query</span>
                     <p className="text-xs mt-1.5 leading-relaxed text-slate-500">
                       Select variables or input custom fields in the workspace left pane and click Generate to see the actual live response from Google Gemini AI.

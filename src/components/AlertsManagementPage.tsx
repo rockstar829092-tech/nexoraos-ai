@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { AiCommandCenter } from './AiCommandCenter';
 import { 
   ArrowLeft, 
   MessageSquare, 
@@ -105,9 +106,33 @@ export const AlertsManagementPage: React.FC<AlertsManagementPageProps> = ({ onBa
     );
   };
 
+  const [subject, setSubject] = useState('');
+  const [message, setMessage] = useState('');
+  const [isAiGenerating, setIsAiGenerating] = useState(false);
   const [emailSearch, setEmailSearch] = useState('');
   const [emailStatusFilter, setEmailStatusFilter] = useState('All');
   const [expandedEmailId, setExpandedEmailId] = useState<string | null>(null);
+
+  const getSubjectSuggestions = () => {
+    if (!subject) return [];
+    const lower = subject.toLowerCase();
+    if (lower.includes('fee')) return ['Fees Payment Reminder', 'Pending Fees Alert', 'Final Fee Due Notice', 'Quarterly Fees Reminder'];
+    if (lower.includes('meet')) return ['Emergency Parent Meeting', 'Staff Meeting Notice', 'PTA Meeting Invitation', 'Principal Meeting Update'];
+    if (lower.includes('exam')) return ['Exam Schedule Update', 'Important Exam Guidelines', 'Result Declaration Notice', 'Exam Hall Ticket Reminder'];
+    if (lower.includes('holid')) return ['Holiday Announcement', 'Emergency School Closure', 'Festival Holiday Notice'];
+    return [];
+  };
+
+  const suggestions = getSubjectSuggestions();
+
+  const handleAiAction = (action: string) => {
+    setIsAiGenerating(true);
+    // Simulate AI delay
+    setTimeout(() => {
+        setMessage(`Automated ${action} message for: ${subject || 'General Update'}. Based on school communication guidelines, this notification is structured for maximum parent readability and engagement.`);
+        setIsAiGenerating(false);
+    }, 800);
+  };
 
   const mockEmailLogs = [
     { 
@@ -215,7 +240,7 @@ export const AlertsManagementPage: React.FC<AlertsManagementPageProps> = ({ onBa
     <div className="min-h-screen bg-[#F8FAFC] text-slate-900 font-sans selection:bg-blue-100 selection:text-blue-700 pb-20 mt-[1px]">
       
       {/* 1. PREMIUM HEADER */}
-      <header className="sticky top-0 z-50 bg-white/70 backdrop-blur-xl border-b border-slate-200/60">
+      <header className="sticky top-0 z-50 bg-white/70  border-b border-slate-200/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="flex items-center gap-4">
             <motion.button 
@@ -282,6 +307,10 @@ export const AlertsManagementPage: React.FC<AlertsManagementPageProps> = ({ onBa
            ))}
         </div>
 
+        <section className="bg-white border border-slate-200 rounded-[32px] p-8 shadow-sm mb-8">
+          <AiCommandCenter />
+        </section>
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           
           {/* LEFT COLUMN - COMMUNICATION OPERATIONS (60%) */}
@@ -326,20 +355,46 @@ export const AlertsManagementPage: React.FC<AlertsManagementPageProps> = ({ onBa
                          <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 block">Subject</label>
                          <input 
                            type="text" 
-                           placeholder="Important Academic Update" 
+                           value={subject}
+                           onChange={(e) => setSubject(e.target.value)}
+                           placeholder="e.g. Fees, Holiday, Meeting..."
                            className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
                          />
+                         {suggestions.length > 0 && (
+                           <div className="absolute top-full left-0 w-full mt-2 bg-white border border-slate-200 rounded-xl shadow-xl z-20 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+                             {suggestions.map((s, i) => (
+                               <button key={i} onClick={() => { setSubject(s); handleAiAction('Generate'); }} className="w-full text-left px-4 py-3 text-xs font-bold text-slate-700 hover:bg-blue-50 border-b border-slate-50 last:border-0 flex items-center gap-2">
+                                 <Sparkles className="w-3 h-3 text-blue-500" /> {s}
+                               </button>
+                             ))}
+                           </div>
+                         )}
                       </div>
-                      <div>
+                      <div className="relative">
                          <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 block">Message Body</label>
+                         {/* AI Controls */}
+                         <div className="absolute top-8 right-2 flex gap-1">
+                            {['Generate', 'Rewrite', 'Professional'].map(action => (
+                              <button key={action} onClick={() => handleAiAction(action)} className="px-2 py-1 bg-white border border-slate-200 rounded-lg text-slate-600 font-black text-[9px] uppercase tracking-widest hover:border-blue-300 hover:text-blue-600 shadow-sm transition-all flex items-center gap-1">
+                                <Sparkles className="w-3 h-3 text-blue-500" /> {action}
+                              </button>
+                            ))}
+                         </div>
                          <textarea 
-                           rows={4}
-                           placeholder="Dear Parents, Please note that the upcoming Parent-Teacher Meeting will be conducted on Saturday at 10:00 AM. Regards, School Administration"
+                           rows={6}
+                           value={message}
+                           onChange={(e) => setMessage(e.target.value)}
+                           placeholder="Dear Parents..."
                            className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-4 py-3 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all resize-none"
                          />
-                         <div className="flex justify-between mt-2">
-                            <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">142 Characters · 1 SMS Segment</span>
-                            <span className="text-[9px] font-black text-blue-600 uppercase tracking-widest">Est. Credits: {selectedAudience.length * 1.0}</span>
+                         {/* Analytics Strip */}
+                         <div className="flex gap-4 mt-3">
+                           {[ {label: 'Tone', val: 'Professional'}, {label: 'Read Rate', val: '92%'}, {label: 'Credits', val: (selectedAudience.length * 1.5).toFixed(1)} ].map(item => (
+                             <div key={item.label} className="bg-white border border-slate-100 px-3 py-1.5 rounded-lg">
+                               <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest block">{item.label}</span>
+                               <span className="text-[10px] font-bold text-slate-900">{item.val}</span>
+                             </div>
+                           ))}
                          </div>
                       </div>
                    </div>
@@ -444,7 +499,7 @@ export const AlertsManagementPage: React.FC<AlertsManagementPageProps> = ({ onBa
                   </div>
                   <div className="flex items-center gap-2">
                      <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Log Status: Streaming</span>
-                     <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+                     <div className="w-2 h-2 bg-emerald-500 rounded-full" />
                   </div>
                 </div>
 
@@ -463,7 +518,7 @@ export const AlertsManagementPage: React.FC<AlertsManagementPageProps> = ({ onBa
                            <div>
                               <div className="flex items-center gap-3">
                                  <h5 className="text-[11px] font-black text-slate-900 uppercase tracking-tight">{log.recipient}</h5>
-                                 {log.priority && <span className="px-2 py-0.5 bg-amber-600 text-white text-[8px] font-black uppercase tracking-widest rounded-md animate-pulse">Emergency</span>}
+                                 {log.priority && <span className="px-2 py-0.5 bg-amber-600 text-white text-[8px] font-black uppercase tracking-widest rounded-md">Emergency</span>}
                               </div>
                               <p className="text-xs font-bold text-slate-600 mt-1">"{log.msg}"</p>
                               <div className="flex items-center gap-3 mt-2">
@@ -601,7 +656,7 @@ export const AlertsManagementPage: React.FC<AlertsManagementPageProps> = ({ onBa
                    </div>
                    <div className="flex items-center gap-2 self-start sm:self-auto bg-slate-50 border border-slate-100 px-3.5 py-1.5 rounded-xl font-mono text-[10px] text-slate-500 font-extrabold pb-1 sm:pb-1.5 pt-1 sm:pt-1.5">
                       <span>SMTP Gateway: Online</span>
-                      <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
+                      <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full" />
                    </div>
                  </div>
 
@@ -747,7 +802,7 @@ export const AlertsManagementPage: React.FC<AlertsManagementPageProps> = ({ onBa
                                  className="px-5 pb-5 pt-0 border-t border-slate-100/80 space-y-4"
                                >
                                  <div className="space-y-2 pt-4">
-                                   <span className="text-[8.5px] font-black text-slate-400 uppercase tracking-widest block animate-pulse">EMAIL PREVIEW CONTENT RAW</span>
+                                   <span className="text-[8.5px] font-black text-slate-400 uppercase tracking-widest block">EMAIL PREVIEW CONTENT RAW</span>
                                    <div className="p-4 rounded-xl bg-white border border-slate-150/70 text-xs text-slate-605 font-medium leading-relaxed font-sans shadow-3xs max-w-full whitespace-pre-wrap">
                                      {log.body}
                                    </div>
@@ -772,7 +827,7 @@ export const AlertsManagementPage: React.FC<AlertsManagementPageProps> = ({ onBa
                                        onClick={() => alert(`Email dispatch re-queued for transmission to ${log.recipient}.`)}
                                        className="px-3 py-1.5 rounded-lg bg-[#2563EB] hover:bg-blue-700 text-[9px] font-black text-white uppercase tracking-widest shadow-xs shadow-blue-200 transition-all flex items-center gap-1.5"
                                      >
-                                       <RefreshCw className="w-3 h-3 animate-spin" />
+                                       <RefreshCw className="w-3 h-3" />
                                        <span>Resend Dispatch</span>
                                      </button>
                                    </div>
@@ -981,7 +1036,7 @@ export const AlertsManagementPage: React.FC<AlertsManagementPageProps> = ({ onBa
           <motion.div 
             initial={{ y: 100 }}
             animate={{ y: 0 }}
-            className="flex items-center gap-2 p-1.5 bg-[#0F172A]/90 backdrop-blur-xl border border-white/10 rounded-full shadow-[0_20px_50px_rgba(37,99,235,0.3)]"
+            className="flex items-center gap-2 p-1.5 bg-[#0F172A]/90  border border-white/10 rounded-full shadow-[0_20px_50px_rgba(37,99,235,0.3)]"
           >
              <button className="px-6 py-3 bg-rose-600 text-white rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-rose-700 transition-all flex items-center gap-2 cursor-pointer shadow-lg shadow-rose-600/30">
                 <AlertTriangle className="w-3.5 h-3.5" />

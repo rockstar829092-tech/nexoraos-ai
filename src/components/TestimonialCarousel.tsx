@@ -7,11 +7,16 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronLeft, ChevronRight, Smile } from 'lucide-react';
 
-import delhiPrincipalImg from '../assets/images/delhi_principal_1779789558781.png';
-import mumbaiTrusteeImg from '../assets/images/mumbai_trustee_1779789577430.png';
-import chennaiDeanImg from '../assets/images/chennai_dean_1779789595228.png';
-import bengaluruMdImg from '../assets/images/bengaluru_md_1779789614172.png';
-import jaipurPrincipalImg from '../assets/images/jaipur_principal_1779789629553.png';
+// import delhiPrincipalImg from '../assets/images/delhi_principal_1779789558781.png';
+// import mumbaiTrusteeImg from '../assets/images/mumbai_trustee_1779789577430.png';
+// import chennaiDeanImg from '../assets/images/chennai_dean_1779789595228.png';
+// import bengaluruMdImg from '../assets/images/bengaluru_md_1779789614172.png';
+// import jaipurPrincipalImg from '../assets/images/jaipur_principal_1779789629553.png';
+const delhiPrincipalImg = "https://images.unsplash.com/photo-1544717297-fa154da09f5b?q=80&w=2070&auto=format&fit=crop";
+const mumbaiTrusteeImg = "https://images.unsplash.com/photo-1556157382-97dee2dcb74c?q=80&w=2070&auto=format&fit=crop";
+const chennaiDeanImg = "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=2074&auto=format&fit=crop";
+const bengaluruMdImg = "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2070&auto=format&fit=crop";
+const jaipurPrincipalImg = "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1974&auto=format&fit=crop";
 
 interface Testimonial {
   id: string;
@@ -162,6 +167,7 @@ export const TestimonialCarousel: React.FC = () => {
                         <img 
                           src={current.image} 
                           alt={current.author} 
+                          loading="lazy"
                           className="w-full h-full object-cover select-none pointer-events-none"
                           referrerPolicy="no-referrer"
                         />

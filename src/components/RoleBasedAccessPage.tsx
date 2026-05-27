@@ -60,21 +60,21 @@ export const RoleBasedAccessPage: React.FC<RoleBasedAccessPageProps> = ({ onBack
     <div className="min-h-screen bg-[#F8FAFC] text-slate-900 font-sans selection:bg-blue-100 selection:text-blue-700 pb-20">
       
       {/* 1. PREMIUM HEADER */}
-      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/60">
+      <header className="sticky top-0 z-50 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <motion.button 
               whileHover={{ x: -4 }}
               whileTap={{ scale: 0.98 }}
               onClick={onBack}
-              className="flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-600 rounded-2xl font-bold text-sm hover:bg-blue-100 transition-colors cursor-pointer group"
+              className="flex items-center gap-2 px-4 py-2 bg-slate-100 text-slate-700 rounded-2xl font-bold text-sm hover:bg-slate-200 transition-colors cursor-pointer group shadow-sm border border-slate-200"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Back</span>
             </motion.button>
             <div className="h-8 w-px bg-slate-200" />
             <div className="flex items-center gap-3">
-              <span className="px-3 py-1 bg-[#2563EB] text-white text-[10px] font-black uppercase tracking-widest rounded-full shadow-lg shadow-blue-100">
+              <span className="px-3 py-1 bg-[#2563EB] text-white text-[10px] font-black uppercase tracking-widest rounded-full shadow-md shadow-blue-100">
                 SECURITY MODULE
               </span>
               <div>
@@ -148,11 +148,11 @@ export const RoleBasedAccessPage: React.FC<RoleBasedAccessPageProps> = ({ onBack
             <div className="max-w-4xl mx-auto">
                <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-12">
                   <div className="w-full md:w-64 space-y-3">
-                     <div className="p-6 bg-slate-900 text-white rounded-[32px] shadow-xl">
-                        <Building2 className="w-8 h-8 mx-auto mb-3" />
+                     <div className="p-6 bg-slate-100 text-slate-950 border border-slate-200 rounded-[32px] shadow-sm">
+                        <Building2 className="w-8 h-8 mx-auto mb-3 text-slate-900" />
                         <h4 className="text-xs font-black uppercase tracking-widest">Hotel Owner</h4>
                      </div>
-                     <p className="text-[10px] font-bold text-slate-400 uppercase">Has master keys to all floors</p>
+                     <p className="text-[10px] font-bold text-slate-500 uppercase">Has master keys to all floors</p>
                   </div>
                   <ChevronRight className="hidden md:block w-8 h-8 text-slate-200 rotate-90 md:rotate-0" />
                   <div className="w-full md:w-64 space-y-3">
@@ -189,9 +189,9 @@ export const RoleBasedAccessPage: React.FC<RoleBasedAccessPageProps> = ({ onBack
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                {/* Role Card: SUPER ADMIN */}
-               <div className="bg-white border border-slate-200 rounded-[40px] p-8 shadow-sm flex flex-col justify-between hover:shadow-xl transition-all">
+               <div className="bg-white border border-slate-200 rounded-[40px] p-8 shadow-sm flex flex-col justify-between hover:shadow-md transition-all">
                   <div>
-                    <span className="px-3 py-1 bg-slate-900 text-white text-[10px] font-black uppercase tracking-widest rounded-full mb-6 inline-block">
+                    <span className="px-3 py-1 bg-slate-100 text-slate-900 border border-slate-200 text-[10px] font-black uppercase tracking-widest rounded-full mb-6 inline-block">
                       Full Access
                     </span>
                     <h3 className="text-xl font-black text-slate-900 uppercase tracking-tight mb-6">Super Admin</h3>
@@ -305,7 +305,7 @@ export const RoleBasedAccessPage: React.FC<RoleBasedAccessPageProps> = ({ onBack
                      </div>
                   </div>
                   <div className="px-6 py-3 bg-emerald-50 border border-emerald-100 rounded-2xl flex items-center gap-3">
-                     <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+                     <div className="w-2 h-2 bg-emerald-500 rounded-full" />
                      <span className="text-[10px] font-black text-emerald-600 uppercase tracking-widest">Custom Permissions Applied</span>
                   </div>
                </div>
@@ -350,7 +350,7 @@ export const RoleBasedAccessPage: React.FC<RoleBasedAccessPageProps> = ({ onBack
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
-                    <tr className="bg-slate-900 text-white">
+                    <tr className="bg-slate-100 border-b border-slate-200 text-slate-900">
                       <th className="px-6 py-6 text-left text-[11px] font-black uppercase tracking-widest">Module</th>
                       <th className="px-6 py-6 text-center text-[11px] font-black uppercase tracking-widest">Owner</th>
                       <th className="px-6 py-6 text-center text-[11px] font-black uppercase tracking-widest">Teacher</th>
@@ -403,28 +403,28 @@ export const RoleBasedAccessPage: React.FC<RoleBasedAccessPageProps> = ({ onBack
 
         {/* SECTION 7: FINAL TRUST BANNER */}
         <section>
-           <div className="bg-gradient-to-br from-slate-900 to-blue-900 rounded-[60px] p-12 md:p-20 text-white text-center relative overflow-hidden shadow-2xl">
+           <div className="bg-white border-2 border-slate-200 rounded-[60px] p-12 md:p-20 text-slate-900 text-center relative overflow-hidden shadow-2xl">
               <div className="relative z-10 space-y-10 max-w-4xl mx-auto">
                  <div className="space-y-6">
                     <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tight leading-[0.9]">
-                       Your School Data Always Remains <br/> <span className="text-blue-400">Under Your Control</span>
+                       Your School Data Always Remains <br/> <span className="text-blue-600 font-black italic">Under Your Control</span>
                     </h2>
-                    <p className="text-blue-100 text-lg md:text-xl font-medium leading-relaxed">
+                    <p className="text-slate-600 text-lg md:text-xl font-semibold leading-relaxed">
                        If the Administrator does not grant permission, the user cannot access the page, view the data, export reports, or perform actions. The system remains completely under your command.
                     </p>
                  </div>
                  <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-                    <div className="px-8 py-4 bg-blue-500 text-white rounded-2xl font-black text-xs uppercase tracking-[0.3em] shadow-xl shadow-blue-500/20">
+                    <div className="px-8 py-4 bg-blue-600 text-white rounded-2xl font-black text-xs uppercase tracking-[0.3em] shadow-xl shadow-blue-500/20">
                        100% Permission Controlled
                     </div>
                     <div className="flex items-center gap-3">
-                       <ShieldCheck className="w-6 h-6 text-emerald-400" />
-                       <span className="text-sm font-black uppercase tracking-widest">GDPR & DPDP CONFORMANT</span>
+                       <ShieldCheck className="w-6 h-6 text-emerald-600" />
+                       <span className="text-sm font-black uppercase tracking-widest text-slate-950">GDPR & DPDP CONFORMANT</span>
                     </div>
                  </div>
               </div>
-              <Shield className="absolute bottom-[-50px] right-[-50px] w-96 h-96 text-white/5 -rotate-12" />
-              <LockIcon className="absolute top-[-50px] left-[-50px] w-64 h-64 text-white/5 rotate-12" />
+              <Shield className="absolute bottom-[-50px] right-[-50px] w-96 h-96 text-slate-100 -rotate-12" />
+              <LockIcon className="absolute top-[-50px] left-[-50px] w-64 h-64 text-slate-100 rotate-12" />
            </div>
         </section>
 

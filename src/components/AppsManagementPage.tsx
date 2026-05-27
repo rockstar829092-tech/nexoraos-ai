@@ -113,7 +113,7 @@ export const AppsManagementPage: React.FC<AppsManagementPageProps> = ({ onBack }
     <div className="min-h-screen bg-[#F8FAFC] text-slate-900 font-sans selection:bg-blue-100 selection:text-blue-700 pb-20">
       
       {/* 1. PREMIUM HEADER */}
-      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/60">
+      <header className="sticky top-0 z-50 bg-white border-b border-slate-200/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="flex items-center gap-4">
             <motion.button 
@@ -208,11 +208,11 @@ export const AppsManagementPage: React.FC<AppsManagementPageProps> = ({ onBack }
                             </div>
                          </div>
                          <div className="grid grid-cols-2 gap-4">
-                            <div className="bg-white/10 p-3 rounded-2xl backdrop-blur-md">
+                            <div className="bg-white/10 p-3 rounded-2xl ">
                                <span className="text-[9px] font-bold text-blue-100 block opacity-80 uppercase">Attendance</span>
                                <span className="text-sm font-black">94.2%</span>
                             </div>
-                            <div className="bg-white/10 p-3 rounded-2xl backdrop-blur-md">
+                            <div className="bg-white/10 p-3 rounded-2xl ">
                                <span className="text-[9px] font-bold text-blue-100 block opacity-80 uppercase">Fee Status</span>
                                <span className="text-sm font-black">Paid</span>
                             </div>
@@ -321,15 +321,15 @@ export const AppsManagementPage: React.FC<AppsManagementPageProps> = ({ onBack }
                             </div>
                          </div>
                          <div className="grid grid-cols-3 gap-2">
-                            <div className="bg-white/10 p-2 rounded-xl backdrop-blur-md text-center">
+                            <div className="bg-white/10 p-2 rounded-xl  text-center">
                                <span className="text-sm font-black">6</span>
                                <span className="text-[8px] font-bold block uppercase opacity-70">Classes</span>
                             </div>
-                            <div className="bg-white/10 p-2 rounded-xl backdrop-blur-md text-center">
+                            <div className="bg-white/10 p-2 rounded-xl  text-center">
                                <span className="text-sm font-black">14</span>
                                <span className="text-[8px] font-bold block uppercase opacity-70">To Review</span>
                             </div>
-                            <div className="bg-white/10 p-2 rounded-xl backdrop-blur-md text-center">
+                            <div className="bg-white/10 p-2 rounded-xl  text-center">
                                <span className="text-sm font-black text-emerald-300">Active</span>
                                <span className="text-[8px] font-bold block uppercase opacity-70">Status</span>
                             </div>
@@ -442,7 +442,7 @@ export const AppsManagementPage: React.FC<AppsManagementPageProps> = ({ onBack }
                             </div>
                          </div>
                          <div className="space-y-3">
-                            <div className="bg-white/10 p-3 rounded-2xl backdrop-blur-md flex justify-between items-baseline">
+                            <div className="bg-white/10 p-3 rounded-2xl  flex justify-between items-baseline">
                                <span className="text-[9px] font-bold text-amber-100 uppercase">Daily Revenue</span>
                                <span className="text-lg font-black">₹4.8 Lakhs</span>
                             </div>
@@ -616,7 +616,7 @@ export const AppsManagementPage: React.FC<AppsManagementPageProps> = ({ onBack }
                     <Play className="w-4 h-4 ml-1" />
                     <span>Get it on Google Play</span>
                  </button>
-                 <button className="px-8 py-4 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-white/20 transition-all cursor-pointer">
+                 <button className="px-8 py-4 bg-white/10  text-white border border-white/20 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-white/20 transition-all cursor-pointer">
                     Request Enterprise Demo
                  </button>
               </div>

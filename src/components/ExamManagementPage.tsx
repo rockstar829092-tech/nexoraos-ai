@@ -84,7 +84,7 @@ export const ExamManagementPage: React.FC<ExamManagementPageProps> = ({ onBack }
   return (
     <div className="min-h-screen bg-[#F8FAFC] text-slate-900 font-sans selection:bg-purple-100 selection:text-purple-700 pb-20">
       {/* 1. PREMIUM HEADER */}
-      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+      <header className="sticky top-0 z-50 bg-white/80  border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="flex items-center gap-4">
             <motion.button 
@@ -212,7 +212,7 @@ export const ExamManagementPage: React.FC<ExamManagementPageProps> = ({ onBack }
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="flex items-center gap-2 px-3 py-1.5 bg-emerald-50 text-emerald-600 rounded-xl text-[10px] font-black uppercase tracking-widest border border-emerald-100">
-                    <Cloud className="w-3.5 h-3.5 animate-pulse" />
+                    <Cloud className="w-3.5 h-3.5" />
                     <span>Auto-Save to Cloud</span>
                   </div>
                 </div>
@@ -382,7 +382,7 @@ export const ExamManagementPage: React.FC<ExamManagementPageProps> = ({ onBack }
                 <div className="flex justify-between items-end">
                   <div>
                     <h4 className="text-sm font-black text-slate-800">Processing Class X Board Results...</h4>
-                    <p className="text-[10px] text-slate-500 font-medium mt-0.5 tracking-tight animate-pulse">Computing final percentiles & class ranks • 8 CPUs Active</p>
+                    <p className="text-[10px] text-slate-500 font-medium mt-0.5 tracking-tight">Computing final percentiles & class ranks • 8 CPUs Active</p>
                   </div>
                   <div className="text-right">
                     <span className="text-2xl font-black text-blue-600 font-mono tracking-tighter">{Math.floor(examProgress)}%</span>
@@ -396,7 +396,7 @@ export const ExamManagementPage: React.FC<ExamManagementPageProps> = ({ onBack }
                     animate={{ width: `${examProgress}%` }}
                     className="h-full bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-full relative"
                   >
-                    <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(255,255,255,0.2)_25%,transparent_25%,transparent_50%,rgba(255,255,255,0.2)_50%,rgba(255,255,255,0.2)_75%,transparent_75%,transparent)] bg-[size:15px_15px] animate-[slide_1.5s_linear_infinite]" />
+                    <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(255,255,255,0.2)_25%,transparent_25%,transparent_50%,rgba(255,255,255,0.2)_50%,rgba(255,255,255,0.2)_75%,transparent_75%,transparent)] bg-[size:15px_15px]" />
                   </motion.div>
                 </div>
 
@@ -557,8 +557,8 @@ export const ExamManagementPage: React.FC<ExamManagementPageProps> = ({ onBack }
                               <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest block">Coordinator</span>
                            </div>
                            <div className="flex flex-col items-center">
-                              <div className="w-16 h-16 bg-blue-50 rounded-full border-2 border-blue-100 flex items-center justify-center group animate-pulse">
-                                 <div className="w-12 h-12 rounded-full border-2 border-blue-200 border-dashed animate-spin-slow" />
+                              <div className="w-16 h-16 bg-blue-50 rounded-full border-2 border-blue-100 flex items-center justify-center group">
+                                 <div className="w-12 h-12 rounded-full border-2 border-blue-200 border-dashed" />
                                  <Award className="absolute w-6 h-6 text-blue-600" />
                               </div>
                               <span className="text-[9px] font-black text-blue-600 uppercase tracking-widest mt-2">Digital Stamp</span>
@@ -595,7 +595,7 @@ export const ExamManagementPage: React.FC<ExamManagementPageProps> = ({ onBack }
                       <h4 className="text-xs font-black uppercase tracking-[0.3em] text-purple-400 mb-2">Performance Center</h4>
                       <h2 className="text-2xl font-black tracking-tight leading-tight">Academic Performance<br />Analytics Dashboard</h2>
                     </div>
-                    <div className="p-4 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 shadow-xl">
+                    <div className="p-4 bg-white/5  rounded-2xl border border-white/10 shadow-xl">
                       <TrendingUp className="w-7 h-7 text-purple-400" />
                     </div>
                   </div>
@@ -691,7 +691,7 @@ export const ExamManagementPage: React.FC<ExamManagementPageProps> = ({ onBack }
                       { label: "Exams Conducted", val: "148", icon: History, color: "text-blue-400" },
                       { label: "Average Class Score", val: "81.7%", icon: LucidePieChart, color: "text-purple-400" },
                     ].map((stat, i) => (
-                      <div key={i} className="bg-white/5 backdrop-blur-md border border-white/10 p-4 rounded-[28px] group hover:bg-white/10 transition-all flex flex-col justify-between h-28">
+                      <div key={i} className="bg-white/5  border border-white/10 p-4 rounded-[28px] group hover:bg-white/10 transition-all flex flex-col justify-between h-28">
                         <div className={`p-2 bg-white/5 w-fit rounded-xl ${stat.color}`}>
                            <stat.icon className="w-4 h-4" />
                         </div>
@@ -707,7 +707,7 @@ export const ExamManagementPage: React.FC<ExamManagementPageProps> = ({ onBack }
                   <div className="space-y-5 pt-4 border-t border-white/5">
                     <div className="flex justify-between items-center px-1">
                       <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Live Exam Activity Feed</span>
-                      <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                      <div className="w-2 h-2 rounded-full bg-emerald-500" />
                     </div>
 
                     <div className="space-y-3">
@@ -746,13 +746,6 @@ export const ExamManagementPage: React.FC<ExamManagementPageProps> = ({ onBack }
         @keyframes slide {
           from { background-position: 0 0; }
           to { background-position: 40px 0; }
-        }
-        .animate-spin-slow {
-          animation: spin 8s linear infinite;
-        }
-        @keyframes spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
         }
       `}} />
     </div>

@@ -324,7 +324,7 @@ export const StaffPayrollPage: React.FC<StaffPayrollPageProps> = ({ onBack }) =>
 
           <div className="flex items-center gap-2">
             <span className="flex h-2 w-2 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
             </span>
             <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Statutory Server: Secured & Compliant</span>
@@ -408,7 +408,7 @@ export const StaffPayrollPage: React.FC<StaffPayrollPageProps> = ({ onBack }) =>
                     disabled={isProcessing}
                     className="flex-1 py-2.5 px-4 bg-[#2563EB] hover:bg-blue-700 disabled:bg-slate-400 text-white text-[10.5px] font-black uppercase tracking-wider transition-all rounded-xl cursor-pointer flex items-center justify-center gap-2 shadow-3xs"
                   >
-                    <RefreshCw className={`w-3.5 h-3.5 ${isProcessing ? 'animate-spin' : ''}`} />
+                    <RefreshCw className="w-3.5 h-3.5" />
                     <span>{isProcessing ? "Executing Bank Disbursal Ledger..." : "Run Payroll for May 2026"}</span>
                   </button>
 
@@ -526,7 +526,7 @@ export const StaffPayrollPage: React.FC<StaffPayrollPageProps> = ({ onBack }) =>
                           <span className={`px-2 py-0.5 rounded text-[8px] font-black uppercase tracking-wider ${
                             emp.status === 'Processed' 
                               ? 'bg-emerald-50 text-emerald-700 border border-emerald-150' 
-                              : 'bg-amber-50 text-amber-700 border border-amber-150 animate-pulse'
+                              : 'bg-amber-50 text-amber-700 border border-amber-150'
                           }`}>
                             {emp.status}
                           </span>
@@ -613,15 +613,15 @@ export const StaffPayrollPage: React.FC<StaffPayrollPageProps> = ({ onBack }) =>
                 </div>
                 
                 <div className="md:col-span-4 select-none">
-                  <button
-                    type="button"
-                    onClick={handleSyncBiometricAttendance}
-                    disabled={isSyncingBiometrics}
-                    className="w-full py-2.5 px-3 bg-slate-900 border border-slate-850 hover:bg-black text-white text-[10px] font-extrabold uppercase rounded-xl cursor-pointer transition-all flex items-center justify-center gap-2 shadow-3xs"
-                  >
-                    <RefreshCw className={`w-3.5 h-3.5 text-blue-400 ${isSyncingBiometrics ? 'animate-spin' : ''}`} />
-                    <span>{isSyncingBiometrics ? "Syncing Gate IP..." : "Sync Attnd. Logs"}</span>
-                  </button>
+                    <button
+                      type="button"
+                      onClick={handleSyncBiometricAttendance}
+                      disabled={isSyncingBiometrics}
+                      className="w-full py-2.5 px-3 bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-extrabold uppercase rounded-xl cursor-pointer transition-all flex items-center justify-center gap-2 shadow-sm"
+                    >
+                      <RefreshCw className="w-3.5 h-3.5 text-white" />
+                      <span>{isSyncingBiometrics ? "Syncing Gate IP..." : "Sync Attnd. Logs"}</span>
+                    </button>
                 </div>
               </div>
 
@@ -645,132 +645,132 @@ export const StaffPayrollPage: React.FC<StaffPayrollPageProps> = ({ onBack }) =>
           <div className="lg:col-span-4 space-y-6">
             
             {/* HERO RESOURCE BLOCK: PAYROLL ANALYTICS CENTER */}
-            <div className="bg-slate-905 text-white rounded-3xl p-5 border border-slate-800 shadow-md space-y-5 relative overflow-hidden bg-slate-900">
+            <div className="bg-white rounded-3xl p-5 border border-slate-200 shadow-sm space-y-5 relative overflow-hidden">
               
               {/* Radial ambiance grids */}
-              <div className="absolute top-0 right-0 w-36 h-36 bg-[#2563EB]/15 rounded-full blur-2xl" />
-              <div className="absolute bottom-0 left-0 w-36 h-36 bg-indigo-505/10 rounded-full blur-2xl" />
+              <div className="absolute top-0 right-0 w-36 h-36 bg-blue-50 rounded-full blur-2xl" />
+              <div className="absolute bottom-0 left-0 w-36 h-36 bg-indigo-50 rounded-full blur-2xl" />
 
-              <div className="space-y-1.5 border-b border-white/10 pb-3">
-                <span className="text-[9px] uppercase tracking-widest text-[#2563EB] font-black">Executive Command Analytics</span>
-                <h3 className="text-sm font-black text-white uppercase tracking-wider">Payroll Analytics Centre</h3>
+              <div className="space-y-1.5 border-b border-slate-100 pb-3 relative z-10">
+                <span className="text-[9px] uppercase tracking-widest text-blue-600 font-black">Executive Command Analytics</span>
+                <h3 className="text-sm font-black text-slate-900 uppercase tracking-wider">Payroll Analytics Centre</h3>
                 <p className="text-[10px] text-slate-400 font-semibold leading-relaxed">Financial aggregates, monthly budget trends & central statutory compliance reporting tool</p>
               </div>
 
               {/* EXECUTIVE STRATEGIC METRIC BOX */}
-              <div className="p-4 bg-slate-800/40 border border-slate-800 rounded-2xl space-y-3.5 text-left">
-                <div className="flex justify-between items-center border-b border-white/5 pb-2">
+              <div className="p-4 bg-slate-50 border border-slate-150 rounded-2xl space-y-3.5 text-left relative z-10">
+                <div className="flex justify-between items-center border-b border-slate-200/60 pb-2">
                   <span className="text-[8.5px] uppercase text-slate-400 font-black tracking-wider">Total Monthly Payroll Cost</span>
-                  <span className="text-[8px] bg-emerald-500/20 text-emerald-400 font-bold px-1.5 py-0.5 rounded">STATUTORY COMPLIANT</span>
+                  <span className="text-[8px] bg-emerald-100 text-emerald-700 font-bold px-1.5 py-0.5 rounded border border-emerald-200/50">STATUTORY COMPLIANT</span>
                 </div>
 
                 <div className="space-y-0.5">
-                  <span className="text-2xl font-black text-white font-mono leading-none block">
+                  <span className="text-2xl font-black text-slate-900 font-mono leading-none block">
                     ₹{totalPayrollCost.toLocaleString('en-IN')}
                   </span>
                   <span className="text-[10px] text-slate-400 font-semibold block">{staffCountText} current intervals processed</span>
                 </div>
 
-                <div className="grid grid-cols-2 gap-2 pt-2 border-t border-white/5">
+                <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-200/60">
                   <div>
                     <span className="text-[8px] uppercase text-slate-400 font-bold block">Central Tax TDS Pool</span>
-                    <span className="text-xs font-black text-slate-205 font-mono">₹{totalTaxWithholding.toLocaleString('en-IN')}</span>
+                    <span className="text-xs font-black text-slate-800 font-mono">₹{totalTaxWithholding.toLocaleString('en-IN')}</span>
                   </div>
                   <div>
                     <span className="text-[8px] uppercase text-slate-400 font-bold block">PF Reserves Blocked</span>
-                    <span className="text-xs font-black text-slate-205 font-mono">₹{totalPFContributions.toLocaleString('en-IN')}</span>
+                    <span className="text-xs font-black text-slate-800 font-mono">₹{totalPFContributions.toLocaleString('en-IN')}</span>
                   </div>
                 </div>
               </div>
 
               {/* MONTHLY SALARY EXPENSE TRENDS (Visual Bar Chart) */}
-              <div className="space-y-3 pt-2">
+              <div className="space-y-3 pt-2 relative z-10">
                 <div className="flex justify-between items-center">
                   <span className="text-[8.5px] uppercase text-slate-400 font-extrabold tracking-wider">Monthly Salary Expense Trends</span>
-                  <span className="text-[8px] text-[#2563EB] font-bold">FY 2025-26</span>
+                  <span className="text-[8px] text-blue-600 font-bold">FY 2025-26</span>
                 </div>
 
                 {/* Highly structured interactive CSS flex/bar chart grid representing six months */}
-                <div className="h-28 bg-slate-800/20 rounded-xl p-3 flex items-end justify-between gap-2.5 border border-slate-800/50">
+                <div className="h-28 bg-slate-50 border border-slate-200 rounded-xl p-3 flex items-end justify-between gap-2.5">
                   
                   {/* Dec 25 */}
                   <div className="flex-1 flex flex-col items-center h-full justify-end group cursor-pointer">
-                    <div className="w-full bg-slate-800 group-hover:bg-slate-700 h-[68%] rounded-sm transition-all duration-300 relative">
+                    <div className="w-full bg-slate-200 group-hover:bg-slate-300 h-[68%] rounded-sm transition-all duration-300 relative">
                       {/* Tooltip */}
-                      <span className="absolute -top-6 left-1/2 -translate-x-1/2 bg-slate-900 border border-slate-700 text-white text-[7.5px] font-mono p-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-30">
+                      <span className="absolute -top-6 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[7.5px] font-mono p-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-30 shadow-sm">
                         ₹3.85L
                       </span>
                     </div>
-                    <span className="text-[7.5px] text-slate-500 font-mono mt-2 block">Dec</span>
+                    <span className="text-[7.5px] text-slate-400 font-mono mt-2 block">Dec</span>
                   </div>
 
                   {/* Jan 26 */}
                   <div className="flex-1 flex flex-col items-center h-full justify-end group cursor-pointer">
-                    <div className="w-full bg-slate-800 group-hover:bg-slate-705 h-[72%] rounded-sm transition-all duration-300 relative">
-                      <span className="absolute -top-6 left-1/2 -translate-x-1/2 bg-slate-900 border border-slate-700 text-white text-[7.5px] font-mono p-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-30">
+                    <div className="w-full bg-slate-200 group-hover:bg-slate-300 h-[72%] rounded-sm transition-all duration-300 relative">
+                      <span className="absolute -top-6 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[7.5px] font-mono p-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-30 shadow-sm">
                         ₹4.05L
                       </span>
                     </div>
-                    <span className="text-[7.5px] text-slate-500 font-mono mt-2 block">Jan</span>
+                    <span className="text-[7.5px] text-slate-400 font-mono mt-2 block">Jan</span>
                   </div>
 
                   {/* Feb 26 */}
                   <div className="flex-1 flex flex-col items-center h-full justify-end group cursor-pointer">
-                    <div className="w-full bg-slate-800 group-hover:bg-slate-700 h-[70%] rounded-sm transition-all duration-300 relative">
-                      <span className="absolute -top-6 left-1/2 -translate-x-1/2 bg-slate-900 border border-slate-700 text-white text-[7.5px] font-mono p-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-30">
+                    <div className="w-full bg-slate-200 group-hover:bg-slate-300 h-[70%] rounded-sm transition-all duration-300 relative">
+                      <span className="absolute -top-6 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[7.5px] font-mono p-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-30 shadow-sm">
                         ₹3.95L
                       </span>
                     </div>
-                    <span className="text-[7.5px] text-slate-500 font-mono mt-2 block">Feb</span>
+                    <span className="text-[7.5px] text-slate-400 font-mono mt-2 block">Feb</span>
                   </div>
 
                   {/* Mar 26 */}
                   <div className="flex-1 flex flex-col items-center h-full justify-end group cursor-pointer">
-                    <div className="w-full bg-slate-800 group-hover:bg-slate-700 h-[85%] rounded-sm transition-all duration-300 relative">
-                      <span className="absolute -top-6 left-1/2 -translate-x-1/2 bg-slate-900 border border-slate-700 text-white text-[7.5px] font-mono p-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-30">
+                    <div className="w-full bg-slate-200 group-hover:bg-slate-300 h-[85%] rounded-sm transition-all duration-300 relative">
+                      <span className="absolute -top-6 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[7.5px] font-mono p-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-30 shadow-sm">
                         ₹4.60L
                       </span>
                     </div>
-                    <span className="text-[7.5px] text-slate-500 font-mono mt-2 block">Mar</span>
+                    <span className="text-[7.5px] text-slate-400 font-mono mt-2 block">Mar</span>
                   </div>
 
                   {/* Apr 26 */}
                   <div className="flex-1 flex flex-col items-center h-full justify-end group cursor-pointer">
-                    <div className="w-full bg-slate-800 group-hover:bg-slate-700 h-[92%] rounded-sm transition-all duration-300 relative">
-                      <span className="absolute -top-6 left-1/2 -translate-x-1/2 bg-slate-900 border border-slate-700 text-white text-[7.5px] font-mono p-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-30">
+                    <div className="w-full bg-slate-200 group-hover:bg-slate-300 h-[92%] rounded-sm transition-all duration-300 relative">
+                      <span className="absolute -top-6 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[7.5px] font-mono p-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-30 shadow-sm">
                         ₹4.90L
                       </span>
                     </div>
-                    <span className="text-[7.5px] text-slate-500 font-mono mt-2 block">Apr</span>
+                    <span className="text-[7.5px] text-slate-400 font-mono mt-2 block">Apr</span>
                   </div>
 
                   {/* May 26 */}
                   <div className="flex-1 flex flex-col items-center h-full justify-end group cursor-pointer">
-                    <div className="w-full bg-[#2563EB] hover:bg-blue-500 h-[98%] rounded-sm transition-all duration-300 relative">
-                      <span className="absolute -top-6 left-1/2 -translate-x-1/2 bg-[rgba(37,99,235,0.95)] px-1 py-0.5 text-white text-[7.5px] font-mono rounded opacity-100 transition-opacity whitespace-nowrap z-30 font-black">
+                    <div className="w-full bg-blue-600 hover:bg-blue-500 h-[98%] rounded-sm transition-all duration-300 relative">
+                      <span className="absolute -top-6 left-1/2 -translate-x-1/2 bg-blue-600 px-1 py-0.5 text-white text-[7.5px] font-mono rounded opacity-100 transition-opacity whitespace-nowrap z-30 font-black shadow-sm">
                         ₹{Math.round(totalPayrollCost / 1000)}k (Active)
                       </span>
                     </div>
-                    <span className="text-[7.5px] text-blue-400 font-bold mt-2 block">May</span>
+                    <span className="text-[7.5px] text-blue-600 font-bold mt-2 block">May</span>
                   </div>
 
                 </div>
               </div>
 
               {/* STATUTORY COMPLIANCE PANEL LIST */}
-              <div className="pt-2.5 border-t border-white/10 text-[10px] text-slate-400 font-semibold space-y-2.5">
-                <span className="text-[8.5px] uppercase text-white font-extrabold tracking-wider block">Compliance Health Checklist</span>
+              <div className="pt-2.5 border-t border-slate-100 text-[10px] text-slate-500 font-semibold space-y-2.5 relative z-10">
+                <span className="text-[8.5px] uppercase text-slate-800 font-extrabold tracking-wider block">Compliance Health Checklist</span>
                 
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <CheckCircle className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
                   <span>EPF Form 5 & 10 auto-computed records complete</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <CheckCircle className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
                   <span>Professional Tax withholding indexed securely</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <CheckCircle className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
                   <span>Biometric work records matching ledger scales</span>
                 </div>
               </div>
@@ -785,7 +785,7 @@ export const StaffPayrollPage: React.FC<StaffPayrollPageProps> = ({ onBack }) =>
 
       {/* MODAL LIGHTBOX: DETAILED PRINT-READY PAYSLIP MOCKUP VIEW */}
       {selectedPayslipStaff && (
-        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-2xs z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 bg-slate-900/60 z-50 flex items-center justify-center p-4">
           <motion.div 
             initial={{ scale: 0.96, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}

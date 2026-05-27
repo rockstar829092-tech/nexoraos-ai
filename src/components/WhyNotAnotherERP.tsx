@@ -153,7 +153,7 @@ export const WhyNotAnotherERP: React.FC = () => {
                   <Bot className="w-6 h-6" />
                 </div>
                 <div className="flex items-center gap-2 px-3 py-1 bg-blue-50 border border-blue-200 text-[#2563EB] text-[10px] font-black uppercase tracking-wider rounded-full shadow-xs">
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
                   <span>AI Copilot Active</span>
                 </div>
               </div>
@@ -170,15 +170,15 @@ export const WhyNotAnotherERP: React.FC = () => {
               </div>
 
               {/* INTERACTIVE COMPONENT - CHAT INTERFACE & NOTIFICATION SYSTEM */}
-              <div className="bg-[#0F172A] rounded-2xl border border-slate-800 p-5 space-y-4 shadow-xl text-slate-200 relative">
+              <div className="bg-slate-50 rounded-2xl border border-slate-200 p-5 space-y-4 shadow-sm text-slate-800 relative">
                 
                 {/* Simulated AI Terminal Header */}
-                <div className="flex justify-between items-center border-b border-slate-850 pb-3">
+                <div className="flex justify-between items-center border-b border-slate-200 pb-3">
                   <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse" />
-                    <span className="text-[9px] font-mono tracking-widest text-slate-400 font-extrabold uppercase">COGNITIVE ENGINE v2.0</span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-blue-600 shadow-[0_0_8px_rgba(37,99,235,0.4)]" />
+                    <span className="text-[9px] font-mono tracking-widest text-[#2563EB] font-black uppercase">COGNITIVE ENGINE v2.0</span>
                   </div>
-                  <span className="text-[8.5px] font-mono text-blue-400/80 uppercase font-black">Live Telemetry Sync</span>
+                  <span className="text-[8.5px] font-mono text-blue-600 uppercase font-black">Live Telemetry Sync</span>
                 </div>
 
                 {/* Question Picker */}
@@ -192,8 +192,8 @@ export const WhyNotAnotherERP: React.FC = () => {
                         disabled={isTyping}
                         className={`text-left text-[10px] p-2 rounded-xl transition-all cursor-pointer font-semibold border ${
                           selectedQuestionIdx === idx 
-                          ? 'bg-blue-600/25 border-blue-500 text-white' 
-                          : 'bg-slate-900 border-slate-800 text-slate-300 hover:border-slate-700 hover:bg-slate-850'
+                          ? 'bg-blue-600 border-blue-600 text-white shadow-sm' 
+                          : 'bg-white border-slate-200 text-slate-600 hover:border-blue-400 hover:bg-white/80'
                         }`}
                       >
                         {item.q}
@@ -203,7 +203,7 @@ export const WhyNotAnotherERP: React.FC = () => {
                 </div>
 
                 {/* Animated Simulated Chat Window */}
-                <div className="h-44 overflow-y-auto space-y-3.5 pr-1 scrollbar-thin scrollbar-thumb-slate-800 bg-[#0b0f19] p-3.5 rounded-xl border border-slate-900">
+                <div className="h-44 overflow-y-auto space-y-3.5 pr-1 scrollbar-thin scrollbar-thumb-slate-200 bg-white p-3.5 rounded-xl border border-slate-200 shadow-3xs">
                   <AnimatePresence mode="popLayout">
                     {chatLog.map((chat, idx) => (
                       <motion.div
@@ -213,14 +213,14 @@ export const WhyNotAnotherERP: React.FC = () => {
                         transition={{ duration: 0.3 }}
                         className={`flex flex-col gap-1 max-w-[85%] ${chat.sender === 'user' ? 'ml-auto items-end' : 'mr-auto items-start'}`}
                       >
-                        <span className="text-[8px] font-mono uppercase tracking-widest text-slate-500">
+                        <span className="text-[8px] font-black uppercase tracking-widest text-slate-400">
                           {chat.sender === 'user' ? 'Principal query' : 'AI Copilot'}
                         </span>
                         
-                        <div className={`p-3 rounded-2xl text-[11px] leading-relaxed font-semibold shadow-xs ${
+                        <div className={`p-3 rounded-2xl text-[11px] leading-relaxed font-semibold shadow-[0_2px_8px_rgba(0,0,0,0.02)] ${
                           chat.sender === 'user' 
-                          ? 'bg-blue-600/30 text-blue-100 rounded-tr-none border border-blue-500/30' 
-                          : 'bg-slate-900 text-slate-200 border border-slate-800 rounded-tl-none'
+                          ? 'bg-blue-600 text-white rounded-tr-none' 
+                          : 'bg-slate-50 text-slate-800 border border-slate-100 rounded-tl-none'
                         }`}>
                           {chat.text}
                         </div>
@@ -228,7 +228,7 @@ export const WhyNotAnotherERP: React.FC = () => {
                         {chat.insights && (
                           <div className="flex flex-wrap gap-1 mt-1">
                             {chat.insights.map((ins, i) => (
-                              <span key={i} className="text-[7.5px] font-extrabold uppercase bg-blue-950/80 border border-blue-800/40 text-blue-400 px-1.5 py-0.5 rounded-md">
+                              <span key={i} className="text-[7.5px] font-extrabold uppercase bg-blue-50 border border-blue-100 text-blue-600 px-1.5 py-0.5 rounded-md">
                                 {ins}
                               </span>
                             ))}
@@ -239,23 +239,23 @@ export const WhyNotAnotherERP: React.FC = () => {
                   </AnimatePresence>
 
                   {isTyping && (
-                    <div className="flex items-center gap-1 bg-slate-900 border border-slate-850 p-2 text-[10px] text-slate-400 rounded-xl max-w-xs animate-pulse">
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-bounce" />
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-bounce delay-75" />
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-300 animate-bounce delay-150" />
-                      <span className="font-mono text-[9px] ml-1 uppercase tracking-wider font-extrabold text-slate-500">ANALYZING ATTENDANCE & ACADEMICS...</span>
+                    <div className="flex items-center gap-1 bg-blue-50 border border-blue-100 p-2 text-[10px] text-blue-600 rounded-xl max-w-xs transition-all">
+                      <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                      <span className="font-mono text-[9px] ml-1 uppercase tracking-wider font-extrabold text-blue-700">ANALYZING INSTITUTIONAL DATA...</span>
                     </div>
                   )}
                 </div>
 
                 {/* Chat Footer Mock Input */}
-                <div className="flex gap-2 border-t border-slate-850 pt-3">
-                  <div className="flex-1 bg-slate-950 border border-slate-900 rounded-xl px-3 py-2 text-[10px] text-slate-400 font-mono font-semibold flex items-center justify-between">
+                <div className="flex gap-2 border-t border-slate-200 pt-3">
+                  <div className="flex-1 bg-white border border-slate-200 rounded-xl px-3 py-2 text-[10px] text-slate-400 font-mono font-semibold flex items-center justify-between">
                     <span>Ask Principal Copilot...</span>
-                    <Sparkles className="w-3.5 h-3.5 text-blue-400 animate-pulse" />
+                    <Sparkles className="w-3.5 h-3.5 text-[#2563EB]" />
                   </div>
-                  <div className="p-2.5 bg-blue-650 hover:bg-blue-700 text-white rounded-xl cursor-default transition-all flex items-center justify-center shrink-0">
-                    <Send className="w-3.5 h-3.5 text-blue-400" />
+                  <div className="p-2.5 bg-[#2563EB] hover:bg-blue-700 text-white rounded-xl transition-all flex items-center justify-center shrink-0 shadow-sm shadow-blue-200">
+                    <Send className="w-3.5 h-3.5" />
                   </div>
                 </div>
 
@@ -294,9 +294,9 @@ export const WhyNotAnotherERP: React.FC = () => {
               {/* Badge & Meta Block */}
               <div className="flex justify-between items-center">
                 <div className="p-3 bg-blue-50 text-[#2563EB] rounded-2xl border border-blue-105">
-                  <Gauge className="w-6 h-6 animate-pulse" />
+                  <Gauge className="w-6 h-6" />
                 </div>
-                <div className="flex items-center gap-2 px-3 py-1 bg-emerald-50 border border-emerald-200/50 text-emerald-700 text-[10px] font-black uppercase tracking-wider rounded-full shadow-xs animate-pulse">
+                <div className="flex items-center gap-2 px-3 py-1 bg-emerald-50 border border-emerald-200/50 text-emerald-700 text-[10px] font-black uppercase tracking-wider rounded-full shadow-xs">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                   <span>Real-Time Health Monitoring</span>
                 </div>
@@ -330,7 +330,7 @@ export const WhyNotAnotherERP: React.FC = () => {
                     </div>
                     {isUpdatingHealth ? (
                       <span className="text-[8px] font-black uppercase text-[#2563EB] tracking-widest mt-1.5 flex items-center gap-1">
-                        <span className="w-1 h-1 rounded-full bg-[#2563EB] animate-ping" />
+                        <span className="w-1 h-1 rounded-full bg-[#2563EB]" />
                         CALCULATING...
                       </span>
                     ) : (
@@ -409,36 +409,36 @@ export const WhyNotAnotherERP: React.FC = () => {
         </div>
 
         {/* PREMIUM ENTERPRISE COMPARATIVE DEEP BANNER SECTION */}
-        <div className="relative rounded-[2.5rem] bg-gradient-to-r from-slate-900 via-slate-950 to-indigo-950 text-white p-8 sm:p-12 overflow-hidden shadow-2xl border border-slate-800">
+        <div className="relative rounded-[2.5rem] bg-white text-slate-900 p-8 sm:p-12 overflow-hidden shadow-sm border border-slate-200">
           
-          {/* Glassmorphic overlay gradients */}
-          <div className="absolute top-0 right-0 w-[450px] h-[450px] bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-24 -left-24 w-[450px] h-[450px] bg-violet-600/10 rounded-full blur-3xl pointer-events-none" />
+          {/* Decorative luxury gradient spots & meshes */}
+          <div className="absolute top-0 right-1/4 w-[400px] h-[400px] bg-blue-50 rounded-full blur-3xl -z-10 pointer-events-none" />
+          <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-indigo-50 rounded-full blur-3xl -z-10 pointer-events-none" />
           
           <div className="relative z-10 flex flex-col lg:flex-row gap-10 items-center justify-between">
             
             <div className="space-y-4 max-w-xl text-center lg:text-left">
-              <span className="text-[9px] font-black uppercase tracking-[0.2em] text-[#3B82F6] bg-blue-500/10 py-1.5 px-4 rounded-full inline-block border border-blue-500/20">
+              <span className="text-[9px] font-black uppercase tracking-[0.2em] text-[#2563EB] bg-blue-50 py-1.5 px-4 rounded-full inline-block border border-blue-100/50">
                 ENTERPRISE STRATEGIC OUTLOOK
               </span>
               
-              <h3 className="text-2xl sm:text-4xl font-extrabold text-white leading-tight tracking-tight uppercase font-sans">
+              <h3 className="text-2xl sm:text-4xl font-extrabold text-slate-900 leading-tight tracking-tight uppercase font-sans">
                 Traditional School ERP Shows What Happened Yesterday.
                 <br />
-                <span className="text-[#3B82F6] block mt-1">NexoraOS AI Predicts What Happens Tomorrow.</span>
+                <span className="text-[#2563EB] block mt-1">NexoraOS AI Predicts What Happens Tomorrow.</span>
               </h3>
               
-              <p className="text-sm text-slate-300 font-medium leading-relaxed max-w-lg">
+              <p className="text-sm text-slate-500 font-medium leading-relaxed max-w-lg">
                 Built for visionary principals who want intelligence, automation, prediction, and real-time operational control.
               </p>
             </div>
 
             {/* Micro Dashboard Analytics Widget Representation */}
-            <div className="w-full lg:w-auto min-w-[320px] bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-6 space-y-4 shadow-2xl">
+            <div className="w-full lg:w-auto min-w-[320px] bg-white border border-slate-200 rounded-3xl p-6 space-y-4 shadow-sm relative">
               
-              <div className="flex justify-between items-center border-b border-white/5 pb-3">
-                <span className="text-[8px] font-mono tracking-widest text-[#3B82F6] uppercase font-black">SYSTEM OPERATIONS MATRIX</span>
-                <span className="px-2 py-0.5 bg-blue-500/10 text-blue-400 text-[8px] font-black uppercase rounded-md border border-blue-500/20">
+              <div className="flex justify-between items-center border-b border-slate-100 pb-3">
+                <span className="text-[8px] font-mono tracking-widest text-[#2563EB] uppercase font-black">SYSTEM OPERATIONS MATRIX</span>
+                <span className="px-2 py-0.5 bg-blue-50 text-[#2563EB] text-[8px] font-black uppercase rounded-md border border-blue-100">
                   SECURE COMPONENT
                 </span>
               </div>
@@ -451,10 +451,10 @@ export const WhyNotAnotherERP: React.FC = () => {
                   { label: "Risk Management", erp: "Reactive Troubleshooting", next: "60-Day Proactive Interventions" }
                 ].map((item, i) => (
                   <div key={i} className="grid grid-cols-12 gap-2 text-[10px] items-center">
-                    <div className="col-span-4 font-mono text-[9px] text-[#3B82F6] uppercase font-bold">{item.label}</div>
+                    <div className="col-span-4 font-mono text-[9px] text-[#2563EB] uppercase font-bold">{item.label}</div>
                     <div className="col-span-4 text-slate-400 font-medium">{item.erp}</div>
-                    <div className="col-span-4 font-black text-emerald-400 flex items-center gap-1">
-                      <Zap className="w-3 h-3 text-emerald-400 shrink-0" />
+                    <div className="col-span-4 font-black text-emerald-600 flex items-center gap-1">
+                      <Zap className="w-3 h-3 text-emerald-500 shrink-0" />
                       {item.next}
                     </div>
                   </div>
@@ -462,10 +462,10 @@ export const WhyNotAnotherERP: React.FC = () => {
               </div>
 
               {/* Status footer with green blinker */}
-              <div className="flex justify-between items-center border-t border-white/5 pt-3 text-[8.5px] font-mono font-black text-slate-400">
+              <div className="flex justify-between items-center border-t border-slate-100 pt-3 text-[8.5px] font-mono font-black text-slate-400">
                 <span>VER v4.95a</span>
-                <span className="flex items-center gap-1 text-emerald-400">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="flex items-center gap-1 text-emerald-600">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
                   ONLINE SECURE PROTOCOL
                 </span>
               </div>

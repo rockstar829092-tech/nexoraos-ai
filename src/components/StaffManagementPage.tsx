@@ -41,6 +41,8 @@ import {
   Coins,
   Receipt
 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { PageLayout } from './PageLayout';
 
 interface Staff {
   id: string;
@@ -275,12 +277,9 @@ const SAMPLE_STAFF: Staff[] = [
   }
 ];
 
-interface StaffManagementPageProps {
-  onBack: () => void;
-  defaultToMusic?: boolean;
-}
-
-export const StaffManagementPage: React.FC<StaffManagementPageProps> = ({ onBack, defaultToMusic = false }) => {
+export const StaffManagementPage: React.FC = () => {
+  const navigate = useNavigate();
+  const defaultToMusic = false; // Simplified for now or can be handled via location state
   const [selectedStaffId, setSelectedStaffId] = useState<string>("FAC-2026-64");
 
   useEffect(() => {
@@ -455,41 +454,23 @@ export const StaffManagementPage: React.FC<StaffManagementPageProps> = ({ onBack
   });
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] font-sans pb-24 text-slate-800 select-text">
+    <PageLayout theme="light" setTheme={() => {}}>
+    <div className="min-h-screen bg-white dark:bg-black font-sans pb-24 text-slate-800 dark:text-[#F5F5F7] select-text transition-colors">
       
-      {/* Sticky utility header */}
-      <div className="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
-        <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
-          <button 
-            onClick={onBack}
-            className="flex items-center gap-2 px-4.5 py-2.5 text-xs sm:text-sm font-black text-slate-700 hover:text-blue-600 bg-slate-100 hover:bg-blue-50/80 rounded-xl transition-all active:scale-95 group shadow-xs border border-slate-200/40"
-          >
-            <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1 stroke-[2.5]" />
-            Back to Main Dashboard
-          </button>
-          
-          <div className="flex items-center gap-2.5">
-            <span className="bg-blue-100 text-blue-800 text-[10px] font-black tracking-widest uppercase px-3.5 py-1.5 rounded-full border border-blue-200/50">
-              MODULE 02
-            </span>
-          </div>
-        </div>
-      </div>
-
       {/* Hero Header Section */}
-      <section className="relative overflow-hidden py-14 bg-gradient-to-b from-slate-100/60 to-slate-50 border-b border-slate-200/60">
-        <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[350px] bg-gradient-to-tr from-blue-100/30 to-indigo-100/30 opacity-60 pointer-events-none blur-3xl" />
+      <section className="relative overflow-hidden py-14 bg-slate-50 dark:bg-zinc-950 border-b border-slate-200 dark:border-white/10">
+        <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[350px] bg-gradient-to-tr from-blue-100/30 to-indigo-100/30 dark:from-blue-500/5 dark:to-indigo-500/5 opacity-60 pointer-events-none blur-3xl" />
         
         <div className="mx-auto max-w-7xl px-6 relative z-10">
           <div className="max-w-3xl space-y-4">
-            <span className="text-[11px] font-black text-blue-700 bg-blue-100 py-1 px-3 rounded-md uppercase tracking-wider border border-blue-200/50 inline-flex items-center gap-1">
-              <Sparkles className="h-3 w-3 animate-pulse" /> Faculty Management Core
+            <span className="text-[11px] font-black text-blue-700 bg-blue-100 dark:bg-blue-500/20 dark:text-blue-400 py-1 px-3 rounded-md uppercase tracking-wider border border-blue-200/50 dark:border-blue-500/20 inline-flex items-center gap-1">
+              <Sparkles className="h-3 w-3" /> Faculty Management Core
             </span>
-            <h1 className="text-3xl sm:text-4.5xl font-black text-slate-950 tracking-tight leading-tight">
-              Enterprise Staff & Faculty Management
+            <h1 className="text-3xl sm:text-4.5xl font-black text-slate-950 dark:text-white tracking-tight leading-tight uppercase">
+              Staff & Faculty Management
             </h1>
-            <p className="text-slate-600 font-semibold text-sm sm:text-base leading-relaxed">
-              Supervise institution-wide employee lifecycle. Configure department assignments, track leaves, verify active biometric directories, and manage access parameters effortlessly across a centralized dashboard.
+            <p className="text-slate-600 dark:text-slate-400 font-semibold text-sm sm:text-base leading-relaxed">
+              Supervise institution-wide employee lifecycle. Configure department assignments, track leaves, verify active biometric directories, and manage access parameters effortlessly.
             </p>
           </div>
         </div>
@@ -756,7 +737,7 @@ export const StaffManagementPage: React.FC<StaffManagementPageProps> = ({ onBack
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest block">Weekly Faculty Attendance Trends:</span>
                   <div className="flex items-center gap-1 text-[9px] font-black text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100/50">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block" />
                     +1.2% this week
                   </div>
                 </div>
@@ -772,7 +753,7 @@ export const StaffManagementPage: React.FC<StaffManagementPageProps> = ({ onBack
                     <div key={i} className="flex flex-col items-center gap-1.5 flex-1 group">
                       <div className="relative w-full flex justify-center items-end h-16">
                         {/* Tooltip on hover */}
-                        <span className="absolute -top-7 bg-slate-950 text-white text-[9px] font-black py-0.5 px-1.5 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-sm whitespace-nowrap z-10">
+                        <span className="absolute -top-7 bg-blue-600 text-white text-[9px] font-black py-0.5 px-1.5 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-sm whitespace-nowrap z-10">
                           {bar.rate}%
                         </span>
                         
@@ -894,7 +875,7 @@ export const StaffManagementPage: React.FC<StaffManagementPageProps> = ({ onBack
                             
                             <div className="space-y-1 pt-1.5 border-t border-slate-200/50 text-[11px] font-bold text-slate-600">
                               <div className="flex items-center gap-1.5">
-                                <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
+                                <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
                                 <span>Tutor: <strong className="text-slate-800">{lab.instructorName}</strong></span>
                               </div>
                               <div className="flex items-center gap-1.5">
@@ -1115,7 +1096,7 @@ export const StaffManagementPage: React.FC<StaffManagementPageProps> = ({ onBack
                           <button 
                             type="button"
                             onClick={() => handleDeleteMusicStudent(stud.id)}
-                            className="p-1 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-md transition-all opacity-0 group-hover:opacity-100 shrink-0 cursor-pointer animate-pulse"
+                            className="p-1 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-md transition-all opacity-0 group-hover:opacity-100 shrink-0 cursor-pointer"
                             title="Unenroll Trainee"
                           >
                             <Trash2 className="h-4 w-4" />
@@ -1438,7 +1419,7 @@ export const StaffManagementPage: React.FC<StaffManagementPageProps> = ({ onBack
                           </div>
 
                           {activeStaff.dlExpiryAlert?.includes("Soon!") ? (
-                            <div className="p-2 bg-red-50 border border-red-200 rounded-lg text-red-700 flex items-center gap-2 animate-pulse font-bold text-[10px]">
+                            <div className="p-2 bg-red-50 border border-red-200 rounded-lg text-red-700 flex items-center gap-2 font-bold text-[10px]">
                               <AlertTriangle className="w-4.5 h-4.5 text-red-650 shrink-0" />
                               <div>
                                 <span className="block text-[8px] uppercase tracking-wider">LICENSE EXPIRY ACTION REQUIRED</span>
@@ -1455,7 +1436,7 @@ export const StaffManagementPage: React.FC<StaffManagementPageProps> = ({ onBack
                           <div className="p-2.5 bg-white border border-slate-200/80 rounded-lg space-y-1">
                             <span className="text-[8.5px] text-slate-400 uppercase tracking-wider block font-bold">Live Bus Route Mapping:</span>
                             <div className="flex items-center gap-1.5 font-bold text-slate-800">
-                              <MapPin className="w-4 h-4 text-amber-600 animate-bounce shrink-0" />
+                              <MapPin className="w-4 h-4 text-amber-600 shrink-0" />
                               <span className="text-[11px]">{activeStaff.assignedRoute}</span>
                             </div>
                             <span className="block text-[8px] text-emerald-600 font-black tracking-wider uppercase bg-emerald-50 px-1 py-0.5 rounded text-center mt-1">📡 GPS Tracking Link • ONLINE</span>
@@ -1471,7 +1452,7 @@ export const StaffManagementPage: React.FC<StaffManagementPageProps> = ({ onBack
                         <div className="p-3 bg-slate-100/80 border border-slate-200 rounded-xl space-y-3.5 text-[11px] text-slate-700 font-semibold">
                           <div className="flex items-center justify-between border-b border-slate-200 pb-2">
                             <span className="text-slate-500 font-bold">Shift Timing Stream:</span>
-                            <span className={`px-2 py-0.5 text-[9.5px] font-black rounded uppercase ${activeStaff.shiftType === 'Night Shift' ? 'bg-slate-900 text-amber-400 shadow-3xs' : 'bg-amber-100 text-amber-800'}`}>
+                            <span className={`px-2 py-0.5 text-[9.5px] font-black rounded uppercase ${activeStaff.shiftType === 'Night Shift' ? 'bg-indigo-600 text-white shadow-sm' : 'bg-amber-100 text-amber-800'}`}>
                               {activeStaff.shiftType}
                             </span>
                           </div>
@@ -1489,7 +1470,7 @@ export const StaffManagementPage: React.FC<StaffManagementPageProps> = ({ onBack
                           </div>
 
                           <div className="p-2 bg-emerald-50/50 border border-emerald-100 rounded-lg text-[9.5px] text-emerald-800 flex items-center justify-center gap-2 font-black tracking-wide uppercase">
-                            <Activity className="w-3.5 h-3.5 text-emerald-600 animate-pulse shrink-0" />
+                            <Activity className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                             <span>GATE TRANSIT LOGGER: CONNECTED</span>
                           </div>
                         </div>
@@ -1974,9 +1955,9 @@ export const StaffManagementPage: React.FC<StaffManagementPageProps> = ({ onBack
                             <span className="font-mono">- ₹200</span>
                           </div>
 
-                          <div className="flex justify-between text-[11px] font-black text-white pt-1">
+                          <div className="flex justify-between text-[11px] font-black text-slate-900 pt-1">
                             <span className="uppercase tracking-wide font-sans">Net Disbursed Payable:</span>
-                            <span className="font-mono text-emerald-400 text-xs bg-slate-900 px-2 py-0.5 rounded border border-slate-800">
+                            <span className="font-mono text-emerald-600 text-xs bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 shadow-sm">
                               ₹{netPayable.toLocaleString()}
                             </span>
                           </div>
@@ -1997,7 +1978,7 @@ export const StaffManagementPage: React.FC<StaffManagementPageProps> = ({ onBack
                       >
                         {isExporting ? (
                           <>
-                            <div className="animate-spin rounded-full h-3.5 w-3.5 border-2 border-white border-t-transparent" />
+                            <div className="rounded-full h-3.5 w-3.5 border-2 border-white border-t-transparent" />
                             <span>Exporting PDF Document...</span>
                           </>
                         ) : (
@@ -2010,7 +1991,7 @@ export const StaffManagementPage: React.FC<StaffManagementPageProps> = ({ onBack
 
                       {/* Toast Banner display */}
                       {exportSuccessAlert && (
-                        <div className="p-2.5 bg-emerald-600 rounded-xl text-white text-[10px] font-bold text-center flex items-center justify-center gap-1.5 leading-tight animate-bounce">
+                        <div className="p-2.5 bg-emerald-600 rounded-xl text-white text-[10px] font-bold text-center flex items-center justify-center gap-1.5 leading-tight">
                           <CheckCircle className="w-4 h-4" />
                           <span>PDF Disbursed Payslip exported and downloaded successfully!</span>
                         </div>
@@ -2021,11 +2002,11 @@ export const StaffManagementPage: React.FC<StaffManagementPageProps> = ({ onBack
               </div>
 
               {/* Integrated Statistics / Radial Attendance progress box */}
-              <div className="bg-slate-950 text-white p-4.5 rounded-2xl border border-slate-900 flex justify-between items-center shadow-sm">
+              <div className="bg-blue-600 text-white p-4.5 rounded-2xl border border-blue-500 flex justify-between items-center shadow-lg shadow-blue-200">
                 <div className="space-y-1.5 text-left">
-                  <span className="text-[9px] font-black text-slate-500 uppercase tracking-wider block">INSTITUTION COMPLIANCE RATE</span>
-                  <h4 className="text-xl font-black text-slate-100 leading-none">97.8% Overall</h4>
-                  <p className="text-[10px] text-slate-400 font-semibold leading-relaxed max-w-[170px]">
+                  <span className="text-[9px] font-black text-blue-100 uppercase tracking-wider block">INSTITUTION COMPLIANCE RATE</span>
+                  <h4 className="text-xl font-black text-white leading-none">97.8% Overall</h4>
+                  <p className="text-[10px] text-blue-50 font-bold leading-relaxed max-w-[170px]">
                     Average biometric gate attendance cataloged for this current academic semester.
                   </p>
                 </div>
@@ -2034,14 +2015,14 @@ export const StaffManagementPage: React.FC<StaffManagementPageProps> = ({ onBack
                 <div className="w-18 h-18 relative flex items-center justify-center shrink-0">
                   <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
                     <path
-                      className="text-slate-800"
+                      className="text-blue-500"
                       strokeWidth="3"
                       stroke="currentColor"
                       fill="none"
                       d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
                     />
                     <path
-                      className="text-blue-500"
+                      className="text-white"
                       strokeWidth="3.2"
                       strokeDasharray="97.8, 100"
                       strokeLinecap="round"
@@ -2050,7 +2031,7 @@ export const StaffManagementPage: React.FC<StaffManagementPageProps> = ({ onBack
                       d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
                     />
                   </svg>
-                  <span className="absolute text-[10.5px] font-black text-slate-100">
+                  <span className="absolute text-[10.5px] font-black text-white">
                     97.8%
                   </span>
                 </div>
@@ -2064,5 +2045,6 @@ export const StaffManagementPage: React.FC<StaffManagementPageProps> = ({ onBack
       </main>
 
     </div>
+    </PageLayout>
   );
 };

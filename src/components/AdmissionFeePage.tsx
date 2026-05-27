@@ -79,10 +79,14 @@ import {
   Legend
 } from 'recharts';
 
-import modernCampusImg from '../assets/images/modern_campus_1779782861501.png';
-import roboticsLabImg from '../assets/images/robotics_lab_1779782885932.png';
-import biologyLabImg from '../assets/images/biology_lab_1779782920985.png';
-import avionicsHangarImg from '../assets/images/avionics_hangar_1779782942054.png';
+// import modernCampusImg from '../assets/images/modern_campus_1779782861501.png';
+// import roboticsLabImg from '../assets/images/robotics_lab_1779782885932.png';
+// import biologyLabImg from '../assets/images/biology_lab_1779782920985.png';
+// import avionicsHangarImg from '../assets/images/avionics_hangar_1779782942054.png';
+const modernCampusImg = "https://images.unsplash.com/photo-1523050853064-8504f2f40077?q=80&w=2070&auto=format&fit=crop";
+const roboticsLabImg = "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop";
+const biologyLabImg = "https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=2070&auto=format&fit=crop";
+const avionicsHangarImg = "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?q=80&w=2070&auto=format&fit=crop";
 
 // --- MOCK DATA ---
 const ADMISSION_FUNNEL = [
@@ -353,7 +357,7 @@ export const AdmissionFeePage: React.FC<AdmissionFeePageProps> = ({ onBack }) =>
     <div className="min-h-screen bg-[#F8FAFC] text-slate-900 font-sans selection:bg-blue-100 selection:text-blue-700 pb-20">
       
       {/* 1. PREMIUM HEADER */}
-      <header className="sticky top-0 z-50 bg-white/70 backdrop-blur-xl border-b border-slate-200/60 transition-all duration-300">
+      <header className="sticky top-0 z-50 bg-white/70  border-b border-slate-200/60 transition-all duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="flex items-center gap-4">
             <motion.button 
@@ -381,7 +385,7 @@ export const AdmissionFeePage: React.FC<AdmissionFeePageProps> = ({ onBack }) =>
           <div className="flex items-center gap-2 bg-slate-100 p-1 rounded-2xl border border-slate-200/60">
             <button 
               onClick={() => setCurrentMode('admin')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all uppercase tracking-wider flex items-center gap-1.5 ${currentMode === 'admin' ? 'bg-[#0F172A] text-white shadow-md' : 'text-slate-500 hover:text-slate-800'}`}
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all uppercase tracking-wider flex items-center gap-1.5 ${currentMode === 'admin' ? 'bg-slate-800 text-white shadow-md' : 'text-slate-500 hover:text-slate-800'}`}
             >
               <Sliders className="w-3.5 h-3.5" />
               <span>Registrar Panel</span>
@@ -395,7 +399,6 @@ export const AdmissionFeePage: React.FC<AdmissionFeePageProps> = ({ onBack }) =>
               <span className="relative">
                 Public Dashboard
                 <span className="absolute -top-1 -right-2 flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                 </span>
               </span>
@@ -418,22 +421,22 @@ export const AdmissionFeePage: React.FC<AdmissionFeePageProps> = ({ onBack }) =>
             className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8"
           >
             {/* PUBLIC PORTAL HERO ACTION BANNER */}
-            <div className="bg-gradient-to-r from-blue-900 to-slate-900 rounded-[32px] p-6 mb-8 border border-blue-500/20 text-white flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="bg-blue-600 rounded-[32px] p-6 mb-8 border border-blue-500 text-white flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden shadow-lg">
+              <div className="absolute top-0 right-0 w-80 h-80 bg-white/10 rounded-full blur-3xl pointer-events-none" />
               <div className="space-y-2 relative z-10">
-                <span className="px-3 py-1 bg-blue-500/25 text-blue-300 text-[10px] font-black uppercase tracking-widest rounded-md border border-blue-500/30">
+                <span className="px-3 py-1 bg-white/20 text-white text-[10px] font-black uppercase tracking-widest rounded-md border border-white/30">
                   Transparency Accelerator
                 </span>
                 <h3 className="text-xl sm:text-2xl font-black uppercase tracking-tight">
                   Foster Trust with prospective Parents
                 </h3>
-                <p className="text-xs text-slate-300 font-medium max-w-2xl leading-relaxed">
+                <p className="text-xs text-blue-50 font-medium max-w-2xl leading-relaxed">
                   Avoid static PDFs and hidden pricing. NexoraOS AI creates a dynamically synced, 100% verified public portal that showcases certified teachers, world-class smart labs, and direct board results directly to parents.
                 </p>
               </div>
               <button
                 onClick={() => setCurrentMode('public')}
-                className="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white text-xs font-black uppercase tracking-widest rounded-xl transition-all flex items-center gap-2 shrink-0 group shadow-lg shadow-blue-500/20 relative z-10 cursor-pointer"
+                className="px-6 py-3 bg-white text-blue-600 text-xs font-black uppercase tracking-widest rounded-xl transition-all flex items-center gap-2 shrink-0 group shadow-xl relative z-10 cursor-pointer hover:bg-blue-50"
               >
                 <span>Click to Open Public Dashboard</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -471,20 +474,20 @@ export const AdmissionFeePage: React.FC<AdmissionFeePageProps> = ({ onBack }) =>
               <div className="lg:col-span-8 space-y-8">
                 
                 {/* MANAGEMENT CONTROLS PANEL (School Owner Command Center) */}
-                <section className="bg-slate-900 text-white border border-slate-800 rounded-[32px] p-8 shadow-xl relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/5 rounded-full blur-3xl pointer-events-none" />
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-800 pb-6 mb-6">
+                <section className="bg-slate-50 text-slate-900 border border-slate-200 rounded-[32px] p-8 shadow-sm relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-100/50 rounded-full blur-3xl pointer-events-none" />
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-200 pb-6 mb-6">
                     <div className="flex items-center gap-3">
-                      <div className="p-3 bg-indigo-500/10 text-indigo-400 rounded-2xl border border-indigo-500/20">
-                        <Settings className="w-6 h-6 animate-spin" />
+                      <div className="p-3 bg-white border border-slate-200 text-indigo-600 rounded-2xl shadow-sm">
+                        <Settings className="w-6 h-6" />
                       </div>
                       <div>
-                        <h3 className="text-lg font-black text-slate-100 uppercase tracking-tight">Trust Verification Controls</h3>
-                        <p className="text-xs text-slate-400 font-medium">Verify credentials and manage public portal exposure configuration.</p>
+                        <h3 className="text-lg font-black text-slate-900 uppercase tracking-tight">Trust Verification Controls</h3>
+                        <p className="text-xs text-slate-500 font-medium">Verify credentials and manage public portal exposure configuration.</p>
                       </div>
                     </div>
-                    <span className="px-3.5 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/25 text-emerald-400 text-[10px] font-black tracking-widest uppercase flex items-center gap-1.5-wide">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    <span className="px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-600 text-[10px] font-black tracking-widest uppercase flex items-center gap-1.5-wide">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                       AUTOPILOT LOCK ACTIVE
                     </span>
                   </div>
@@ -495,129 +498,129 @@ export const AdmissionFeePage: React.FC<AdmissionFeePageProps> = ({ onBack }) =>
                       <h4 className="text-xs font-black uppercase tracking-widest text-[#2563EB]">Visibility Config</h4>
                       
                       {/* Control 1 */}
-                      <div className="flex items-center justify-between p-3.5 bg-slate-950/40 border border-slate-850 rounded-2xl">
+                      <div className="flex items-center justify-between p-3.5 bg-white border border-slate-200 rounded-2xl shadow-sm">
                         <div className="space-y-0.5">
-                          <span className="text-xs font-bold text-slate-200 uppercase tracking-tight block">Global Verification Portal</span>
-                          <span className="text-[10px] text-slate-400 block font-semibold">Enable parent-facing dashboards</span>
+                          <span className="text-xs font-bold text-slate-900 uppercase tracking-tight block">Global Verification Portal</span>
+                          <span className="text-[10px] text-slate-500 block font-semibold">Enable parent-facing dashboards</span>
                         </div>
                         <button 
                           onClick={() => setPublicVerificationEnabled(!publicVerificationEnabled)}
-                          className={`w-11 h-6 rounded-full transition-all relative ${publicVerificationEnabled ? 'bg-blue-600' : 'bg-slate-700'}`}
+                          className={`w-11 h-6 rounded-full transition-all relative ${publicVerificationEnabled ? 'bg-blue-600' : 'bg-slate-200'}`}
                         >
-                          <span className={`absolute top-1 left-1 w-4 h-4 bg-white rounded-full transition-all ${publicVerificationEnabled ? 'translate-x-5' : 'translate-x-0'}`} />
+                          <span className={`absolute top-1 left-1 w-4 h-4 bg-white rounded-full transition-all shadow-sm ${publicVerificationEnabled ? 'translate-x-5' : 'translate-x-0'}`} />
                         </button>
                       </div>
 
                       {/* Control 2 */}
-                      <div className="flex items-center justify-between p-3.5 bg-slate-950/40 border border-slate-850 rounded-2xl">
+                      <div className="flex items-center justify-between p-3.5 bg-white border border-slate-200 rounded-2xl shadow-sm">
                         <div className="space-y-0.5">
-                          <span className="text-xs font-bold text-slate-200 uppercase tracking-tight block">World-Class Showcase</span>
-                          <span className="text-[10px] text-slate-400 block font-semibold">Display smart labs & vision systems</span>
+                          <span className="text-xs font-bold text-slate-900 uppercase tracking-tight block">World-Class Showcase</span>
+                          <span className="text-[10px] text-slate-500 block font-semibold">Display smart labs & vision systems</span>
                         </div>
                         <button 
                           disabled={!publicVerificationEnabled}
                           onClick={() => setVerifyShowcase(!verifyShowcase)}
-                          className={`w-11 h-6 rounded-full transition-all relative ${!publicVerificationEnabled ? 'opacity-40 cursor-not-allowed' : ''} ${verifyShowcase && publicVerificationEnabled ? 'bg-indigo-500' : 'bg-slate-700'}`}
+                          className={`w-11 h-6 rounded-full transition-all relative ${!publicVerificationEnabled ? 'opacity-40 cursor-not-allowed' : ''} ${verifyShowcase && publicVerificationEnabled ? 'bg-indigo-600' : 'bg-slate-200'}`}
                         >
-                          <span className={`absolute top-1 left-1 w-4 h-4 bg-white rounded-full transition-all ${verifyShowcase && publicVerificationEnabled ? 'translate-x-5' : 'translate-x-0'}`} />
+                          <span className={`absolute top-1 left-1 w-4 h-4 bg-white rounded-full transition-all shadow-sm ${verifyShowcase && publicVerificationEnabled ? 'translate-x-5' : 'translate-x-0'}`} />
                         </button>
                       </div>
 
                       {/* Control 3 */}
-                      <div className="flex items-center justify-between p-3.5 bg-slate-950/40 border border-slate-850 rounded-2xl">
+                      <div className="flex items-center justify-between p-3.5 bg-white border border-slate-200 rounded-2xl shadow-sm">
                         <div className="space-y-0.5">
-                          <span className="text-xs font-bold text-slate-200 uppercase tracking-tight block">Faculty Credentials</span>
-                          <span className="text-[10px] text-slate-400 block font-semibold">Publish teacher success index rates</span>
+                          <span className="text-xs font-bold text-slate-900 uppercase tracking-tight block">Faculty Credentials</span>
+                          <span className="text-[10px] text-slate-500 block font-semibold">Publish teacher success index rates</span>
                         </div>
                         <button 
                           disabled={!publicVerificationEnabled}
                           onClick={() => setVerifyFaculty(!verifyFaculty)}
-                          className={`w-11 h-6 rounded-full transition-all relative ${!publicVerificationEnabled ? 'opacity-40 cursor-not-allowed' : ''} ${verifyFaculty && publicVerificationEnabled ? 'bg-indigo-500' : 'bg-slate-700'}`}
+                          className={`w-11 h-6 rounded-full transition-all relative ${!publicVerificationEnabled ? 'opacity-40 cursor-not-allowed' : ''} ${verifyFaculty && publicVerificationEnabled ? 'bg-indigo-600' : 'bg-slate-200'}`}
                         >
-                          <span className={`absolute top-1 left-1 w-4 h-4 bg-white rounded-full transition-all ${verifyFaculty && publicVerificationEnabled ? 'translate-x-5' : 'translate-x-0'}`} />
+                          <span className={`absolute top-1 left-1 w-4 h-4 bg-white rounded-full transition-all shadow-sm ${verifyFaculty && publicVerificationEnabled ? 'translate-x-5' : 'translate-x-0'}`} />
                         </button>
                       </div>
 
                       {/* Control 4 */}
-                      <div className="flex items-center justify-between p-3.5 bg-slate-950/40 border border-slate-850 rounded-2xl">
+                      <div className="flex items-center justify-between p-3.5 bg-white border border-slate-200 rounded-2xl shadow-sm">
                         <div className="space-y-0.5">
-                          <span className="text-xs font-bold text-slate-200 uppercase tracking-tight block">5-Year Board Results</span>
-                          <span className="text-[10px] text-slate-400 block font-semibold">Display passing success trajectories</span>
+                          <span className="text-xs font-bold text-slate-900 uppercase tracking-tight block">5-Year Board Results</span>
+                          <span className="text-[10px] text-slate-500 block font-semibold">Display passing success trajectories</span>
                         </div>
                         <button 
                           disabled={!publicVerificationEnabled}
                           onClick={() => setVerifyBoardResults(!verifyBoardResults)}
-                          className={`w-11 h-6 rounded-full transition-all relative ${!publicVerificationEnabled ? 'opacity-40 cursor-not-allowed' : ''} ${verifyBoardResults && publicVerificationEnabled ? 'bg-indigo-500' : 'bg-slate-700'}`}
+                          className={`w-11 h-6 rounded-full transition-all relative ${!publicVerificationEnabled ? 'opacity-40 cursor-not-allowed' : ''} ${verifyBoardResults && publicVerificationEnabled ? 'bg-indigo-600' : 'bg-slate-200'}`}
                         >
-                          <span className={`absolute top-1 left-1 w-4 h-4 bg-white rounded-full transition-all ${verifyBoardResults && publicVerificationEnabled ? 'translate-x-5' : 'translate-x-0'}`} />
+                          <span className={`absolute top-1 left-1 w-4 h-4 bg-white rounded-full transition-all shadow-sm ${verifyBoardResults && publicVerificationEnabled ? 'translate-x-5' : 'translate-x-0'}`} />
                         </button>
                       </div>
                     </div>
 
                     {/* RIGHT CELL - DIRECT LEDGER STAT UPDATOR */}
-                    <div className="space-y-4 bg-slate-950/40 border border-slate-850 p-5 rounded-2xl">
-                      <div className="flex items-center gap-1.5 text-amber-400">
+                    <div className="space-y-4 bg-white border border-slate-200 p-5 rounded-2xl shadow-sm">
+                      <div className="flex items-center gap-1.5 text-amber-600">
                         <Sliders className="w-3.5 h-3.5" />
                         <h4 className="text-xs font-black uppercase tracking-widest">Direct Ledger Updates</h4>
                       </div>
-                      <p className="text-[10px] text-slate-400 font-semibold leading-relaxed">
+                      <p className="text-[10px] text-slate-500 font-bold leading-relaxed">
                         Input yearly Class 10th and 12th state exam pass rates and distinction numbers directly to append to our public trust chart reactively.
                       </p>
 
                       <form onSubmit={handleUpdateLedger} className="space-y-3">
                         <div className="grid grid-cols-2 gap-2">
                           <div>
-                            <label className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Session Year</label>
+                            <label className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Session Year</label>
                             <input 
                               required 
                               type="text" 
                               value={ledgerYear} 
                               onChange={(e) => setLedgerYear(e.target.value)}
                               placeholder="2027" 
-                              className="w-full px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-xl text-xs font-bold outline-none font-mono text-white" 
+                              className="w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold outline-none font-mono text-slate-900 focus:border-blue-300 transition-colors" 
                             />
                           </div>
                           <div>
-                            <label className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Distinctions</label>
+                            <label className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Distinctions</label>
                             <input 
                               required 
                               type="number" 
                               value={ledgerDistinctions} 
                               onChange={(e) => setLedgerDistinctions(e.target.value)}
                               placeholder="175" 
-                              className="w-full px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-xl text-xs font-bold outline-none font-mono text-white" 
+                              className="w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold outline-none font-mono text-slate-900 focus:border-blue-300 transition-colors" 
                             />
                           </div>
                         </div>
 
                         <div className="grid grid-cols-2 gap-2">
                           <div>
-                            <label className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Class X Pass %</label>
+                            <label className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Class X Pass %</label>
                             <input 
                               required 
                               type="text" 
                               value={ledgerClass10} 
                               onChange={(e) => setLedgerClass10(e.target.value)}
                               placeholder="100.0" 
-                              className="w-full px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-xl text-xs font-bold outline-none font-mono text-white" 
+                              className="w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold outline-none font-mono text-slate-900 focus:border-blue-300 transition-colors" 
                             />
                           </div>
                           <div>
-                            <label className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Class XII Pass %</label>
+                            <label className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Class XII Pass %</label>
                             <input 
                               required 
                               type="text" 
                               value={ledgerClass12} 
                               onChange={(e) => setLedgerClass12(e.target.value)}
                               placeholder="99.8" 
-                              className="w-full px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-xl text-xs font-bold outline-none font-mono text-white" 
+                              className="w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold outline-none font-mono text-slate-900 focus:border-blue-300 transition-colors" 
                             />
                           </div>
                         </div>
 
                         <button 
                           type="submit"
-                          className="w-full py-2 bg-[#2563EB] hover:bg-blue-600 text-white rounded-xl text-[10px] font-black uppercase tracking-widest transition-all cursor-pointer flex items-center justify-center gap-1"
+                          className="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-[10px] font-black uppercase tracking-widest transition-all cursor-pointer flex items-center justify-center gap-1 shadow-md shadow-blue-100"
                         >
                           <CheckCircle2 className="w-3.5 h-3.5" />
                           <span>Commit to Public Trust Layout</span>
@@ -625,7 +628,7 @@ export const AdmissionFeePage: React.FC<AdmissionFeePageProps> = ({ onBack }) =>
                       </form>
                       
                       {ledgerToast && (
-                        <div className="text-[9px] text-[#10B981] font-bold mt-1 bg-emerald-500/10 border border-emerald-500/20 p-2 rounded-lg leading-snug">
+                        <div className="text-[9px] text-[#10B981] font-bold mt-1 bg-emerald-50 border border-emerald-100 p-2 rounded-lg leading-snug">
                           {ledgerToast}
                         </div>
                       )}
@@ -772,15 +775,15 @@ export const AdmissionFeePage: React.FC<AdmissionFeePageProps> = ({ onBack }) =>
                         </div>
                      </div>
 
-                     <div className="flex flex-col sm:flex-row gap-3">
-                        <button className="flex-1 py-3 bg-[#0F172A] text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-slate-800 transition-all flex items-center justify-center gap-2 shadow-lg shadow-slate-200 cursor-pointer">
-                           <CheckCircle className="w-4 h-4" />
-                           Recommend for Approval
-                        </button>
-                        <button className="flex-1 py-3 border border-slate-200 text-slate-500 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-slate-50 transition-all cursor-pointer">
-                           Flag Missing Documents
-                        </button>
-                     </div>
+                      <div className="flex flex-col sm:flex-row gap-3">
+                         <button className="flex-1 py-3 bg-slate-800 text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-slate-900 transition-all flex items-center justify-center gap-2 shadow-sm cursor-pointer">
+                            <CheckCircle className="w-4 h-4" />
+                            Recommend for Approval
+                         </button>
+                         <button className="flex-1 py-3 border border-slate-200 text-slate-500 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-slate-50 transition-all cursor-pointer">
+                            Flag Missing Documents
+                         </button>
+                      </div>
                   </div>
                 </section>
 
@@ -801,7 +804,7 @@ export const AdmissionFeePage: React.FC<AdmissionFeePageProps> = ({ onBack }) =>
                        <div key={i} className="relative group">
                           <div className={`absolute -left-[24px] top-1 w-4 h-4 rounded-full border-4 border-white shadow-sm transition-all ${
                             step.status === 'Completed' ? 'bg-emerald-500' : 
-                            step.status === 'In Progress' ? 'bg-blue-500 animate-pulse ring-4 ring-blue-100' : 'bg-slate-100'
+                            step.status === 'In Progress' ? 'bg-blue-500 ring-4 ring-blue-100' : 'bg-slate-100'
                           }`} />
                           <div className={`p-5 rounded-[24px] border transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4 ${
                             step.status === 'Completed' ? 'bg-emerald-50/20 border-emerald-100/50' : 
@@ -845,7 +848,7 @@ export const AdmissionFeePage: React.FC<AdmissionFeePageProps> = ({ onBack }) =>
                               <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-400 mb-2">Executive Overview</h4>
                               <h2 className="text-xl font-black tracking-tight leading-tight uppercase">Admission<br />Intelligence</h2>
                            </div>
-                           <div className="p-4 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl">
+                           <div className="p-4 bg-white/5  border border-white/10 rounded-2xl shadow-2xl">
                               <Activity className="w-6 h-6 text-blue-400" />
                            </div>
                         </div>
@@ -990,6 +993,7 @@ export const AdmissionFeePage: React.FC<AdmissionFeePageProps> = ({ onBack }) =>
                       <img 
                         src={modernCampusImg} 
                         alt="Nexora International Academy Campus" 
+                        loading="lazy"
                         className="w-full h-full object-cover opacity-90 transition-transform duration-700 hover:scale-[1.03]"
                         referrerPolicy="no-referrer"
                       />
@@ -1027,10 +1031,11 @@ export const AdmissionFeePage: React.FC<AdmissionFeePageProps> = ({ onBack }) =>
                               <img 
                                 src={lab.img} 
                                 alt={lab.name} 
+                                loading="lazy"
                                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                                 referrerPolicy="no-referrer"
                               />
-                              <div className="absolute top-4 left-4 w-8 h-8 rounded-lg bg-black/60 backdrop-blur-md text-white flex items-center justify-center font-bold text-xs font-mono">
+                              <div className="absolute top-4 left-4 w-8 h-8 rounded-lg bg-black/60  text-white flex items-center justify-center font-bold text-xs font-mono">
                                 0{i+1}
                               </div>
                             </div>
@@ -1115,6 +1120,7 @@ export const AdmissionFeePage: React.FC<AdmissionFeePageProps> = ({ onBack }) =>
                               <img 
                                 src={t.img} 
                                 alt={t.name} 
+                                loading="lazy"
                                 className="w-14 h-14 rounded-full object-cover shadow-inner shrink-0 border border-slate-300"
                                 referrerPolicy="no-referrer"
                               />
@@ -1327,7 +1333,7 @@ export const AdmissionFeePage: React.FC<AdmissionFeePageProps> = ({ onBack }) =>
            <motion.div 
              initial={{ y: 100 }}
              animate={{ y: 0 }}
-             className="flex items-center gap-2 p-1.5 bg-[#0F172A]/90 backdrop-blur-xl border border-white/10 rounded-full shadow-[0_20px_50px_rgba(37,99,235,0.3)]"
+             className="flex items-center gap-2 p-1.5 bg-[#0F172A]/90  border border-white/10 rounded-full shadow-[0_20px_50px_rgba(37,99,235,0.3)]"
            >
              <button 
                onClick={() => setShowExportMenu(!showExportMenu)}
@@ -1364,7 +1370,7 @@ export const AdmissionFeePage: React.FC<AdmissionFeePageProps> = ({ onBack }) =>
                animate={{ opacity: 1 }}
                exit={{ opacity: 0 }}
                onClick={() => setShowAdmissionForm(false)}
-               className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
+               className="absolute inset-0 bg-slate-900/60 "
              />
              <motion.div 
                initial={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -1559,7 +1565,7 @@ export const AdmissionFeePage: React.FC<AdmissionFeePageProps> = ({ onBack }) =>
                        className={`px-8 py-3 bg-blue-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-blue-700 transition-all shadow-lg shadow-blue-200 flex items-center gap-2 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
                       >
                          {isSubmitting ? (
-                           <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                           <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full" />
                          ) : (
                            <CheckCircle className="w-4 h-4" />
                          )}

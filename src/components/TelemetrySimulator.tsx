@@ -369,7 +369,7 @@ export const TelemetrySimulator: React.FC = () => {
             <div className="bg-slate-50 px-4 py-2.5 border-t border-slate-150 text-[10px] text-slate-400 flex items-center justify-between">
               <span>Solvers Active: <strong>Timetable Solver 4.1a</strong> • <strong>SMS Telemetry Hub</strong></span>
               <span className="flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                 Connection Secure
               </span>
             </div>

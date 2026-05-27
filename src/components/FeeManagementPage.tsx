@@ -76,7 +76,7 @@ export const FeeManagementPage: React.FC<FeeManagementPageProps> = ({ onBack }) 
   return (
     <div className="min-h-screen bg-[#F8FAFC] text-slate-900 font-sans selection:bg-blue-100 selection:text-blue-700 pb-20">
       {/* 1. PREMIUM HEADER */}
-      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+      <header className="sticky top-0 z-50 bg-white/80  border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="flex items-center gap-4">
             <motion.button 
@@ -104,7 +104,7 @@ export const FeeManagementPage: React.FC<FeeManagementPageProps> = ({ onBack }) 
               <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-widest">System Status</span>
               <span className="text-xs font-black text-slate-900">Ledger Integrated • Secure</span>
             </div>
-            <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <div className="w-2 h-2 rounded-full bg-emerald-500" />
           </div>
         </div>
       </header>
@@ -201,7 +201,7 @@ export const FeeManagementPage: React.FC<FeeManagementPageProps> = ({ onBack }) 
                         animate={{ opacity: 1 }}
                         className="flex items-center justify-center gap-3"
                       >
-                        <RefreshCw className="w-5 h-5 animate-spin" />
+                        <RefreshCw className="w-5 h-5" />
                         <span>Authorizing Handshake...</span>
                       </motion.div>
                     ) : paymentSuccess ? (
@@ -573,7 +573,7 @@ export const FeeManagementPage: React.FC<FeeManagementPageProps> = ({ onBack }) 
                       <h4 className="text-sm font-black uppercase tracking-[0.2em] text-blue-400 mb-1">Financial Intelligence</h4>
                       <h2 className="text-2xl font-black tracking-tight leading-none">Bursar's Ledger Center</h2>
                     </div>
-                    <div className="p-3 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10">
+                    <div className="p-3 bg-white/5  rounded-2xl border border-white/10">
                       <Wallet className="w-6 h-6 text-blue-400" />
                     </div>
                   </div>
@@ -628,7 +628,7 @@ export const FeeManagementPage: React.FC<FeeManagementPageProps> = ({ onBack }) 
                       { label: "Outstanding Rev", val: "₹18.4L", trend: "-4%", up: false },
                       { label: "Auto Pay Rate", val: "72.4%", trend: "+12%", up: true },
                     ].map((stat, i) => (
-                      <div key={i} className="bg-white/5 backdrop-blur-md border border-white/10 p-4 rounded-2xl flex flex-col justify-between h-24">
+                      <div key={i} className="bg-white/5  border border-white/10 p-4 rounded-2xl flex flex-col justify-between h-24">
                         <span className="text-[9px] font-black uppercase tracking-widest text-slate-400">{stat.label}</span>
                         <div className="flex items-baseline justify-between">
                           <h5 className="text-xl font-black font-mono tracking-tight">{stat.val}</h5>
@@ -645,7 +645,7 @@ export const FeeManagementPage: React.FC<FeeManagementPageProps> = ({ onBack }) 
                   <div className="space-y-4">
                     <div className="flex justify-between items-center px-1">
                       <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Live Transaction Matrix</span>
-                      <span className="text-[9px] font-mono text-emerald-500 font-black animate-pulse">STREAMING_ACTIVE</span>
+                      <span className="text-[9px] font-mono text-emerald-500 font-black">STREAMING_ACTIVE</span>
                     </div>
 
                     <div className="space-y-2">

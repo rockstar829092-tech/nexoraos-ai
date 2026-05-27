@@ -19,7 +19,8 @@ import {
   Activity
 } from 'lucide-react';
 
-import youngProfImage from '../assets/images/young_professional_laptop_1779785953007.png';
+// import youngProfImage from '../assets/images/young_professional_laptop_1779785953007.png';
+const youngProfImage = "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop";
 
 interface HeroProps {
   onScrollToSection?: (sectionId: string) => void;
@@ -49,10 +50,10 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToSection }) => {
       {/* Stripe / Linear Inspired Premium Tech Backdrop Elements */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#002D6203_1px,transparent_1px),linear-gradient(to_bottom,#002D6203_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
       
-      {/* Futuristic soft floating blurred mesh blobs */}
-      <div className="absolute top-20 left-10 -z-10 h-[500px] w-[500px] rounded-full bg-gradient-to-tr from-blue-300/20 to-indigo-300/25 blur-[100px] pointer-events-none animate-[pulse_8s_infinite]" />
-      <div className="absolute bottom-10 right-10 -z-10 h-[600px] w-[600px] rounded-full bg-gradient-to-br from-[#DCF2FE]/40 to-[#E8E5FF]/50 blur-[110px] pointer-events-none animate-[pulse_10s_infinite_1s]" />
-      <div className="absolute top-1/2 left-1/3 -translate-y-1/2 -z-10 h-[250px] w-[250px] rounded-full bg-emerald-200/10 blur-[60px] pointer-events-none" />
+      {/* Futuristic soft mesh blobs - stable for premium look */}
+      <div className="absolute top-20 left-10 -z-10 h-[500px] w-[500px] rounded-full bg-blue-50/10 pointer-events-none" />
+      <div className="absolute bottom-10 right-10 -z-10 h-[600px] w-[600px] rounded-full bg-indigo-50/10 pointer-events-none" />
+      <div className="absolute top-1/2 left-1/3 -translate-y-1/2 -z-10 h-[250px] w-[250px] rounded-full bg-emerald-50/5 pointer-events-none" />
       
       {/* Decorative vector grid accent circles */}
       <div className="absolute inset-x-0 top-0 h-[400px] -z-10 opacity-[0.03] pointer-events-none">
@@ -71,14 +72,14 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToSection }) => {
           {/* ========================================================= */}
           <div className="lg:col-span-6 space-y-7 text-center lg:text-left">
             
-            {/* Soft Lavender Minimal Tech Badge */}
+            {/* Solid Minimal Tech Badge */}
             <motion.div 
-              initial={{ opacity: 0, y: -10 }}
+              initial={{ opacity: 0, y: -5 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-50/80 to-blue-50/80 px-4 py-1.5 text-xs font-semibold text-indigo-700 border border-indigo-100/60 shadow-xs"
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="inline-flex items-center gap-2 rounded-full bg-indigo-50 px-4 py-1.5 text-xs font-semibold text-indigo-700 border border-indigo-200 shadow-sm"
             >
-              <Sparkles className="h-3.5 w-3.5 text-indigo-600 animate-spin-slow" />
+              <Sparkles className="h-3.5 w-3.5 text-indigo-600" />
               <span className="tracking-wide uppercase font-mono text-[10px] font-black">✨ Next-Gen AI Operating System</span>
             </motion.div>
 
@@ -91,7 +92,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToSection }) => {
             >
               <h1 className="text-4xl font-black tracking-tight text-[#0F172A] sm:text-5xl xl:text-6xl leading-[1.08]">
                 Empower Your Institutional Growth With Next-Gen <br className="hidden sm:inline" />
-                <span className="bg-gradient-to-r from-[#003B73] via-[#0074E4] to-[#7C3AED] bg-clip-text text-transparent">NexoraOS AI ERP</span>
+                <span className="text-[#003B73]">NexoraOS AI ERP</span>
               </h1>
               
               {/* Distinctive Subheadline */}
@@ -139,25 +140,24 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToSection }) => {
               className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
             >
               <motion.button 
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.99 }}
                 onMouseEnter={() => setHoveredButton('demo')}
                 onMouseLeave={() => setHoveredButton(null)}
                 onClick={(e) => handleCtaClick('playground', e)}
-                className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-tr from-[#003B73] via-[#005CAD] to-[#0074E4] px-7 py-4 text-sm font-black text-white shadow-lg shadow-indigo-650/15 hover:shadow-indigo-600/25 transition-all cursor-pointer select-none text-center relative overflow-hidden"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-2xl bg-[#003B73] px-7 py-4 text-sm font-black text-white shadow-lg hover:bg-[#002D62] transition-all cursor-pointer select-none text-center relative overflow-hidden"
               >
                 <span className="relative z-10">Get Free Demo</span>
-                <ArrowRight className="h-4 w-4 relative z-10 transition-transform duration-300 group-hover:translate-x-1" />
-                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-[shimmer_3s_infinite]" />
+                <ArrowRight className="h-4 w-4 relative z-10 transition-transform duration-300" />
               </motion.button>
               
               <motion.button 
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.99 }}
                 onMouseEnter={() => setHoveredButton('tour')}
                 onMouseLeave={() => setHoveredButton(null)}
                 onClick={(e) => handleCtaClick('telemetry', e)}
-                className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-2xl border border-slate-250 bg-white/70 backdrop-blur-md px-7 py-4 text-sm font-black text-slate-800 hover:bg-white/95 transition-all cursor-pointer select-none shadow-sm"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-2xl border border-slate-300 bg-white px-7 py-4 text-sm font-black text-slate-800 hover:bg-slate-50 transition-all cursor-pointer select-none shadow-sm"
               >
                 <Play className="h-4 w-4 text-[#0074E4] fill-[#0074E4]" />
                 <span>Watch Platform Tour</span>
@@ -199,7 +199,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToSection }) => {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative w-full max-w-[500px] h-[440px] flex items-center justify-center rounded-3xl p-6 select-none bg-gradient-to-b from-white/30 to-white/10 backdrop-blur-xs border border-white/40 shadow-sm"
+              className="relative w-full max-w-[500px] h-[440px] flex items-center justify-center rounded-3xl p-6 select-none bg-white border border-slate-200 shadow-xl"
             >
               {/* Ambient network SVG link lines in background */}
               <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
@@ -235,11 +235,12 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToSection }) => {
               {/* FLOATING WIDGET 1: AI Dashboard Widget (Live Attendance)   */}
               {/* ========================================================= */}
               <motion.div 
-                animate={{ y: [0, -8, 0], rotate: [-1, 1, -1] }}
-                transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
-                whileHover={{ scale: 1.05, zIndex: 30 }}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+                whileHover={{ scale: 1.02, zIndex: 30 }}
                 onClick={() => setActiveWidgetTab('attendance')}
-                className={`absolute top-8 -left-5 z-20 w-[190px] p-3.5 rounded-2xl bg-white/85 backdrop-blur-md border border-white/65 shadow-lg shadow-slate-900/5 text-left cursor-pointer transition-all ${activeWidgetTab === 'attendance' ? 'ring-2 ring-indigo-500' : ''}`}
+                className={`absolute top-8 -left-5 z-20 w-[190px] p-3.5 rounded-2xl bg-white border border-slate-200 shadow-xl text-left cursor-pointer transition-all ${activeWidgetTab === 'attendance' ? 'ring-2 ring-indigo-500' : ''}`}
               >
                 <div className="flex items-center gap-2 mb-2">
                   <div className="h-6 w-6 rounded-lg bg-indigo-50 flex items-center justify-center text-indigo-600">
@@ -268,11 +269,12 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToSection }) => {
               {/* FLOATING WIDGET 2: Analytics Cards (AI Predictions)      */}
               {/* ========================================================= */}
               <motion.div 
-                animate={{ y: [0, 8, 0], rotate: [1, -0.5, 1] }}
-                transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-                whileHover={{ scale: 1.05, zIndex: 30 }}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
+                whileHover={{ scale: 1.02, zIndex: 30 }}
                 onClick={() => setActiveWidgetTab('grades')}
-                className={`absolute bottom-[10%] -right-8 z-20 w-[210px] p-4 rounded-2xl bg-gradient-to-br from-white/95 to-indigo-50/95 backdrop-blur-md border border-indigo-100/60 shadow-xl shadow-slate-900/5 text-left cursor-pointer transition-all ${activeWidgetTab === 'grades' ? 'ring-2 ring-[#0074E4]' : ''}`}
+                className={`absolute bottom-[10%] -right-8 z-20 w-[210px] p-4 rounded-2xl bg-white border border-slate-200 shadow-xl text-left cursor-pointer transition-all ${activeWidgetTab === 'grades' ? 'ring-2 ring-[#0074E4]' : ''}`}
               >
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
@@ -284,7 +286,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToSection }) => {
                       <h5 className="text-[10px] font-black text-[#002244] leading-none">CLASS PROGRESSION</h5>
                     </div>
                   </div>
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
                 </div>
                 
                 <div className="grid grid-cols-2 gap-2 mt-2 pt-2 border-t border-slate-100">
@@ -311,25 +313,26 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToSection }) => {
               {/* FLOATING WIDGET 3: System Status / Autopilot Controller   */}
               {/* ========================================================= */}
               <motion.div 
-                animate={{ x: [0, -6, 0], y: [0, 4, 0] }}
-                transition={{ repeat: Infinity, duration: 5.5, ease: "easeInOut" }}
-                whileHover={{ scale: 1.05, zIndex: 30 }}
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
+                whileHover={{ scale: 1.02, zIndex: 30 }}
                 onClick={() => setActiveWidgetTab('autopilot')}
-                className={`absolute bottom-4 left-6 z-20 bg-[#0F172A] text-white p-3 rounded-xl border border-slate-800 shadow-2xl flex items-center gap-3 text-left cursor-pointer transition-all ${activeWidgetTab === 'autopilot' ? 'ring-2 ring-indigo-400' : ''}`}
+                className={`absolute bottom-4 left-6 z-20 bg-white text-slate-900 p-3 rounded-xl border border-slate-200 shadow-xl flex items-center gap-3 text-left cursor-pointer transition-all ${activeWidgetTab === 'autopilot' ? 'ring-2 ring-indigo-500' : ''}`}
               >
-                <div className="h-8 w-8 rounded-lg bg-indigo-600/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400 animate-pulse">
+                <div className="h-8 w-8 rounded-lg bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600">
                   <Cpu className="h-4 w-4" />
                 </div>
                 <div>
-                  <span className="text-[6.5px] text-indigo-400 font-mono font-black tracking-widest block uppercase">AUTO SCHEDULER</span>
-                  <p className="text-[10px] text-white font-extrabold mt-0.5 whitespace-nowrap">Optimizing Class Timetable ✅</p>
+                  <span className="text-[6.5px] text-indigo-600 font-mono font-black tracking-widest block uppercase">AUTO SCHEDULER</span>
+                  <p className="text-[10px] text-slate-900 font-extrabold mt-0.5 whitespace-nowrap">Optimizing Class Timetable ✅</p>
                   <p className="text-[8px] text-slate-400 font-bold leading-none mt-0.5">Gemini GenAI-Powered</p>
                 </div>
               </motion.div>
 
               {/* Minimalist Tech indicators and vector circles */}
               <div className="absolute top-[35%] -right-4 w-10 h-10 rounded-full bg-[#0074E4]/10 border border-[#0074E4]/20 flex items-center justify-center text-[#0074E4] -z-10">
-                <Activity className="h-4 w-4 animate-pulse" />
+                <Activity className="h-4 w-4" />
               </div>
               <div className="absolute top-[60%] left-[-20px] w-8 h-8 rounded-full bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-600 -z-10">
                 <Bell className="h-3.5 w-3.5" />

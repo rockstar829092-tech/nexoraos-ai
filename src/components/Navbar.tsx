@@ -9,6 +9,8 @@ import { Menu, X, ArrowRight, GraduationCap } from 'lucide-react';
 
 interface NavbarProps {
   onScrollToSection?: (sectionId: string) => void;
+  onNavigateToHome?: () => void;
+  onNavigateToResources?: () => void;
   activeSection?: string;
 }
 
@@ -29,16 +31,16 @@ export const BrandLogo: React.FC<{ className?: string; size?: number }> = ({ cla
   );
 };
 
-export const Navbar: React.FC<NavbarProps> = ({ onScrollToSection, activeSection = 'hero' }) => {
+export const Navbar: React.FC<NavbarProps> = ({ onScrollToSection, onNavigateToHome, onNavigateToResources, activeSection = 'hero' }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   // Map user names and targets to direct scroll tags in the single-page application
   const menuItems = [
-    { name: 'Home', href: '#home', target: 'hero' },
+    { name: 'Home', href: '#', onClick: () => { onNavigateToHome && onNavigateToHome(); } },
     { name: 'ERP Solutions', href: '#telemetry', target: 'telemetry' },
     { name: 'Features', href: '#features', target: 'features' },
-    { name: 'Resources', href: '#playground', target: 'playground' },
-    { name: 'About', href: '#trust', target: 'trust' },
+    { name: 'Resources', href: '#', onClick: () => { onNavigateToResources && onNavigateToResources(); } },
+    { name: 'About', href: '#about', target: 'about' },
     { name: 'Contact', href: '#contact', target: 'contact' },
   ];
 
@@ -75,7 +77,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onScrollToSection, activeSection
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="sticky top-0 z-50 w-full border-b border-slate-200/50 bg-white/70 backdrop-blur-md"
+        className="sticky top-0 z-50 w-full border-b border-slate-200/50 bg-white/70 "
       >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
@@ -104,7 +106,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onScrollToSection, activeSection
                 <a
                   key={item.name}
                   href={item.href}
-                  onClick={(e) => handleNavClick(item.target, e)}
+                  onClick={(e) => item.onClick ? item.onClick() : handleNavClick(item.target, e)}
                   className={`relative text-sm font-semibold transition-colors duration-200 hover:text-blue-600 group py-1 ${
                     isCurrent ? 'text-blue-600' : 'text-slate-600'
                   }`}

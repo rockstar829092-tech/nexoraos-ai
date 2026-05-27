@@ -200,7 +200,7 @@ export const StudentManagement: React.FC<StudentManagementProps> = ({ onNavigate
                       disabled={regStatus === 'generating'}
                       className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-black py-2.5 px-3 rounded-xl transition-all text-xs flex items-center justify-center gap-1.5 active:scale-95 shadow-md shadow-blue-500/10 disabled:opacity-80"
                     >
-                      <RefreshCw className={`h-4.5 w-4.5 ${regStatus === 'generating' ? 'animate-spin' : ''}`} />
+                      <RefreshCw className={`h-4.5 w-4.5 ${regStatus === 'generating' ? '' : ''}`} />
                       <span>
                         {regStatus === 'idle' && 'Sync Hardware'}
                         {regStatus === 'generating' && 'Provisioning...'}
@@ -220,7 +220,7 @@ export const StudentManagement: React.FC<StudentManagementProps> = ({ onNavigate
             {/* Small modern badge saying "MODULE 01" and CTA Link */}
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3">
               <span className="text-[10px] sm:text-xs uppercase font-extrabold text-blue-700 bg-blue-100/60 py-1.5 px-4 rounded-full inline-flex items-center gap-1.5 tracking-wider border border-blue-200/50">
-                <span className="w-1.5 h-1.5 rounded-full bg-blue-600 inline-block animate-pulse" />
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-600 inline-block" />
                 MODULE 01
               </span>
               {onNavigateStudent && (
@@ -236,7 +236,7 @@ export const StudentManagement: React.FC<StudentManagementProps> = ({ onNavigate
             {/* Main Heading heading and highlighting */}
             <div className="space-y-4">
               <h3 className="text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl font-sans leading-tight">
-                Advanced <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Student Management</span> System
+                Advanced <span className="text-blue-600">Student Management</span> System
               </h3>
               <p className="text-slate-600 text-sm sm:text-base md:text-md leading-relaxed font-semibold max-w-xl mx-auto lg:mx-0">
                 Digitize, scale, and optimize the entire academic lifecycle. From initial application leads to graduation records, maintain a microsecond-synchronized, tamper-proof system for your entire student directory.
@@ -270,7 +270,7 @@ export const StudentManagement: React.FC<StudentManagementProps> = ({ onNavigate
 
             {/* Mini visual indicator highlighting standard cloud storage details */}
             <div className="bg-slate-50 rounded-2xl p-4 border border-slate-100 flex items-center gap-3.5 max-w-lg mx-auto lg:mx-0">
-              <Sparkles className="h-5 w-5 text-indigo-500 animate-bounce shrink-0" />
+              <Sparkles className="h-5 w-5 text-indigo-500 shrink-0" />
               <p className="text-xs text-slate-500 font-bold text-left leading-normal">
                 <span className="text-slate-900 font-black">Fast Synchronous Backups:</span> Our infrastructure updates live classroom check-ins to parents synchronously in less than 320ms.
               </p>

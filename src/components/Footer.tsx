@@ -16,7 +16,7 @@ import {
   ArrowUpRight 
 } from 'lucide-react';
 
-export const Footer: React.FC = () => {
+export const Footer: React.FC<{ onNavigate?: (page: string) => void }> = ({ onNavigate }) => {
   return (
     <footer className="relative bg-[#050B14] text-slate-300 border-t border-[#002D62]/20 pt-16 pb-12 w-full overflow-hidden">
       {/* Background soft tech gradients for futuristic aesthetic */}
@@ -52,7 +52,7 @@ export const Footer: React.FC = () => {
             </p>
 
             <div className="flex items-center gap-2 bg-[#001E3D]/30 border border-[#0074E4]/15 px-3 py-1.5 rounded-full w-fit">
-              <Cpu className="w-3.5 h-3.5 text-blue-400 animate-pulse" />
+              <Cpu className="w-3.5 h-3.5 text-blue-400" />
               <span className="text-[10px] font-mono tracking-wider font-extrabold text-blue-300">SYSTEM: ACTIVE SECURE CLOUD</span>
             </div>
           </div>
@@ -77,17 +77,26 @@ export const Footer: React.FC = () => {
             <h5 className="text-[10px] font-mono font-black text-[#0074E4] tracking-widest uppercase">Features</h5>
             <ul className="space-y-2 text-xs font-semibold text-slate-400">
               {[
-                'Student Management', 
-                'Attendance', 
-                'Fee Management', 
-                'AI Analytics', 
-                'Staff Payroll', 
-                'AI Communication', 
-                'Hostel Management'
+                { name: 'Student Management', page: 'student-management' },
+                { name: 'Staff Management', page: 'staff-management' },
+                { name: 'Arts & Music Management', page: 'staff-management' },
+                { name: 'Admission & Fee', page: 'admission-fee' },
+                { name: 'Attendance & Leave', page: 'attendance-leave' },
+                { name: 'Fee Management', page: 'fee-management' },
+                { name: 'Learning Management System', page: 'lms' },
+                { name: 'SMS & Email Alerts', page: 'alerts-management' },
+                { name: 'Mobile Apps Ecosystem', page: 'apps-management' },
+                { name: 'Role-Based Access & Security', page: 'role-based-access' },
+                { name: 'Exam Management', page: 'exam-management' },
+                { name: 'HR & Payroll', page: 'staff-payroll' },
+                { name: 'Transport Management', page: 'transport-management' },
+                { name: 'Hostel Management', page: 'hostel-management' },
+                { name: 'Library Management', page: 'library-management' },
+                { name: 'Calendar & Events Planner', page: 'calendar-events' }
               ].map((item) => (
-                <li key={item} className="flex items-center group">
-                  <span className="hover:text-white transition-all cursor-pointer hover:translate-x-0.5 flex items-center gap-0.5">
-                    {item}
+                <li key={item.name} className="flex items-center group">
+                  <span onClick={() => onNavigate && onNavigate(item.page)} className="hover:text-white transition-all cursor-pointer hover:translate-x-0.5 flex items-center gap-0.5">
+                    {item.name}
                     <ArrowUpRight className="w-3 h-3 text-[#0074E4] opacity-0 group-hover:opacity-100 transition-opacity" />
                   </span>
                 </li>
@@ -157,7 +166,7 @@ export const Footer: React.FC = () => {
         {/* BOTTOM BAR */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-500 font-bold gap-4">
           <div className="flex items-center gap-1.5">
-            <Sparkles className="w-3.5 h-3.5 text-indigo-400 animate-pulse" />
+            <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
             <span>© NexoraOS AI 2026. All Rights Reserved. Fully Certified Educational ERP Suite.</span>
           </div>
           <div className="flex gap-4 tracking-wide">

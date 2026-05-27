@@ -67,7 +67,7 @@ export const HostelManagementPage: React.FC<HostelManagementPageProps> = ({ onBa
     <div className="min-h-screen bg-[#F8FAFC] text-slate-900 font-sans selection:bg-amber-100 selection:text-amber-700 pb-20">
       
       {/* PREMIUM HEADER */}
-      <header className="sticky top-0 z-50 bg-white/70 backdrop-blur-xl border-b border-slate-200/60">
+      <header className="sticky top-0 z-50 bg-white/70  border-b border-slate-200/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="flex items-center gap-4">
             <motion.button 
@@ -336,7 +336,7 @@ export const HostelManagementPage: React.FC<HostelManagementPageProps> = ({ onBa
                 <div className="bg-white border border-slate-200 rounded-[40px] p-8 shadow-sm">
                    <div className="flex items-center justify-between mb-6">
                       <span className="text-[11px] font-black uppercase tracking-[0.2em] text-slate-400">Warden Security Feed</span>
-                      <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                      <div className="w-2 h-2 rounded-full bg-emerald-500" />
                    </div>
                    <div className="space-y-4">
                       {[
@@ -363,7 +363,7 @@ export const HostelManagementPage: React.FC<HostelManagementPageProps> = ({ onBa
           <motion.div 
             initial={{ y: 100 }}
             animate={{ y: 0 }}
-            className="flex items-center gap-2 p-1.5 bg-[#0F172A]/90 backdrop-blur-xl border border-white/10 rounded-full shadow-[0_20px_50px_rgba(245,158,11,0.3)]"
+            className="flex items-center gap-2 p-1.5 bg-[#0F172A]/90  border border-white/10 rounded-full shadow-[0_20px_50px_rgba(245,158,11,0.3)]"
           >
              <button className="px-6 py-3 bg-amber-600 text-white rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-amber-700 transition-all flex items-center gap-2 cursor-pointer shadow-lg shadow-amber-600/30">
                 <Printer className="w-3.5 h-3.5" />

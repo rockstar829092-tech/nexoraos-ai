@@ -95,8 +95,6 @@ export const StudentIDCard: React.FC<StudentIDCardProps> = ({
             <div className="flex items-center gap-2">
               <div className="w-7 h-7 rounded-lg bg-gradient-to-tr from-[#002B49] via-[#004B87] to-[#0074E4] text-white flex items-center justify-center font-extrabold text-xs tracking-tighter shadow-[0_4px_12px_rgba(0,116,228,0.25)] relative overflow-hidden">
                 <span className="relative z-10">N</span>
-                {/* Micro light sweep effect */}
-                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-[shimmer_2s_infinite]" />
               </div>
               <div className="text-left">
                 <span className="text-[11px] font-black tracking-tight text-[#002244] font-sans leading-none block">NEXORAOS</span>
@@ -107,20 +105,20 @@ export const StudentIDCard: React.FC<StudentIDCardProps> = ({
             {/* Glowing active badge block */}
             <div className="flex items-center gap-1.5 shrink-0">
               {biometricSyncActive ? (
-                <span className="bg-blue-650/10 text-blue-750 text-[7.5px] font-extrabold py-0.5 px-2 rounded-full border border-blue-600/25 flex items-center gap-1 shadow-2xs hover:bg-blue-600/15 transition-all" title="Biometric Hardware Sync">
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-600 inline-block animate-pulse shadow-[0_0_6px_rgba(37,99,235,0.6)]" />
+                <span className="bg-blue-50 text-blue-700 text-[7.5px] font-extrabold py-0.5 px-2 rounded-full border border-blue-200 flex items-center gap-1 shadow-sm hover:bg-blue-100 transition-all" title="Biometric Hardware Sync">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-600 inline-block" />
                   <Cpu className="w-2.5 h-2.5" />
                   RFID CHIP ACTIVE
                 </span>
               ) : (
-                <span className="bg-amber-500/10 text-amber-700 text-[7.5px] font-extrabold py-0.5 px-2 rounded-full border border-amber-500/25 flex items-center gap-1 animate-pulse hover:bg-amber-500/15 transition-all" title="Biometric Hardware Sync">
+                <span className="bg-amber-50 text-amber-700 text-[7.5px] font-extrabold py-0.5 px-2 rounded-full border border-amber-200 flex items-center gap-1 hover:bg-amber-100 transition-all" title="Biometric Hardware Sync">
                   <span className="w-1.5 h-1.5 rounded-full bg-amber-500 inline-block" />
                   <Cpu className="w-2.5 h-2.5" />
                   CHIP SYNC PENDING
                 </span>
               )}
-              <span className="bg-emerald-500/10 text-emerald-700 text-[7.5px] font-extrabold py-0.5 px-2 rounded-full border border-emerald-500/20 flex items-center gap-1 shadow-2xs">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
+              <span className="bg-emerald-50 text-emerald-700 text-[7.5px] font-extrabold py-0.5 px-2 rounded-full border border-emerald-200 flex items-center gap-1 shadow-sm">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block" />
                 ACTIVE
               </span>
             </div>
@@ -133,7 +131,7 @@ export const StudentIDCard: React.FC<StudentIDCardProps> = ({
               <div className="relative">
                 {/* Electric blue glowing aura boundary ring */}
                 <div className="absolute inset-0 bg-[#0074E4]/15 rounded-full blur-xs scale-110 pointer-events-none" />
-                <div className="absolute -inset-1 border border-[#0074E4]/30 rounded-full animate-spin-slow pointer-events-none" />
+                <div className="absolute -inset-1 border border-[#0074E4]/30 rounded-full pointer-events-none" />
                 <div className="absolute -inset-2 border border-dashed border-[#0074E4]/10 rounded-full pointer-events-none" />
                 
                 {/* Principal initial/avatar circle */}
@@ -161,7 +159,7 @@ export const StudentIDCard: React.FC<StudentIDCardProps> = ({
                 </h4>
                 
                 <div className="mt-1 flex items-center gap-1.5">
-                  <span className="inline-block bg-gradient-to-r from-[#004B87]/5 to-[#0074E4]/5 border border-[#004B87]/15 text-[#004B87] text-[8px] font-black py-0.5 px-2 rounded-md shadow-2xs leading-none">
+                  <span className="inline-block bg-blue-50 border border-blue-100 text-blue-700 text-[8px] font-black py-0.5 px-2 rounded-md shadow-sm leading-none">
                     {classTag}
                   </span>
                   <span className="text-[8px] font-mono font-bold text-slate-500 bg-slate-100 px-1 rounded-sm leading-none py-0.5">
@@ -190,8 +188,8 @@ export const StudentIDCard: React.FC<StudentIDCardProps> = ({
             </div>
           </div>
 
-          {/* BOTTOM STATS PANEL (Frosted Glass segments) */}
-          <div className="relative z-10 grid grid-cols-3 bg-white/45 backdrop-blur-md border border-white/60 p-1.5 rounded-xl shadow-2xs divide-x divide-slate-900/5 text-center shrink-0">
+          {/* BOTTOM STATS PANEL (Solid segments) */}
+          <div className="relative z-10 grid grid-cols-3 bg-white border border-slate-200 p-1.5 rounded-xl shadow-sm divide-x divide-slate-100 text-center shrink-0">
             <div>
               <span className="text-[6.5px] font-extrabold text-slate-400 block uppercase tracking-wider leading-none">PRESENCE</span>
               <span className="text-[10px] font-black text-[#002244] mt-0.5 block leading-none">{attendance}</span>
@@ -217,7 +215,7 @@ export const StudentIDCard: React.FC<StudentIDCardProps> = ({
             <div className="flex items-center gap-2.5">
               {/* NFC Logo wave representation */}
               <div className="flex items-center gap-1 bg-gradient-to-r from-[#004B87]/8 to-[#0074E4]/8 px-1.5 py-0.5 rounded border border-[#0074E4]/15">
-                <svg className="w-2.5 h-2.5 text-[#0074E4] animate-[pulse_1.5s_infinite]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                <svg className="w-2.5 h-2.5 text-[#0074E4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 8a8 8 0 0 1 14 0" />
                   <path d="M7 10a6 6 0 0 1 10 0" />
                   <path d="M9 12a4 4 0 0 1 6 0" />

@@ -141,10 +141,10 @@ export const WhyNexoraOS: React.FC = () => {
           {/* CARD 1: AI PREDICTIVE EARLY WARNING ENGINE */}
           <motion.div 
             variants={{
-              hidden: { opacity: 0, scale: 0.95, y: 30 },
-              show: { opacity: 1, scale: 1, y: 0, transition: { type: "spring", duration: 0.8, bounce: 0.3 } }
+              hidden: { opacity: 0, scale: 0.98, y: 15 },
+              show: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
             }}
-            className="bg-[#F8FAFC] border border-slate-200/80 rounded-3xl p-6 hover:border-blue-300 transition-all hover:shadow-md flex flex-col justify-between group h-full"
+            className="bg-[#F8FAFC] border border-slate-200/80 rounded-3xl p-6 hover:border-blue-300 transition-all hover:shadow-sm flex flex-col justify-between group h-full"
           >
             <div className="space-y-5">
               
@@ -174,7 +174,7 @@ export const WhyNexoraOS: React.FC = () => {
                 {/* Risk Score Indicator */}
                 <div className="flex justify-between items-center border-b border-slate-100 pb-2.5">
                   <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-rose-500" />
                     <span className="text-[9px] font-mono font-extrabold text-slate-400 uppercase tracking-wider">ACTIVE TELEMETRY</span>
                   </div>
                   {/* Badge */}
@@ -184,20 +184,14 @@ export const WhyNexoraOS: React.FC = () => {
                 </div>
 
                 {/* Example AI Alert Box */}
-                <motion.div 
-                  animate={isInView ? {
-                    scale: [1, 1.02, 1],
-                    borderColor: ["rgba(251, 113, 133, 0.4)", "rgba(239, 68, 68, 0.9)", "rgba(251, 113, 133, 0.4)"],
-                    backgroundColor: ["rgba(254, 242, 242, 0.5)", "rgba(254, 242, 242, 0.85)", "rgba(254, 242, 242, 0.5)"]
-                  } : {}}
-                  transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
-                  className="bg-rose-50/50 border border-thin border-rose-200/60 p-2.5 rounded-xl space-y-1"
+                <div 
+                  className="bg-rose-50/50 border border-thin border-rose-200/60 p-2.5 rounded-xl space-y-1 transition-colors duration-500"
                 >
                   <span className="text-[9px] font-black text-rose-800 uppercase tracking-widest block">AI RISK PREDICTION</span>
                   <p className="text-[10px] text-slate-705 leading-snug">
                     "Student Risk Score: 72% probability of academic decline detected."
                   </p>
-                </motion.div>
+                </div>
 
                 {/* Mini Line Chart simulation */}
                 <div className="h-10 flex items-end gap-1 px-1 pt-1 justify-between select-none">
@@ -243,10 +237,10 @@ export const WhyNexoraOS: React.FC = () => {
           {/* CARD 2: DYNAMIC AI AUTO-SUBSTITUTION ENGINE */}
           <motion.div 
             variants={{
-              hidden: { opacity: 0, scale: 0.95, y: 30 },
-              show: { opacity: 1, scale: 1, y: 0, transition: { type: "spring", duration: 0.8, bounce: 0.3 } }
+              hidden: { opacity: 0, scale: 0.98, y: 15 },
+              show: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.5, ease: "easeOut", delay: 0.1 } }
             }}
-            className="bg-[#F8FAFC] border border-slate-200/80 rounded-3xl p-6 hover:border-blue-300 transition-all hover:shadow-md flex flex-col justify-between group h-full"
+            className="bg-[#F8FAFC] border border-slate-200/80 rounded-3xl p-6 hover:border-blue-300 transition-all hover:shadow-sm flex flex-col justify-between group h-full"
           >
             <div className="space-y-5">
               
@@ -334,10 +328,10 @@ export const WhyNexoraOS: React.FC = () => {
           {/* CARD 3: SUPPORT STAFF TELEMETRY & AI AUDIT */}
           <motion.div 
             variants={{
-              hidden: { opacity: 0, scale: 0.95, y: 30 },
-              show: { opacity: 1, scale: 1, y: 0, transition: { type: "spring", duration: 0.8, bounce: 0.3 } }
+              hidden: { opacity: 0, scale: 0.98, y: 15 },
+              show: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.5, ease: "easeOut", delay: 0.2 } }
             }}
-            className="bg-[#F8FAFC] border border-slate-200/80 rounded-3xl p-6 hover:border-blue-300 transition-all hover:shadow-md flex flex-col justify-between group h-full"
+            className="bg-[#F8FAFC] border border-slate-200/80 rounded-3xl p-6 hover:border-blue-300 transition-all hover:shadow-sm flex flex-col justify-between group h-full"
           >
             <div className="space-y-5">
               
@@ -347,21 +341,14 @@ export const WhyNexoraOS: React.FC = () => {
                   <MapPin className="w-5 h-5 text-[#2563EB]" />
                   <ShieldCheck className="w-3.5 h-3.5 text-indigo-600 -ml-1.5 bg-white rounded-full p-0.5 shadow-xs" />
                 </div>
-                <motion.div 
-                  animate={isInView ? {
-                    scale: [1, 1.05, 1],
-                    borderColor: ["#a7f3d0", "#34d399", "#a7f3d0"],
-                    boxShadow: ["0 1px 2px rgba(0,0,0,0.05)", "0 0 10px rgba(52, 211, 153, 0.2)", "0 1px 2px rgba(0,0,0,0.05)"]
-                  } : {}}
-                  transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
+                <div 
                   className="flex items-center gap-1.5 bg-emerald-50 border border-emerald-200/55 px-2.5 py-1 rounded-full shadow-xs"
                 >
                   <span className="h-2 w-2 relative">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
                   </span>
                   <span className="text-[9px] font-extrabold text-emerald-700 uppercase tracking-widest">Live Tracking Active</span>
-                </motion.div>
+                </div>
               </div>
 
               {/* Copy Block */}
@@ -387,7 +374,7 @@ export const WhyNexoraOS: React.FC = () => {
                   
                   {/* Radar grid ring accents */}
                   <div className="absolute inset-0 bg-[radial-gradient(#2563eb12_1px,transparent_1px)] bg-[size:10px_10px]" />
-                  <div className="absolute w-16 h-16 border border-blue-500/20 rounded-full animate-ping" />
+                  <div className="absolute w-16 h-16 border border-blue-500/20 rounded-full" />
                   <div className="absolute w-28 h-28 border border-dashed border-indigo-400/20 rounded-full" />
                   
                   {/* Center Hub */}
@@ -531,11 +518,11 @@ export const WhyNexoraOS: React.FC = () => {
           {toasts.map((toast) => (
             <motion.div
               key={toast.id}
-              initial={{ opacity: 0, y: 30, scale: 0.9 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -20, scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 350, damping: 25 }}
-              className="pointer-events-auto bg-[#0F172A]/95 text-white p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.15)] border border-slate-700/55 flex items-start gap-3 backdrop-blur-md"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, transition: { duration: 0.2 } }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="pointer-events-auto bg-[#0F172A]/95 text-white p-4 rounded-2xl shadow-xl border border-slate-700/55 flex items-start gap-3 "
             >
               <div className="mt-0.5 shrink-0">
                 {toast.type === "warning" ? (
@@ -553,7 +540,6 @@ export const WhyNexoraOS: React.FC = () => {
                   <h4 className="text-[11px] font-black uppercase tracking-wider text-slate-100 flex items-center gap-1.5">
                     <span>{toast.title}</span>
                     <span className="flex h-1.5 w-1.5 relative">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 bg-blue-400" />
                       <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-blue-500" />
                     </span>
                   </h4>

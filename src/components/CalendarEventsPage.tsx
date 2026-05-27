@@ -84,7 +84,7 @@ export const CalendarEventsPage: React.FC<CalendarEventsPageProps> = ({ onBack }
       <div className="absolute top-0 left-0 right-0 h-[500px] bg-gradient-to-b from-blue-50/80 to-[#F8FAFC] pointer-events-none z-0" />
       
       {/* Navbar Integration Area */}
-      <div className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200 shadow-sm relative">
+      <div className="sticky top-0 z-50 bg-white/80  border-b border-slate-200 shadow-sm relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <button 
             onClick={onBack}
@@ -109,7 +109,7 @@ export const CalendarEventsPage: React.FC<CalendarEventsPageProps> = ({ onBack }
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="space-y-3">
             <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-blue-100 border border-blue-200">
-              <Sparkles className="w-4 h-4 text-blue-600 animate-pulse" />
+              <Sparkles className="w-4 h-4 text-blue-600" />
               <span className="text-xs font-bold text-blue-700 tracking-wide uppercase">Module 14 Active</span>
             </div>
             <h1 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
@@ -122,23 +122,23 @@ export const CalendarEventsPage: React.FC<CalendarEventsPageProps> = ({ onBack }
         </div>
 
         {/* Owner Value Proposition Banner */}
-        <div className="bg-gradient-to-r from-[#1e3a8a] via-blue-900 to-blue-800 rounded-3xl p-8 shadow-xl relative overflow-hidden flex flex-col md:flex-row items-center gap-8">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4 pointer-events-none" />
+        <div className="bg-blue-600 rounded-3xl p-8 shadow-lg relative overflow-hidden flex flex-col md:flex-row items-center gap-8 border border-blue-500">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-400/20 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4 pointer-events-none" />
           
-          <div className="w-16 h-16 bg-white/10 rounded-2xl border border-white/20 flex flex-col items-center justify-center shrink-0 backdrop-blur-md relative z-10">
+          <div className="w-16 h-16 bg-white/20 rounded-2xl border border-white/30 flex flex-col items-center justify-center shrink-0  relative z-10 shadow-sm">
             <Calendar className="w-8 h-8 text-white mb-0.5" />
           </div>
           
           <div className="flex-1 relative z-10">
             <div className="flex items-center gap-3 mb-2">
               <h2 className="text-2xl font-bold text-white tracking-tight">More Than Just a Calendar</h2>
-              <span className="px-2.5 py-1 rounded-full bg-blue-400/20 border border-blue-300/30 text-blue-100 text-[10px] font-black tracking-widest uppercase flex items-center gap-1.5">
+              <span className="px-2.5 py-1 rounded-full bg-blue-400/30 border border-blue-300/40 text-white text-[10px] font-black tracking-widest uppercase flex items-center gap-1.5 shadow-sm">
                 <Sparkles className="w-3 h-3" />
                 NexoraOS AI
               </span>
             </div>
-            <p className="text-blue-100/90 text-sm md:text-base leading-relaxed font-medium max-w-4xl">
+            <p className="text-blue-50 text-sm md:text-base leading-relaxed font-medium max-w-4xl">
               NexoraOS AI's Calendar Module does more than store dates. It uses Artificial Intelligence to detect exam conflicts, automatically generate academic calendars, send parent notifications, automate event planning, and transform every academic activity into a centralized intelligent planning system.
             </p>
           </div>
@@ -309,7 +309,7 @@ export const CalendarEventsPage: React.FC<CalendarEventsPageProps> = ({ onBack }
                           <div className="flex items-center gap-2 mb-1">
                             <span className="text-xs font-bold text-slate-400 block">{ev.date}</span>
                             {ev.conflict ? (
-                              <span className="px-1.5 py-0.5 rounded bg-rose-50 border border-rose-100 text-[9px] font-black text-rose-600 uppercase tracking-widest animate-pulse flex items-center gap-1 text-xs shrink-0">
+                              <span className="px-1.5 py-0.5 rounded bg-rose-50 border border-rose-100 text-[9px] font-black text-rose-600 uppercase tracking-widest flex items-center gap-1 text-xs shrink-0">
                                 <AlertTriangle className="w-2.5 h-2.5" /> Resource Conflict
                               </span>
                             ) : (
@@ -349,64 +349,63 @@ export const CalendarEventsPage: React.FC<CalendarEventsPageProps> = ({ onBack }
             </div>
 
             {/* AI PLANNING ENGINE */}
-            <div className="bg-gradient-to-br from-indigo-900 via-blue-900 to-slate-900 rounded-3xl p-8 relative overflow-hidden shadow-xl border border-blue-800/50 text-white">
-              <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 mix-blend-overlay"></div>
-              <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/20 rounded-full blur-[100px] pointer-events-none" />
+            <div className="bg-slate-50 rounded-3xl p-8 relative overflow-hidden shadow-sm border-2 border-slate-200 text-slate-900">
+              <div className="absolute top-0 right-0 w-96 h-96 bg-blue-50 rounded-full blur-[100px] pointer-events-none" />
               
-              <div className="relative z-10 mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-6">
+              <div className="relative z-10 mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-6">
                 <div>
-                  <h2 className="text-2xl font-extrabold flex items-center gap-3">
-                    <Sparkles className="w-6 h-6 text-blue-400" />
+                  <h2 className="text-2xl font-extrabold flex items-center gap-3 text-slate-900">
+                    <Sparkles className="w-6 h-6 text-blue-600" />
                     AI Planning Engine
                   </h2>
-                  <p className="text-blue-200 text-sm mt-1">Autonomous orchestration of institutional schedules.</p>
+                  <p className="text-slate-500 text-sm mt-1 font-medium">Autonomous orchestration of institutional schedules.</p>
                 </div>
-                <div className="px-4 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-xs font-bold tracking-widest uppercase flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <div className="px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-600 text-xs font-bold tracking-widest uppercase flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500" />
                   Status: Active
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
                 {/* Feature 1 */}
-                <div className="bg-white/5 border border-white/10 rounded-2xl p-5 hover:bg-white/10 transition-colors backdrop-blur-sm">
+                <div className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-blue-400 hover:shadow-md transition-all shadow-sm">
                   <div className="flex justify-between items-start mb-3">
-                    <div className="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center border border-blue-400/20">
-                      <Calendar className="w-5 h-5 text-blue-300" />
+                    <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center border border-blue-100">
+                      <Calendar className="w-5 h-5 text-blue-600" />
                     </div>
-                    <span className="px-2 py-0.5 bg-emerald-500/20 text-emerald-300 rounded text-[10px] font-bold uppercase">Generated Successfully</span>
+                    <span className="px-2 py-0.5 bg-emerald-50 text-emerald-600 rounded text-[10px] font-bold uppercase border border-emerald-100">Generated Successfully</span>
                   </div>
-                  <h4 className="font-bold text-lg mb-1">AI Academic Calendar Generator</h4>
-                  <p className="text-xs text-blue-100/70 mb-3">Defines session dates, maps academic patterns, and automatically populates unit tests, PTMs, sports events, and vacations.</p>
-                  <button className="text-xs font-bold text-blue-300 hover:text-white transition-colors flex items-center gap-1">View Parameters <ArrowLeft className="w-3 h-3 rotate-180" /></button>
+                  <h4 className="font-bold text-lg mb-1 text-slate-900">AI Academic Calendar Generator</h4>
+                  <p className="text-xs text-slate-500 font-medium mb-3">Defines session dates, maps academic patterns, and automatically populates unit tests, PTMs, sports events, and vacations.</p>
+                  <button className="text-xs font-bold text-blue-600 hover:text-blue-700 transition-colors flex items-center gap-1 cursor-pointer">View Parameters <ArrowLeft className="w-3 h-3 rotate-180" /></button>
                 </div>
 
                 {/* Feature 2: Highly Interactive Infrastructure Conflict Safeguard */}
-                <div className="bg-white/5 border border-amber-500/30 rounded-2xl p-5 hover:bg-white/10 transition-colors backdrop-blur-sm relative overflow-hidden md:col-span-2">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl" />
+                <div className="bg-white border-2 border-amber-200 rounded-2xl p-5 hover:border-amber-400 hover:shadow-md transition-all relative overflow-hidden md:col-span-2 shadow-sm">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-amber-50 rounded-full blur-2xl opacity-50" />
                   <div className="flex justify-between items-start mb-3 relative z-10">
                     <div className="flex items-center gap-2">
-                      <div className="w-10 h-10 rounded-xl bg-amber-500/20 flex items-center justify-center border border-amber-400/20">
-                        <AlertTriangle className="w-5 h-5 text-amber-300" />
+                      <div className="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center border border-amber-100">
+                        <AlertTriangle className="w-5 h-5 text-amber-600" />
                       </div>
                       <div>
-                        <h4 className="font-bold text-lg leading-tight">AI Infrastructure Conflict Safeguard</h4>
-                        <p className="text-[10px] text-amber-300 font-bold uppercase tracking-wider">Infrastructure & General Conflicts Detected</p>
+                        <h4 className="font-bold text-lg leading-tight text-slate-900">AI Infrastructure Conflict Safeguard</h4>
+                        <p className="text-[10px] text-amber-600 font-bold uppercase tracking-wider">Infrastructure & General Conflicts Detected</p>
                       </div>
                     </div>
-                    <span className="px-2 py-1 bg-amber-500/20 text-amber-300 rounded-lg text-[10px] font-black uppercase tracking-wider animate-pulse">
+                    <span className="px-2 py-1 bg-amber-50 text-amber-600 rounded-lg text-[10px] font-black uppercase tracking-wider border border-amber-100">
                       {infraConflicts.filter(c => c.status === 'pending').length} Active
                     </span>
                   </div>
                   
-                  <p className="text-xs text-blue-200/95 mb-4 max-w-3xl leading-relaxed">
+                  <p className="text-xs text-slate-500 font-medium mb-4 max-w-3xl leading-relaxed">
                     AI automatically scans physical asset booking systems, room logs, sport areas, and scheduled equipment repairs, flagging overlapping events and proposing conflict-free, optimal alternative dates.
                   </p>
                   
                   <div className="flex items-center gap-3">
                     <button 
                       onClick={() => setShowConflictsPanel(!showConflictsPanel)}
-                      className="px-4 py-2 bg-amber-500/25 hover:bg-amber-500/35 border border-amber-500/40 text-amber-200 hover:text-white rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer"
+                      className="px-4 py-2 bg-amber-600 text-white rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shadow-lg shadow-amber-200 hover:shadow-xl hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer"
                     >
                       <span>{showConflictsPanel ? "Hide Infrastructure Conflicts Panel" : "Open Conflict Resolution Desk"}</span>
                       <ArrowRight className={`w-3.5 h-3.5 transition-transform ${showConflictsPanel ? 'rotate-90' : ''}`} />
@@ -420,10 +419,10 @@ export const CalendarEventsPage: React.FC<CalendarEventsPageProps> = ({ onBack }
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="overflow-hidden mt-6 pt-6 border-t border-white/10 space-y-4"
+                        className="overflow-hidden mt-6 pt-6 border-t border-slate-200 space-y-4"
                       >
-                        <h5 className="text-xs font-black uppercase tracking-widest text-amber-300 flex items-center gap-1.5">
-                          <Settings className="w-3.5 h-3.5 animate-spin" />
+                        <h5 className="text-xs font-black uppercase tracking-widest text-amber-600 flex items-center gap-1.5">
+                          <Settings className="w-3.5 h-3.5" />
                           AI Suggested Rescheduling Recommendations
                         </h5>
 
@@ -431,33 +430,33 @@ export const CalendarEventsPage: React.FC<CalendarEventsPageProps> = ({ onBack }
                           {infraConflicts.map(conf => (
                             <div 
                               key={conf.id} 
-                              className={`rounded-xl p-4 transition-all relative ${conf.status === 'resolved' ? 'bg-emerald-950/20 border border-emerald-500/20' : 'bg-slate-950/40 border border-slate-800'}`}
+                              className={`rounded-xl p-4 transition-all relative border-2 ${conf.status === 'resolved' ? 'bg-emerald-50 border-emerald-200' : 'bg-slate-50 border-slate-200'}`}
                             >
                               <div className="space-y-3">
                                 <div className="flex justify-between items-start gap-2">
-                                  <span className="text-[9px] font-mono tracking-wider uppercase text-slate-400 bg-white/5 py-0.5 px-2 rounded">{conf.resource}</span>
+                                  <span className="text-[9px] font-mono tracking-wider uppercase text-slate-500 bg-white border border-slate-100 py-0.5 px-2 rounded shadow-sm">{conf.resource}</span>
                                   {conf.status === 'resolved' ? (
-                                    <span className="px-1.5 py-0.5 bg-emerald-500/20 text-emerald-300 rounded text-[9px] font-black uppercase tracking-wider">Resolved</span>
+                                    <span className="px-1.5 py-0.5 bg-emerald-100 text-emerald-700 rounded text-[9px] font-black uppercase tracking-wider">Resolved</span>
                                   ) : (
-                                    <span className="px-1.5 py-0.5 bg-amber-500/20 text-amber-300 rounded text-[9px] font-black uppercase tracking-wider animate-pulse font-mono">Unresolved</span>
+                                    <span className="px-1.5 py-0.5 bg-amber-100 text-amber-700 rounded text-[9px] font-black uppercase tracking-wider font-mono">Unresolved</span>
                                   )}
                                 </div>
 
                                 <div className="space-y-1">
-                                  <h6 className="font-bold text-xs uppercase text-white">{conf.event}</h6>
-                                  <p className="text-[10px] text-slate-350 text-slate-300 leading-relaxed font-semibold">
+                                  <h6 className="font-bold text-xs uppercase text-slate-900">{conf.event}</h6>
+                                  <p className="text-[10px] text-slate-600 leading-snug font-semibold">
                                     {conf.conflict}
                                   </p>
                                 </div>
 
-                                <div className="bg-white/[0.02] border border-white/5 rounded-xl p-2.5 space-y-2">
-                                  <div className="flex justify-between items-center text-[10px] text-slate-400 font-semibold">
+                                <div className="bg-white border-2 border-slate-100 rounded-xl p-2.5 space-y-2 shadow-inner">
+                                  <div className="flex justify-between items-center text-[10px] text-slate-500 font-bold">
                                     <span>Original:</span>
-                                    <span className="line-through text-rose-400">{conf.originalDate}</span>
+                                    <span className="line-through text-rose-500">{conf.originalDate}</span>
                                   </div>
-                                  <div className="flex justify-between items-center text-[10px] text-slate-300 font-semibold">
-                                    <span className="text-blue-300 font-bold">Suggested:</span>
-                                    <span className="text-emerald-450 text-emerald-400 font-extrabold">{conf.suggestedDate}</span>
+                                  <div className="flex justify-between items-center text-[10px] text-slate-700 font-bold">
+                                    <span className="text-blue-600">Suggested:</span>
+                                    <span className="text-emerald-600 font-black">{conf.suggestedDate}</span>
                                   </div>
                                 </div>
 
@@ -465,11 +464,11 @@ export const CalendarEventsPage: React.FC<CalendarEventsPageProps> = ({ onBack }
                                   <button
                                     onClick={() => handleResolveConflict(conf.id, conf.suggestedDate)}
                                     disabled={isResolving === conf.id}
-                                    className="w-full py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-800 text-white rounded-lg text-[10px] font-bold transition-all flex items-center justify-center gap-1 cursor-pointer"
+                                    className="w-full py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white rounded-lg text-[10px] font-bold transition-all flex items-center justify-center gap-1 cursor-pointer shadow-md"
                                   >
                                     {isResolving === conf.id ? (
                                       <>
-                                        <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+                                        <RefreshCw className="w-3.5 h-3.5" />
                                         <span>Applying...</span>
                                       </>
                                     ) : (
@@ -477,7 +476,7 @@ export const CalendarEventsPage: React.FC<CalendarEventsPageProps> = ({ onBack }
                                     )}
                                   </button>
                                 ) : (
-                                  <div className="w-full py-2 bg-slate-900 border border-emerald-500/15 text-emerald-400 text-[10px] rounded-lg font-bold text-center">
+                                  <div className="w-full py-2 bg-emerald-50 border-2 border-emerald-200 text-emerald-600 text-[10px] rounded-lg font-black text-center shadow-sm">
                                     ✓ Event Moved to {conf.suggestedDate}
                                   </div>
                                 )}
@@ -491,7 +490,7 @@ export const CalendarEventsPage: React.FC<CalendarEventsPageProps> = ({ onBack }
                 </div>
 
                 {/* Feature 3 */}
-                <div className="bg-white/5 border border-white/10 rounded-2xl p-5 hover:bg-white/10 transition-colors backdrop-blur-sm">
+                <div className="bg-white/5 border border-white/10 rounded-2xl p-5 hover:bg-white/10 transition-colors ">
                   <div className="flex justify-between items-start mb-3">
                     <div className="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center border border-purple-400/20">
                       <MessageSquare className="w-5 h-5 text-purple-300" />
@@ -504,7 +503,7 @@ export const CalendarEventsPage: React.FC<CalendarEventsPageProps> = ({ onBack }
                 </div>
 
                 {/* Feature 4 & 5 Combined visual */}
-                <div className="bg-white/5 border border-white/10 rounded-2xl p-5 hover:bg-white/10 transition-colors backdrop-blur-sm flex flex-col justify-between">
+                <div className="bg-white/5 border border-white/10 rounded-2xl p-5 hover:bg-white/10 transition-colors  flex flex-col justify-between">
                    <div>
                     <div className="flex justify-between items-start mb-3">
                       <div className="w-10 h-10 rounded-xl bg-teal-500/20 flex items-center justify-center border border-teal-400/20">
@@ -555,7 +554,7 @@ export const CalendarEventsPage: React.FC<CalendarEventsPageProps> = ({ onBack }
                      </p>
                    </div>
                    <div className="px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full text-[10px] font-bold uppercase tracking-wider whitespace-nowrap flex items-center gap-1.5 shrink-0 self-start sm:self-center border border-emerald-100">
-                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" /> AI Scheduling Assistant Active
+                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" /> AI Scheduling Assistant Active
                    </div>
                 </div>
 
@@ -657,7 +656,7 @@ export const CalendarEventsPage: React.FC<CalendarEventsPageProps> = ({ onBack }
                          <div className="bg-blue-600 p-3.5 rounded-xl border border-blue-500 flex-1 shadow-md text-blue-100 w-full group relative overflow-hidden cursor-pointer">
                            <div className="absolute inset-0 bg-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" />
                            <div className="relative z-10">
-                             <div className="flex items-center gap-1.5 mb-1.5"><span className="w-2 h-2 rounded-full bg-blue-300 animate-pulse"/> <span className="font-bold text-white text-xs uppercase tracking-wider">Output</span></div>
+                             <div className="flex items-center gap-1.5 mb-1.5"><span className="w-2 h-2 rounded-full bg-blue-300"/> <span className="font-bold text-white text-xs uppercase tracking-wider">Output</span></div>
                              <span className="font-semibold text-white">Ready-to-Send Communication</span>
                            </div>
                          </div>
@@ -672,36 +671,38 @@ export const CalendarEventsPage: React.FC<CalendarEventsPageProps> = ({ onBack }
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 
                 {/* Staff Notifications */}
-                <div className="bg-slate-900 rounded-3xl p-6 shadow-xl relative overflow-hidden text-white group">
-                  <div className="absolute top-0 right-0 w-48 h-48 bg-blue-500/20 rounded-full blur-3xl pointer-events-none group-hover:bg-blue-400/30 transition-all" />
+                <div className="bg-slate-50 border-2 border-slate-200 rounded-3xl p-6 shadow-sm relative overflow-hidden text-slate-900 group shadow-sm">
+                  <div className="absolute top-0 right-0 w-48 h-48 bg-blue-100/50 rounded-full blur-3xl pointer-events-none group-hover:bg-blue-200/50 transition-all" />
                   
                   <div className="relative z-10 mb-6">
-                    <h3 className="text-lg font-bold tracking-tight mb-1 flex items-center gap-2"><Bell className="w-5 h-5 text-blue-400" /> Automated Staff Notifications</h3>
-                    <p className="text-sm text-slate-400 font-medium">Automatic routing to internal stakeholders.</p>
+                    <h3 className="text-lg font-black tracking-tight mb-1 flex items-center gap-2 text-slate-900">
+                      <Bell className="w-5 h-5 text-blue-600" /> 
+                      Automated Staff Notifications
+                    </h3>
+                    <p className="text-sm text-slate-500 font-medium">Automatic routing to internal stakeholders.</p>
                   </div>
                   
                   <div className="space-y-5 relative z-10">
                     <div className="flex flex-wrap gap-2 mb-2">
-                       <span className="px-3 py-1.5 bg-white/10 rounded-xl text-xs font-bold text-white shadow-sm border border-white/5">Teachers</span>
-                       <span className="px-3 py-1.5 bg-white/10 rounded-xl text-xs font-bold text-white shadow-sm border border-white/5">Admin Staff</span>
-                       <span className="px-3 py-1.5 bg-white/10 rounded-xl text-xs font-bold text-white shadow-sm border border-white/5">Coordinators</span>
-                       <span className="px-3 py-1.5 bg-white/10 rounded-xl text-xs font-bold text-white shadow-sm border border-white/5">HODs</span>
+                       {['Teachers', 'Admin Staff', 'Coordinators', 'HODs'].map(target => (
+                         <span key={target} className="px-3 py-1.5 bg-white border border-slate-200 rounded-xl text-xs font-bold text-slate-600 shadow-sm">{target}</span>
+                       ))}
                     </div>
 
-                    <div className="flex gap-4 border-t border-white/10 pt-4 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                       <span className="flex items-center gap-1"><Mail className="w-3.5 h-3.5 text-slate-400"/> Email</span>
-                       <span className="flex items-center gap-1"><MessageSquare className="w-3.5 h-3.5 text-slate-400"/> SMS</span>
-                       <span className="flex items-center gap-1"><MessageSquare className="w-3.5 h-3.5 text-slate-400"/> WhatsApp</span>
-                       <span className="flex items-center gap-1"><Smartphone className="w-3.5 h-3.5 text-slate-400"/> Push</span>
+                    <div className="flex gap-4 border-t border-slate-200 pt-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                       <span className="flex items-center gap-1.5"><Mail className="w-3.5 h-3.5 text-blue-600"/> Email</span>
+                       <span className="flex items-center gap-1.5"><MessageSquare className="w-3.5 h-3.5 text-green-600"/> SMS</span>
+                       <span className="flex items-center gap-1.5"><MessageSquare className="w-3.5 h-3.5 text-emerald-600"/> WhatsApp</span>
+                       <span className="flex items-center gap-1.5"><Smartphone className="w-3.5 h-3.5 text-indigo-600"/> Push</span>
                     </div>
 
-                    <div className="bg-white/5 border border-white/10 rounded-xl p-4 italic text-sm text-slate-200 mt-2 hover:bg-white/10 transition-colors">
+                    <div className="bg-white border border-slate-100 rounded-xl p-4 italic text-sm text-slate-600 mt-2 hover:border-slate-300 transition-all shadow-inner">
                       "Monthly Staff Meeting scheduled for Friday, 10:00 AM. Attendance required."
                     </div>
                     
-                    <div className="flex items-center justify-between border-t border-white/10 pt-4 mt-2">
-                      <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Delivery Status</span>
-                      <span className="text-sm font-extrabold text-blue-400 flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4"/> 98.7% Successfully Delivered</span>
+                    <div className="flex items-center justify-between border-t border-slate-200 pt-4 mt-2">
+                      <span className="text-xs font-black text-slate-400 uppercase tracking-wider">Delivery Status</span>
+                      <span className="text-sm font-black text-blue-600 flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4"/> 98.7% Delivered</span>
                     </div>
                   </div>
                 </div>
@@ -782,9 +783,9 @@ export const CalendarEventsPage: React.FC<CalendarEventsPageProps> = ({ onBack }
             <div className="sticky top-24 flex flex-col gap-6">
               
               {/* Command Center */}
-              <div className="bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden shadow-blue-900/5">
-                <div className="bg-slate-900 p-6 text-white text-center border-b border-slate-800">
-                  <h3 className="text-xl font-bold tracking-tight">Institutional Planning Command Center</h3>
+              <div className="bg-white rounded-3xl border-2 border-slate-200 shadow-md overflow-hidden">
+                <div className="bg-slate-50 p-6 text-slate-900 text-center border-b-2 border-slate-200 shadow-inner">
+                  <h3 className="text-xl font-black tracking-tight uppercase">Planning Command Center</h3>
                 </div>
                 
                 <div className="p-6 flex flex-col items-center justify-center border-b border-slate-100">
@@ -857,7 +858,7 @@ export const CalendarEventsPage: React.FC<CalendarEventsPageProps> = ({ onBack }
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-sm font-bold tracking-tight text-slate-900 uppercase">Automation Center</h3>
                   <div className="flex items-center gap-1.5 px-2 py-1 bg-emerald-50 text-emerald-700 rounded text-[10px] font-bold uppercase tracking-wider">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" /> Active
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" /> Active
                   </div>
                 </div>
                 
@@ -879,14 +880,14 @@ export const CalendarEventsPage: React.FC<CalendarEventsPageProps> = ({ onBack }
         </div>
 
         {/* BOTTOM VALUE STATEMENT */}
-        <div className="bg-slate-900 rounded-3xl p-10 text-center relative overflow-hidden mb-10 shadow-xl border border-slate-800">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[800px] h-[500px] bg-blue-600/20 rounded-full blur-[120px] pointer-events-none" />
+        <div className="bg-slate-50 border-2 border-slate-200 rounded-3xl p-10 text-center relative overflow-hidden mb-10 shadow-sm">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[800px] h-[500px] bg-blue-100/50 rounded-full blur-[120px] pointer-events-none" />
           <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
-            <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mb-6 border border-white/20 backdrop-blur-md">
-              <Bot className="w-8 h-8 text-white" />
+            <div className="w-16 h-16 bg-white border border-slate-200 rounded-2xl flex items-center justify-center mb-6 shadow-sm">
+              <Bot className="w-8 h-8 text-blue-600" />
             </div>
-            <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight mb-6 leading-tight">Your Calendar Doesn't Just Store Dates.<br className="hidden md:block"/> It Manages Your Institution.</h2>
-            <p className="text-slate-300 text-lg font-medium leading-relaxed max-w-3xl">
+            <h2 className="text-3xl md:text-5xl font-black text-slate-950 tracking-tight mb-6 leading-tight uppercase">Your Calendar Doesn't Just Store Dates.<br className="hidden md:block"/> It Manages Your Institution.</h2>
+            <p className="text-slate-600 text-lg font-bold leading-relaxed max-w-3xl">
               NexoraOS AI transforms the traditional school calendar into an intelligent administrative assistant that automatically coordinates meetings, detects scheduling conflicts, manages notifications, generates notices, and keeps administrators, teachers, parents, and students synchronized without manual effort.
             </p>
           </div>

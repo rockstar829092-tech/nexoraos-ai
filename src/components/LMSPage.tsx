@@ -100,21 +100,21 @@ export const LMSPage: React.FC<LMSPageProps> = ({ onBack }) => {
     <div className="min-h-screen bg-[#F8FAFC] text-slate-900 font-sans selection:bg-indigo-100 selection:text-indigo-700 pb-20">
       
       {/* 1. PREMIUM STICKY HEADER */}
-      <header className="sticky top-0 z-50 bg-white/70 backdrop-blur-xl border-b border-slate-200/60">
+      <header className="sticky top-0 z-50 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="flex items-center gap-4">
             <motion.button 
               whileHover={{ x: -4 }}
               whileTap={{ scale: 0.98 }}
               onClick={onBack}
-              className="flex items-center gap-2 px-4 py-2 bg-indigo-50 text-indigo-600 rounded-2xl font-bold text-sm hover:bg-indigo-100 transition-colors cursor-pointer group"
+              className="flex items-center gap-2 px-4 py-2 bg-slate-100 text-slate-700 rounded-2xl font-bold text-sm hover:bg-slate-200 transition-colors cursor-pointer group shadow-sm border border-slate-200"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Back to Dashboard</span>
             </motion.button>
             <div className="h-8 w-px bg-slate-200 hidden md:block" />
             <div className="flex items-center gap-3">
-              <span className="px-3 py-1 bg-[#4F46E5] text-white text-[10px] font-black uppercase tracking-widest rounded-full shadow-lg shadow-indigo-200">
+              <span className="px-3 py-1 bg-[#4F46E5] text-white text-[10px] font-black uppercase tracking-widest rounded-full shadow-md shadow-indigo-100">
                 LMS HUB
               </span>
               <div>
@@ -125,13 +125,13 @@ export const LMSPage: React.FC<LMSPageProps> = ({ onBack }) => {
           </div>
           
           <div className="flex items-center gap-3">
-             <button className="flex items-center gap-2 px-4 py-2 bg-[#4F46E5] text-white rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-200 cursor-pointer">
+             <button className="flex items-center gap-2 px-4 py-2 bg-[#4F46E5] text-white rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-indigo-700 transition-all shadow-md shadow-indigo-100 cursor-pointer">
                 <Plus className="w-4 h-4" />
                 <span>Create Course</span>
              </button>
              <div className="w-10 h-10 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-slate-400 shadow-sm relative">
                <Video className="w-5 h-5 text-rose-500" />
-               <span className="absolute top-0 right-0 w-3 h-3 bg-rose-500 border-2 border-white rounded-full animate-pulse" />
+               <span className="absolute top-0 right-0 w-3 h-3 bg-rose-500 border-2 border-white rounded-full" />
             </div>
           </div>
         </div>
@@ -235,7 +235,7 @@ export const LMSPage: React.FC<LMSPageProps> = ({ onBack }) => {
                          <div className={`h-40 ${course.image} relative overflow-hidden flex items-center justify-center`}>
                             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                             <BookOpen className="w-12 h-12 text-slate-300 group-hover:scale-125 group-hover:rotate-12 transition-transform duration-500" />
-                            <div className="absolute top-4 right-4 px-3 py-1 bg-white/20 backdrop-blur-md border border-white/30 rounded-full text-[8px] font-black uppercase tracking-widest text-white">
+                            <div className="absolute top-4 right-4 px-3 py-1 bg-white border border-slate-200 rounded-full text-[8px] font-black uppercase tracking-widest text-slate-900">
                                 {course.id}
                             </div>
                          </div>
@@ -280,19 +280,19 @@ export const LMSPage: React.FC<LMSPageProps> = ({ onBack }) => {
                     ))}
                   </div>
 
-                  <div className="bg-indigo-900 rounded-[40px] p-8 text-white relative overflow-hidden shadow-2xl">
-                     <div className="absolute top-0 right-0 p-8 opacity-10">
+                  <div className="bg-slate-100 border-2 border-slate-200 rounded-[40px] p-8 text-slate-900 relative overflow-hidden shadow-sm">
+                     <div className="absolute top-0 right-0 p-8 opacity-5">
                         <GraduationCap className="w-48 h-48" />
                      </div>
                      <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
                         <div className="space-y-4 max-w-md text-center md:text-left">
                            <div className="flex items-center justify-center md:justify-start gap-3">
-                              <span className="px-3 py-1 bg-white/10 backdrop-blur-md rounded-full text-[10px] font-black uppercase tracking-widest border border-white/20">System Update</span>
-                              <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                              <span className="px-3 py-1 bg-white border border-slate-200 rounded-full text-[10px] font-black uppercase tracking-widest">System Update</span>
+                              <div className="w-2 h-2 rounded-full bg-emerald-500" />
                            </div>
                            <h3 className="text-2xl font-black tracking-tight leading-tight uppercase">Faculty Curated Resource Center</h3>
-                           <p className="text-sm font-medium text-indigo-200/80 leading-relaxed">System-wide shared library of verified academic materials, interactive templates, and examination blue-prints now available for all departments.</p>
-                           <button className="px-8 py-3 bg-white text-indigo-900 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-indigo-50 transition-all cursor-pointer shadow-xl">Explore Repository</button>
+                           <p className="text-sm font-semibold text-slate-600 leading-relaxed">System-wide shared library of verified academic materials, interactive templates, and examination blue-prints now available for all departments.</p>
+                           <button className="px-8 py-3 bg-indigo-600 text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-indigo-700 transition-all cursor-pointer shadow-md">Explore Repository</button>
                         </div>
                         <div className="grid grid-cols-2 gap-4">
                            {[
@@ -301,10 +301,10 @@ export const LMSPage: React.FC<LMSPageProps> = ({ onBack }) => {
                              { label: 'Templates', val: '85+', icon: FileText },
                              { label: 'Media Assets', val: '2.4k', icon: Laptop },
                            ].map((item, i) => (
-                             <div key={i} className="p-4 bg-white/5 border border-white/10 rounded-3xl backdrop-blur-md w-32">
-                                <item.icon className="w-5 h-5 text-indigo-400 mb-2" />
-                                <span className="text-lg font-black block tracking-tighter">{item.val}</span>
-                                <span className="text-[9px] font-bold text-indigo-300/60 uppercase tracking-widest">{item.label}</span>
+                             <div key={i} className="p-4 bg-white border border-slate-200 rounded-3xl w-32 shadow-sm">
+                                <item.icon className="w-5 h-5 text-indigo-600 mb-2" />
+                                <span className="text-lg font-black block tracking-tighter text-slate-900">{item.val}</span>
+                                <span className="text-[9px] font-bold text-slate-500 uppercase tracking-widest">{item.label}</span>
                              </div>
                            ))}
                         </div>
@@ -331,7 +331,7 @@ export const LMSPage: React.FC<LMSPageProps> = ({ onBack }) => {
                             </div>
                          </div>
                          <div className="flex items-center gap-2">
-                            <div className="w-3 h-3 rounded-full bg-rose-500 animate-pulse" />
+                            <div className="w-3 h-3 rounded-full bg-rose-500" />
                             <span className="text-xs font-black text-rose-500 uppercase tracking-widest">Global Broadcast Online</span>
                          </div>
                       </div>
@@ -402,7 +402,7 @@ export const LMSPage: React.FC<LMSPageProps> = ({ onBack }) => {
                             </div>
                          </div>
                          <div className="px-5 py-2 bg-blue-50 border border-blue-100 rounded-2xl flex items-center gap-2">
-                            <div className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
+                            <div className="w-2 h-2 rounded-full bg-blue-600" />
                             <span className="text-[10px] font-black uppercase tracking-widest text-blue-600">AI Core Active</span>
                          </div>
                       </div>
@@ -497,8 +497,8 @@ export const LMSPage: React.FC<LMSPageProps> = ({ onBack }) => {
                       </div>
 
                       {/* BOTTOM INSIGHT PANEL */}
-                      <div className="bg-slate-900 rounded-[32px] p-8 text-white relative overflow-hidden group">
-                         <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_top_right,rgba(37,99,235,0.1),transparent)]" />
+                      <div className="bg-slate-50 border border-slate-200 rounded-[32px] p-8 text-slate-900 relative overflow-hidden group">
+                         <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_top_right,rgba(37,99,235,0.05),transparent)]" />
                          <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-8">
                             <div>
                                <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-400 mb-2">AI Impact Summary</h5>
@@ -512,7 +512,7 @@ export const LMSPage: React.FC<LMSPageProps> = ({ onBack }) => {
                                  { label: 'Students Assisted', val: '3,814' },
                                ].map((m, i) => (
                                  <div key={i} className="text-center sm:text-left">
-                                    <span className="text-[14px] font-black text-white block mb-0.5">{m.val}</span>
+                                    <span className="text-[14px] font-black text-slate-900 block mb-0.5">{m.val}</span>
                                     <span className="text-[9px] font-bold text-slate-500 uppercase tracking-widest">{m.label}</span>
                                  </div>
                                ))}
@@ -609,7 +609,7 @@ export const LMSPage: React.FC<LMSPageProps> = ({ onBack }) => {
                 >
                    <div className="w-full flex justify-between items-center mb-8">
                       <h4 className="text-[11px] font-black uppercase tracking-[0.2em] text-slate-400">Content Fingerprint</h4>
-                      <div className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse" />
+                      <div className="w-2 h-2 rounded-full bg-indigo-500" />
                    </div>
                    
                    <div className="h-64 w-64 relative">
@@ -652,7 +652,7 @@ export const LMSPage: React.FC<LMSPageProps> = ({ onBack }) => {
                 </motion.div>
 
                 {/* ACTIVITY LOG */}
-                <div className="bg-[#0F172A] rounded-[40px] p-8 text-white relative overflow-hidden shadow-2xl">
+                <div className="bg-white border border-slate-200 rounded-[40px] p-8 text-slate-900 relative overflow-hidden shadow-sm">
                    <div className="absolute top-0 right-0 p-4 opacity-5">
                       <MessageSquare className="w-40 h-40" />
                    </div>
@@ -663,23 +663,23 @@ export const LMSPage: React.FC<LMSPageProps> = ({ onBack }) => {
                    <div className="space-y-6 relative overflow-hidden">
                       <div className="absolute left-[15px] top-4 bottom-4 w-px bg-white/5" />
                       {[
-                        { text: 'Advanced Quantum Physics - Lecture 04 uploaded', time: '10m ago', icon: Video, color: 'text-rose-400' },
-                        { text: 'Student Rahul Sharma achieved "Coding Pro" Award', time: '44m ago', icon: Award, color: 'text-amber-400' },
-                        { text: 'Digital Lab: Biology Assignment updated', time: '2h ago', icon: FileText, color: 'text-blue-400' },
-                        { text: 'New Batch Enrollment for Modern History open', time: 'Yesterday', icon: Users, color: 'text-emerald-400' },
+                        { text: 'Advanced Quantum Physics - Lecture 04 uploaded', time: '10m ago', icon: Video, color: 'text-rose-500' },
+                        { text: 'Student Rahul Sharma achieved "Coding Pro" Award', time: '44m ago', icon: Award, color: 'text-amber-600' },
+                        { text: 'Digital Lab: Biology Assignment updated', time: '2h ago', icon: FileText, color: 'text-blue-500' },
+                        { text: 'New Batch Enrollment for Modern History open', time: 'Yesterday', icon: Users, color: 'text-emerald-500' },
                       ].map((act, i) => (
                         <div key={i} className="flex gap-5 group relative">
-                           <div className="w-8 h-8 rounded-xl bg-white/5 border border-white/10 shadow-sm flex items-center justify-center relative z-10 group-hover:bg-white/10 transition-colors">
+                           <div className="w-8 h-8 rounded-xl bg-slate-50 border border-slate-100 shadow-sm flex items-center justify-center relative z-10 group-hover:bg-indigo-50 transition-colors">
                               <act.icon className={`w-4 h-4 ${act.color}`} />
                            </div>
                            <div className="flex-1">
-                              <p className="text-[11px] font-bold text-slate-200 leading-tight group-hover:text-indigo-400 transition-colors uppercase tracking-tight">{act.text}</p>
-                              <span className="text-[9px] text-slate-500 font-bold tracking-tighter block mt-1 uppercase">{act.time}</span>
+                              <p className="text-[11px] font-bold text-slate-800 leading-tight group-hover:text-indigo-600 transition-colors uppercase tracking-tight">{act.text}</p>
+                              <span className="text-[9px] text-slate-400 font-bold tracking-tighter block mt-1 uppercase">{act.time}</span>
                            </div>
                         </div>
                       ))}
                    </div>
-                   <button className="w-full py-4 mt-8 bg-white/5 border border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-white hover:bg-white/10 transition-all cursor-pointer">
+                   <button className="w-full py-4 mt-8 bg-slate-50 border border-slate-100 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-indigo-600 hover:bg-white hover:border-indigo-200 transition-all cursor-pointer">
                       View System Audit Trail
                    </button>
                 </div>
@@ -690,7 +690,7 @@ export const LMSPage: React.FC<LMSPageProps> = ({ onBack }) => {
                     <Star className="absolute -bottom-8 -right-8 w-40 h-40 text-white/5 rotate-12" />
                     <div className="relative z-10 space-y-6">
                        <div className="flex items-center gap-3">
-                          <div className="p-3 bg-white/20 backdrop-blur-md rounded-2xl">
+                          <div className="p-3 bg-white/20  rounded-2xl">
                              <Award className="w-7 h-7 text-white" />
                           </div>
                           <div>

@@ -129,7 +129,7 @@ export const BookDemo: React.FC = () => {
         {/* Decorative Mini tag */}
         <div className="text-center lg:text-left mb-12">
           <span className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-3.5 py-1 text-xs font-semibold text-blue-700 border border-blue-100/60 shadow-2xs">
-            <Cpu className="h-3 w-3 text-blue-600 animate-pulse" />
+            <Cpu className="h-3 w-3 text-blue-600" />
             <span className="tracking-widest uppercase font-mono text-[9px] font-black">GET STARTED TODAY</span>
           </span>
         </div>
@@ -184,7 +184,7 @@ export const BookDemo: React.FC = () => {
           {/* RIGHT COLUMN: Premium Demo Form Card                      */}
           {/* ========================================================= */}
           <div className="lg:col-span-6">
-            <div className="bg-white/80 backdrop-blur-md rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-[0_20px_48px_rgba(0,40,90,0.06)] relative overflow-hidden text-left">
+            <div className="bg-white/80  rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-[0_20px_48px_rgba(0,40,90,0.06)] relative overflow-hidden text-left">
               
               {/* Soft decorative accent gradients inside the card */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-300/10 to-transparent rounded-bl-full pointer-events-none" />
@@ -200,7 +200,7 @@ export const BookDemo: React.FC = () => {
                   >
                     <div>
                       <h3 className="text-xl font-black text-slate-900 tracking-tight flex items-center gap-2">
-                        <Calendar className="h-5 w-5 text-[#0074E4] animate-pulse" />
+                        <Calendar className="h-5 w-5 text-[#0074E4]" />
                         Book a Free Demo
                       </h3>
                       <p className="text-xs text-slate-500 font-semibold mt-1">
@@ -320,7 +320,7 @@ export const BookDemo: React.FC = () => {
                       >
                         {isSubmitting ? (
                           <>
-                            <RefreshCw className="h-4 w-4 animate-spin" />
+                            <RefreshCw className="h-4 w-4" />
                             <span>Connecting Secure Scheduler...</span>
                           </>
                         ) : (
